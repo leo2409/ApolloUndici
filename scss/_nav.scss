@@ -1,0 +1,133 @@
+.nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: rgb(235, 235, 235);
+
+    .logo {
+        padding: 0.3rem 2rem;
+        
+        img {
+            height: 3rem;
+        }
+    }
+}
+
+.nav-l {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0.3rem 0rem;
+
+    .ul {
+        ul {
+            list-style: none;
+            display: flex;
+
+            li {
+                margin: 0 2rem;
+
+                a {
+                    text-decoration: none;
+                    color: black;
+
+                    &:hover {
+                        text-decoration: underline;;
+                    }
+                }
+            }
+        }
+    }    
+}
+
+.nav-s {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0.3rem 0rem;
+
+    .burger_Btn{
+        cursor: pointer;
+        z-index: 106;
+        margin: 1rem 1.8rem;
+        padding: 0rem 0.2rem;
+        
+        div {
+            width: 27px;
+            height: 3px;
+            background: black;
+            border-radius: 2px;
+            margin: 6px 0;
+        }
+
+        &.open {
+            transform:rotate(360deg)  translateX(6px);
+            transition: all 0.7s ease-in-out;
+        }
+
+        .open.line1 { 
+            transform: rotate(45deg) translateY(12px);
+            transition: all 0.7s ease-in-out;
+        }
+
+        .open.line2 {
+            background-color: transparent;
+            transition: all 0.7s ease-in-out;
+        }
+
+        .open.line3 {
+            transform: rotate(-45deg) translateY(-12px);
+            transition: all 0.4s ease-in-out;
+        }
+    }
+
+    .hide-ul {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 98%;
+        visibility: hidden;
+        background-color: rgb(146, 146, 146);
+        transform: translateY(-100%);
+        z-index: 105;
+
+        &.open {
+            visibility: visible;
+            transform: translateY(0);
+            transition: all 0.4s ease-in-out;
+        }
+
+        .list {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 3rem 0;
+
+            ul {
+                list-style: none;
+
+                li {
+                    margin: 2rem 1rem;
+
+                    a {
+                        padding: 1rem 1rem;
+                        font-size: 1.2rem;
+                        font-weight: 400;
+                        text-decoration: none;
+                        color: black;
+
+                        &:hover {
+                            text-decoration: underline;;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
