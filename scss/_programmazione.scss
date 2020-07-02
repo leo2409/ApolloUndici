@@ -1,0 +1,21 @@
+.day {
+    .date {
+
+    }
+
+    .programmazione {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .evento {
+            text-align: center;
+            padding: 0.5rem;
+            margin: 0 1rem;
+            img {
+                height: 8rem;
+                margin: 0 auto;
+            }
+        }
+    }
+}
