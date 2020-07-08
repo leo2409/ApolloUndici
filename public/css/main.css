@@ -5,13 +5,22 @@
   padding: 0;
 }
 
+a:active {
+  outline: none;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .nav {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 100;
-  background-color: #ebebeb;
+  background-color: rgba(0, 0, 0, 0.795);
   margin-bottom: 2rem;
+  color: white;
 }
 
 .nav .logo {
@@ -49,8 +58,8 @@
 }
 
 .nav-l .ul ul li a {
+  color: white;
   text-decoration: none;
-  color: black;
 }
 
 .nav-l .ul ul li a:hover {
@@ -77,12 +86,13 @@
   z-index: 106;
   margin: 1rem 1.8rem;
   padding: 0rem 0.2rem;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .nav-s .burger_Btn div {
   width: 27px;
   height: 3px;
-  background: black;
+  background: white;
   border-radius: 2px;
   margin: 6px 0;
 }
@@ -121,7 +131,7 @@
   width: 100%;
   opacity: 98%;
   visibility: hidden;
-  background-color: #929292;
+  background-color: rgba(0, 0, 0, 0.849);
   -webkit-transform: translateY(-100%);
           transform: translateY(-100%);
   z-index: 105;
@@ -161,43 +171,86 @@
   font-size: 1.2rem;
   font-weight: 400;
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .nav-s .hide-ul .list ul li a:hover {
   text-decoration: underline;
 }
 
+.day {
+  display: block;
+  margin: 3rem 0;
+  text-align: center;
+  color: white;
+}
+
+.day .date {
+  display: block;
+}
+
 .day .programmazione {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-top: 1rem;
 }
 
 .day .programmazione .evento {
-  text-align: center;
-  padding: 0.5rem;
-  margin: 0 1rem;
+  width: 40%;
 }
 
 .day .programmazione .evento img {
-  height: 8rem;
   margin: 0 auto;
+  width: 90%;
+  border-radius: 0.3rem;
+}
+
+@media screen and (min-width: 601px) {
+  .day .programmazione .evento {
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .day .programmazione .evento .evento {
+    width: 60%;
+  }
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url("../img/muro.jpg");
+  background-color: #cccccc;
+  /* Used if the image is unavailable */
+  height: 100%;
+  /* You must set a specified height */
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover;
+  /* Resize the background image to cover the entire container */
 }
 
 main {
   width: 100%;
   max-width: 1000px;
-  padding: 4rem 0.5rem;
-  margin: 2rem auto;
+  padding: 1rem 0.5rem;
+  margin: 7rem auto;
   min-height: 80%;
-  background-color: lightcyan;
+  background-color: rgba(0, 0, 0, 0.795);
+  border-radius: 0.5rem;
 }
 
 @media screen and (min-width: 601px) {

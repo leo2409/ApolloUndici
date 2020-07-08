@@ -2,13 +2,25 @@
 @import 'nav';
 @import 'programmazione';
 
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("../img/muro.jpg");
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 100%; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
 main {
     width: 100%;
     max-width: 1000px;
-    padding: 4rem 0.5rem;
-    margin: 2rem auto;
+    padding: 1rem 0.5rem;
+    margin: 7rem auto;
     min-height: 80%;
-    background-color: lightcyan;
+    background-color: rgba(0, 0, 0, 0.795);
+    border-radius: 0.5rem;
+    
 }
 
 @media screen and (min-width: 601px) {
@@ -19,6 +31,8 @@ main {
     .nav-l {
         display: flex;
     }
+
+    
 }
 
 
@@ -30,4 +44,7 @@ main {
     .nav-l {
         display: none;
     }
+
+    
+
 }

@@ -1,21 +1,39 @@
 .day {
-    .date {
+    display: block;
+    margin: 3rem 0;
+    text-align: center;
+    color: white;
 
+    .date {
+        display: block;
     }
 
     .programmazione {
         display: flex;
+        flex-flow: row wrap;
         justify-content: center;
         align-items: center;
-
+        margin-top: 1rem;
+        
         .evento {
-            text-align: center;
-            padding: 0.5rem;
-            margin: 0 1rem;
+
+            width: 40%;
             img {
-                height: 8rem;
                 margin: 0 auto;
+                width: 90%;
+                border-radius: 0.3rem;
             }
+
+            @media screen and (min-width: 601px) {
+                width: 20%;
+            }
+
+            @media screen and (max-width: 600px) {
+                .evento {
+                    width: 60%;
+                }
+            }
+
         }
     }
 }

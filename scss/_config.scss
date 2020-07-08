@@ -8,6 +8,16 @@ $link: #0a84ff;
     padding: 0;
 }
 
+
+a:active {
+    
+    outline: none;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
 @mixin transition-ease {
     transition: all 0.5s ease-in-out;
 }

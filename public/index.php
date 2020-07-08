@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,69 +70,16 @@
 
     <!-- MAIN -->
     <main>
-        <div class="day">
-            <div class="date">
-                <h2>Lunedi 24/09/2001</h2>
-            </div>
-            <div class="programmazione">
-                <div class="evento">
-                    <img src="img/1989-2019.jpg" alt="">
-                    <p>titolo</p>
-                </div>
-                <div class="evento">
-                    <img src="img/1989-2019.jpg" alt="">
-                    <p>titolo</p>
-                </div>
-                <div class="evento">
-                    <img src="img/1989-2019.jpg" alt="">
-                    <p>titolo</p>
-                </div>
-            </div>
-        </div>
-        <div class="day">
-            <div class="date">
-                <h2>Lunedi 24/09/2001</h2>
-            </div>
-            <div class="programmazione">
-                <div class="evento">
-                    <img src="img/1989-2019.jpg" alt="">
-                    <p>titolo</p>
-                </div>
-                <div class="evento">
-                    <img src="img/1989-2019.jpg" alt="">
-                    <p>titolo</p>
-                </div>
-                <div class="evento">
-                    <img src="img/1989-2019.jpg" alt="">
-                    <p>titolo</p>
-                </div>
-            </div>
-        </div>
-        <div class="day">
-            <div class="date">
-                <h2>Lunedi 24/09/2001</h2>
-            </div>
-            <div class="programmazione">
-                <div class="evento">
-                    <img src="img/1989-2019.jpg" alt="">
-                    <p>titolo</p>
-                </div>
-                <div class="evento">
-                    <img src="img/1989-2019.jpg" alt="">
-                    <p>titolo</p>
-                </div>
-                <div class="evento">
-                    <img src="img/1989-2019.jpg" alt="">
-                    <p>titolo</p>
-                </div>
-            </div>
-        </div>
+        <?php 
+            include_once __DIR__ . '/../templates/home.html.php';
+        ?>
     </main>
 
     <script src=".\js\main.js"></script>
+
     <!-- FOOTER -->
     <footer>
-
+        
     </footer>
 </body>
 </html>
