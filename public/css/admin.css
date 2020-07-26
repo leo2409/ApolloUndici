@@ -1,9 +1,33 @@
-main {
-  width: 1000px;
-  margin: 0 auto;
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
-input, textarea {
+body {
+  background-color: #DAE0E6;
+}
+
+main {
+  padding: 2rem;
+}
+
+h1 {
+  margin-bottom: 1rem;
+}
+
+.film-form {
+  border-radius: 0.4rem;
+  -webkit-box-shadow: 0px 0px 26px -1px #616161;
+          box-shadow: 0px 0px 26px -1px #616161;
+  padding: 1.5rem;
+  background-color: white;
+  max-width: 30rem;
+}
+
+.film-form input, .film-form textarea {
   display: block;
   margin-top: 0.3rem;
   border-radius: 0.3rem;
@@ -14,11 +38,54 @@ input, textarea {
   font-size: 1.2rem;
 }
 
-label {
+.film-form label {
   font-size: 1.3rem;
 }
 
-.campo {
+.film-form .campo {
   margin: 1rem 0rem;
+}
+
+.film-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-column-gap: 1.5rem;
+          column-gap: 1.5rem;
+  row-gap: 1.5rem;
+  margin: 3rem 0;
+}
+
+.film-container .film {
+  border-radius: 0.4rem;
+  padding: -2.5rem;
+  overflow: hidden;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 24px 0px #616161;
+          box-shadow: 0px 0px 24px 0px #616161;
+}
+
+.film-container .film .locandina-container {
+  float: left;
+  height: 20rem;
+}
+
+.film-container .film .locandina-container img {
+  height: 20rem;
+}
+
+.film-container .film .descrizione {
+  min-width: 8rem;
+  max-width: 15rem;
+  float: left;
+  margin: 1rem;
 }
 /*# sourceMappingURL=admin.css.map */
