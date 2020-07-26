@@ -29,7 +29,7 @@ class EntryPoint {
         return ob_get_clean();
     }
 
-    public function run() {
+    public function run($layout) {
         $route = $this->routes->getRoute();
         $controller = $route[$this->url][$this->method]['controller'];
         $action = $route[$this->url][$this->method]['action'];
@@ -40,7 +40,7 @@ class EntryPoint {
         } else {
             $output = $this->loadTemplate($page['templates']);
         }
-        include __DIR__ . '/../../layout/layout.html.php';
+        include __DIR__ . '/../../layout/' . $layout;
     }
 }
 ?>

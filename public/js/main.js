@@ -3,10 +3,17 @@ const line1 = document.querySelector('.line1');
 const line2 = document.querySelector('.line2');
 const line3 = document.querySelector('.line3');
 const nav = document.querySelector('.hide-ul');
+const informazioni = document.querySelector('.informazioni');
+const evento = document.getElementsByClassName('.evento');
 
 let showMenu = false;
 menuBtn.addEventListener('click', toggleMenu);
 xBtn.addEventListener('click', invisibility);
+evento.forEach(multievent);
+function multievent(item) {
+    item.addEventListener('input', infoc);
+}
+
 function toggleMenu() {
 if (!showMenu) {
         menuBtn.classList.add('open');
@@ -25,4 +32,8 @@ if (!showMenu) {
 
         showMenu = false;
     }
+}
+
+function infoc() {
+    informazioni.classList.add('open');
 }

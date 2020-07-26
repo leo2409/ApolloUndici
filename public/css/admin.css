@@ -1,0 +1,24 @@
+main {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+input, textarea {
+  display: block;
+  margin-top: 0.3rem;
+  border-radius: 0.3rem;
+  border: 1px solid gray;
+  outline: none;
+  padding: 0.5rem 1.25rem;
+  color: black;
+  font-size: 1.2rem;
+}
+
+label {
+  font-size: 1.3rem;
+}
+
+.campo {
+  margin: 1rem 0rem;
+}
+/*# sourceMappingURL=admin.css.map */
