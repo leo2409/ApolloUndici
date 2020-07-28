@@ -54,6 +54,13 @@ class AdminRoutes implements \Framework\Interfaces\RoutesInterface{
                 ]
             ],
 
+            'film/delete' => [
+                'GET' => [
+                    'controller' => $adminController,
+                    'action' => 'deleteFilm',
+                ]
+            ],
+
             'find-film' => [
                 'GET' => [
                     'controller' => $adminController,

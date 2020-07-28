@@ -11,7 +11,7 @@ class Event {
     }
 
     public function home() {
-        $title = 'provolone';
+        $title = 'Apollo Undici';
         $datatempo = new \DateTime();
         return [
             'title' => $title,

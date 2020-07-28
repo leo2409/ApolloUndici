@@ -63,8 +63,8 @@ h1 {
   margin: 1rem 0rem;
 }
 
-.film-form .locandina-preview, .event-form .locandina-preview {
-  height: 10rem;
+.locandina-preview {
+  height: 20rem;
 }
 
 .livesearch .searchbar input {
@@ -105,6 +105,13 @@ h1 {
           column-gap: 1.5rem;
   row-gap: 1.5rem;
   margin-bottom: 3rem;
+}
+
+.edit-delete {
+  position: relative;
+  bottom: 0;
+  right: 0;
+  text-align: center;
 }
 
 .film {

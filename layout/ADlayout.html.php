@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=$title?></title>
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
 </head>
 <body>
 <script src="js/admin.js"></script>

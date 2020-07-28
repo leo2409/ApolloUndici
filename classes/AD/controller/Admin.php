@@ -44,12 +44,32 @@ class Admin {
 
     public function filmEdit() {
         $title = 'edit film';
-        return [
-            'title' => $title,
-            'templates' => [
-                'template' => 'film_form.html.php',
-            ]
-        ];
+
+        if (isset($_GET['id'])) {
+            $film = $this->filmTable->findById($_GET['id']);
+            return [
+                'title' => $title,
+                'templates' => [
+                    'template' => 'film_form.html.php',
+                ],
+                'variables' => [
+                    'film' => $film,
+                ]
+            ];
+        } else {
+            return [
+                'title' => $title,
+                'templates' => [
+                    'template' => 'film_form.html.php',
+                ]
+            ];
+        }
+    }
+
+    public function deleteFilm() {
+        $id = $_GET['id'];
+        $this->filmTable->remove($id);
+        header('location: ADAG.php');
     }
 
     public function eventEdit() {

@@ -14,6 +14,10 @@
                     <?=$film['descrizione']?>
                 </p>
             </div>
+            <div class="edit-delete">
+                <a href="ADAG.php?route=film/edit&id=<?=$film['id_film']?>">modifica></a>
+                <a href="ADAG.php?route=film/delete&id=<?=$film['id_film']?>">elimina></a>
+            </div>
         </div>
     <?php endforeach; ?>
 

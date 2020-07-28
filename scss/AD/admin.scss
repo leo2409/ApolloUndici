@@ -55,11 +55,11 @@ h1 {
     .campo {
         margin: 1rem 0rem;
     }
-
-    .locandina-preview {
-        height: 10rem;
-    }
 }
+
+.locandina-preview {
+    height: 20rem;
+}   
 
 .livesearch {
 
@@ -102,6 +102,17 @@ h1 {
 
     //overflow-x = scroll;
 
+}
+
+.edit-delete {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+
+    a {
+        
+    }
 }
 
 .film {
