@@ -80,6 +80,15 @@ class DatabaseTable
       $this->query($sql,$parameters);
     }
 
+    public function findByInitials($initials,$stringColumn) {
+      $sql = "SELECT * FROM " . $this->table . " WHERE LOWER(" . $stringColumn . ") like LOWER( :initials '%');";
+      $parameters = [
+        ':initials' => $initials,
+      ];
+      $query = $this->query($sql,$parameters);
+      return $query->fetchAll();
+    }
+
     private function insert($fields) 
     {
         $sql = 'INSERT INTO ' . $this->table . ' SET ';

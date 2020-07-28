@@ -1,5 +1,5 @@
 <?php 
-namespace Apollo\Controller;
+namespace AD\Controller;
 
 class Admin {
     private $filmTable;
@@ -17,7 +17,7 @@ class Admin {
         return [
             'title' => $title,
             'templates' => [
-                'template' => 'adform.html.php',
+                'template' => 'home.html.php',
             ],
             'variables' => [
                 'films' => $films,
@@ -40,6 +40,45 @@ class Admin {
         $this->filmTable->save($fields);
 
         header('location: ADAG.php');
+    }
+
+    public function filmEdit() {
+        $title = 'edit film';
+        return [
+            'title' => $title,
+            'templates' => [
+                'template' => 'film_form.html.php',
+            ]
+        ];
+    }
+
+    public function eventEdit() {
+        $title = 'edit event';
+        return [
+            'title' => $title,
+            'templates' => [
+                'template' => 'live_search.html.php',
+            ]
+        ];
+    }
+
+    public function saveEvent() {
+        $fields = $_POST['evento'];
+        $this->eventTable->save($fields);
+        header('location: ADAG.php');
+    }
+
+    public function findFilmById() {
+        $id = $_GET['id'];
+        $film = $this->filmTable->findById($id);
+        return [
+            'templates' => [
+                'template' => 'event_form.html.php',
+            ],
+            'variables' => [
+                'film' => $film,
+            ]
+        ];
     }
 }
 ?>

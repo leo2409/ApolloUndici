@@ -5,11 +5,13 @@ class EntryPoint {
     private $url;
     private $method;
     private $routes;
+    private $templatesDir;
 
-    public function __construct(string $url, \Framework\Interfaces\RoutesInterface $routes, string $method) {
+    public function __construct(string $url, \Framework\Interfaces\RoutesInterface $routes, string $method, string $templatesDir = '/../../templates/') {
         $this->url = $url;
         $this->method = $method;
         $this->routes = $routes;
+        $this->templatesDir = $templatesDir; 
         $this->urlCheck($this->url);
     }
 
@@ -24,7 +26,7 @@ class EntryPoint {
         extract($variables);
         ob_start();
         foreach ($templates as $templateName) {
-            include __DIR__ . '/../../templates/' . $templateName;
+            include __DIR__ . $this->templatesDir . $templateName;
         }
         return ob_get_clean();
     }
@@ -34,7 +36,7 @@ class EntryPoint {
         $controller = $route[$this->url][$this->method]['controller'];
         $action = $route[$this->url][$this->method]['action'];
         $page = $controller->$action();
-        $title = $page['title'];
+        $title = $page['title'] ?? '';
         if (isset($page['variables'])) {
             $output = $this->loadTemplate($page['templates'], $page['variables']);
         } else {

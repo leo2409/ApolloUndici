@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
+<script src="js/admin.js"></script>
     <main>
         <?=$output?>    
     </main>

@@ -4,9 +4,11 @@
 
         $method = $_SERVER['REQUEST_METHOD'];
 
-        $route = 'home';
+        $route = $_GET['route'] ?? 'home';
 
-        $entryPoint = new \Framework\EntryPoint($route,  new \Apollo\AdminRoutes(), $method);
+        $templatesDir = '/../../templates/AD/';
+
+        $entryPoint = new \Framework\EntryPoint($route,  new \AD\AdminRoutes(), $method, $templatesDir);
 
         $layout = 'ADlayout.html.php';
 
