@@ -15,7 +15,7 @@ try {
         echo '<p>no result</p>';
     }
     foreach ($films as $film) {
-        echo '<button class="search-result" onclick="inserisciDati(' . $film['id_film'] . ' , ' . "'" . $film['titolo'] . "'" .')">' . $film['titolo'] . '</button>';
+        echo '<button class="search-result" id="' . $film['id_film'] . '" onclick="inserisciDati(' . $film['id_film'] . ')">' . $film['titolo'] . '</button>';
     }
 } catch (\PDOException $e) {
  $title = 'An error has occurred';

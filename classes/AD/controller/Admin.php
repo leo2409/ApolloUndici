@@ -13,7 +13,10 @@ class Admin {
     public function home() {
         $title = 'admin';
         $films = $this->filmTable->findAll();
-
+        $eventi = $this->eventTable->findAll();
+        foreach ($eventi as $key => $evento) {
+            $eventi[$key]['film'] = $this->filmTable->findById($evento['id_film']);
+        }
         return [
             'title' => $title,
             'templates' => [
@@ -21,20 +24,23 @@ class Admin {
             ],
             'variables' => [
                 'films' => $films,
+                'eventi' => $eventi,
             ]
         ];
 
     }
 
     public function saveFilm() {
-        $target_dir = "upload/";
-        $target_file = $target_dir . basename($_FILES["locandina"]["name"]);
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-        move_uploaded_file($_FILES["locandina"]["tmp_name"], $target_file);
 
         $fields = $_POST['film'];
 
-        $fields['locandina'] = $target_dir . $_FILES['locandina']['name'];
+        if (!empty($_FILES["locandina"]['name'])) {
+            $target_dir = "upload/";
+            $target_file = $target_dir . basename($_FILES["locandina"]["name"]);
+            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            move_uploaded_file($_FILES["locandina"]["tmp_name"], $target_file);
+            $fields['locandina'] = $target_dir . $_FILES['locandina']['name'];
+        }
 
 
         $this->filmTable->save($fields);
@@ -45,8 +51,8 @@ class Admin {
     public function filmEdit() {
         $title = 'edit film';
 
-        if (isset($_GET['id'])) {
-            $film = $this->filmTable->findById($_GET['id']);
+        if (isset($_GET['id_film'])) {
+            $film = $this->filmTable->findById($_GET['id_film']);
             return [
                 'title' => $title,
                 'templates' => [
@@ -67,19 +73,41 @@ class Admin {
     }
 
     public function deleteFilm() {
-        $id = $_GET['id'];
+        $id = $_GET['id_film'];
         $this->filmTable->remove($id);
         header('location: ADAG.php');
     }
 
     public function eventEdit() {
         $title = 'edit event';
-        return [
-            'title' => $title,
-            'templates' => [
-                'template' => 'live_search.html.php',
-            ]
-        ];
+
+        if (isset($_GET['id_evento'])) {
+            $event = $this->eventTable->findById($_GET['id_evento']);
+            $film = $this->filmTable->findById($event['id_film']);
+            return [
+                'title' => $title,
+                'templates' => [
+                    'template' => 'event_form.html.php',
+                ],
+                'variables' => [
+                    'evento' => $event,
+                    'film' => $film,
+                ]
+            ];
+        } else {
+            return [
+                'title' => $title,
+                'templates' => [
+                    'template' => 'live_search.html.php',
+                ]
+            ];
+        }
+    }
+
+    public function deleteEvent() {
+        $id = $_GET['id_evento'];
+        $this->eventTable->remove($id);
+        header('location: ADAG.php');
     }
 
     public function saveEvent() {
@@ -93,7 +121,7 @@ class Admin {
         $film = $this->filmTable->findById($id);
         return [
             'templates' => [
-                'template' => 'event_form.html.php',
+                'template' => 'event_form_new.html.php',
             ],
             'variables' => [
                 'film' => $film,

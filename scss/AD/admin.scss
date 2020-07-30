@@ -1,5 +1,5 @@
 @import 'config';
-
+@import 'film-event';
 body {
     width: 100%;
     height: 100vh;
@@ -10,6 +10,7 @@ body {
     a {
         text-decoration: none;
         color: $link;
+        padding: 0.3rem 0.5rem;
 
         &:hover {
             text-decoration: underline;
@@ -18,14 +19,15 @@ body {
 }
 
 main {
+    max-width: 1800px;
     width: 100%;
-    max-width: 1700px;
     margin: 3rem auto;
+    padding: 0 1rem;
     min-height: 80%;
     
 }
 
-h1 {
+h1,h2 {
     margin-bottom: 1.5rem;
 }
 .film-form,.event-form {
@@ -39,6 +41,7 @@ h1 {
 
     input,textarea {
         display: block;
+        width: 100%;
         margin-top: 0.3rem;
         border-radius: 0.3rem;
         border: 1px solid gray;
@@ -56,10 +59,6 @@ h1 {
         margin: 1rem 0rem;
     }
 }
-
-.locandina-preview {
-    height: 20rem;
-}   
 
 .livesearch {
 
@@ -87,58 +86,6 @@ h1 {
             &:hover {
                 background-color: rgb(166, 230, 255);
             }
-        }
-    }
-}
-
-.film-container, .event-container {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    flex-wrap: wrap;
-    column-gap: 1.5rem;
-    row-gap: 1.5rem;
-    margin-bottom: 3rem;
-
-    //overflow-x = scroll;
-
-}
-
-.edit-delete {
-    position: relative;
-    bottom: 0;
-    right: 0;
-    text-align: center;
-
-    a {
-        
-    }
-}
-
-.film {
-    border-radius: 0.4rem;
-    padding: -2.5rem;
-    overflow: hidden;
-    background-color: white;
-    box-shadow: 0px 0px 24px 0px rgba(97,97,97,1);
-
-    .locandina-container {
-        float: left;
-        height: 20rem;
-        img {
-            height: 20rem;
-        }
-    }
-
-    .descrizione {
-        min-width: 8rem;
-        max-width: 15rem;
-        float: left;
-        margin: 1rem;
-        overflow: hidden;
-
-        h2 {
-            margin-bottom: 0.5rem;
         }
     }
 }
