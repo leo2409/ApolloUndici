@@ -32,7 +32,7 @@
             </section>
             -->
 
-            <input type="submit" value="inserisci">
+            <input type="submit" value="salva">
         </form>
     </div>
 </div>

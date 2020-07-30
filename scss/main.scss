@@ -7,11 +7,11 @@ body {
     height: 100vh;
     line-height: 1;
     font-family: 'Poppins', Arial, sans-serif;
-    background-image: url("../img/muro.jpg");
-    background-color: #cccccc; /* Used if the image is unavailable */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
+    //background-image: url("../img/muro.jpg");
+    //background-color: #cccccc; /* Used if the image is unavailable */
+    //background-position: center; /* Center the image */
+    //background-repeat: no-repeat; /* Do not repeat the image */
+    //background-size: cover; /* Resize the background image to cover the entire container */
 
     a {
         text-decoration: none;
@@ -21,6 +21,10 @@ body {
             text-decoration: underline;
         }
     }
+}
+
+h1,h2 {
+    margin-bottom: 1rem;
 }
 
 main {

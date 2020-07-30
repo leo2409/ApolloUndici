@@ -8,11 +8,6 @@ const evento = document.getElementsByClassName('.evento');
 
 let showMenu = false;
 menuBtn.addEventListener('click', toggleMenu);
-xBtn.addEventListener('click', invisibility);
-evento.forEach(multievent);
-function multievent(item) {
-    item.addEventListener('input', infoc);
-}
 
 function toggleMenu() {
 if (!showMenu) {

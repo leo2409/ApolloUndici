@@ -10,7 +10,7 @@
 
     .programmazione {
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: row;
         justify-content: center;
         margin: 1rem auto;
         overflow: visible;
@@ -45,7 +45,9 @@
     }
 
     .informazioni {
-        width: 100%;
+        margin: 2rem 2rem;
+        line-height: 1.2rem;
+        
     }
 
     .open {

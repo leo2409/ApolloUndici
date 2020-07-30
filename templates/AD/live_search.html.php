@@ -8,5 +8,5 @@
         </div>
     </div>
     <form action="ADAG.php?route=event/edit" method="post" id="form-event">
-   </form>
+    </form>
 </div>
