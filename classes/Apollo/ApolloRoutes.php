@@ -77,6 +77,10 @@ class ApolloRoutes implements \Framework\Interfaces\RoutesInterface{
     public function getAuthentication(): \Framework\Authentication{
         return $this->authentication;
     }
+
+    public function redirect() {
+        header('location: index.php?route=login');
+    }
 }
 
 

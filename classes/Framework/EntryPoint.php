@@ -35,7 +35,7 @@ class EntryPoint {
         $route = $this->routes->getRoute();
         $authentication = $this->routes->getAuthentication();
         if (isset($route[$this->url]['login']) && $route[$this->url]['login'] = true && !$authentication->isLoggedIn()) {
-            header('location: index.php?route=login');
+            $this->routes->redirect();
         } else {
             $controller = $route[$this->url][$this->method]['controller'];
             $action = $route[$this->url][$this->method]['action'];
