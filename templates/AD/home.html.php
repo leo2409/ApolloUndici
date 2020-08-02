@@ -56,19 +56,19 @@
                             </div>
                         </div>
                         <div class="descrizione">
-                            <h2>Titolo</h2>
+                            <h2>titolo:</h2>
                             <p>
                                 <?=$evento['film']['titolo']?>
                             </p>
-                            <h2>Descrizione evento</h2>
+                            <h2>descrizione evento:</h2>
                             <p>
                                 <?=$evento['descrizione']?>
                             </p>
-                            <h2>Data</h2>
+                            <h2>data:</h2>
                             <p><?=$evento['data']?></p>
-                            <h2>Orario</h2>
+                            <h2>orario:</h2>
                             <p><?=$evento['orario']?></p>
-                            <h2>Posti</h2>
+                            <h2>posti:</h2>
                             <p><?=$evento['posti']?></p>
                         </div>
                     </div>

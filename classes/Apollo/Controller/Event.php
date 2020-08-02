@@ -12,14 +12,17 @@ class Event {
 
     public function home() {
         $title = 'Apollo Undici';
-        $datatempo = new \DateTime();
-        $sql = 'SELECT evento.data FROM evento GROUP BY evento.data ORDER by evento.data limit 5';
+        $sql = 'SELECT evento.data FROM evento GROUP BY evento.data ORDER by evento.data, evento.orario limit 5';
         $stmt = $this->eventTable->query($sql);
         $date = $stmt->fetchAll();
         foreach ($date as $key => $data) {
             $date[$key]['events'] = $this->eventTable->find('data',$data['data']);
+            $datatempo = new \DateTime($date[$key]['data']);
+            $date[$key]['data'] = $datatempo->format('l, d-M');
             foreach ($date[$key]['events'] as $key2 => $event) {
                 $date[$key]['events'][$key2]['film'] = $this->filmTable->findById($event['id_film']);
+                $datatempo = new \DateTime($date[$key]['events'][$key2]['orario']);
+                $date[$key]['events'][$key2]['orario'] = $datatempo->format('H:m');
             }
         }
         return [

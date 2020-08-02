@@ -33,16 +33,22 @@ class EntryPoint {
 
     public function run($layout) {
         $route = $this->routes->getRoute();
-        $controller = $route[$this->url][$this->method]['controller'];
-        $action = $route[$this->url][$this->method]['action'];
-        $page = $controller->$action();
-        $title = $page['title'] ?? '';
-        if (isset($page['variables'])) {
-            $output = $this->loadTemplate($page['templates'], $page['variables']);
+        $authentication = $this->routes->getAuthentication();
+        if (isset($route[$this->url]['login']) && $route[$this->url]['login'] = true && !$authentication->isLoggedIn()) {
+            header('location: index.php?route=login');
         } else {
-            $output = $this->loadTemplate($page['templates']);
+            $controller = $route[$this->url][$this->method]['controller'];
+            $action = $route[$this->url][$this->method]['action'];
+            $page = $controller->$action();
+            $title = $page['title'] ?? '';
+            if (isset($page['variables'])) {
+                $output = $this->loadTemplate($page['templates'], $page['variables']);
+            } else {
+                $output = $this->loadTemplate($page['templates']);
+            }
+            $loggedIn = $authentication->isLoggedIn();
+            include __DIR__ . '/../../layout/' . $layout;
         }
-        include __DIR__ . '/../../layout/' . $layout;
     }
 }
 ?>

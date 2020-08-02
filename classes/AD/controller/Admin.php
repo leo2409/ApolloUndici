@@ -16,6 +16,10 @@ class Admin {
         $eventi = $this->eventTable->findAll();
         foreach ($eventi as $key => $evento) {
             $eventi[$key]['film'] = $this->filmTable->findById($evento['id_film']);
+            $datatempo = new \DateTime($eventi[$key]['data']);
+            $eventi[$key]['data'] = $datatempo->format('l, d-M');
+            $datatempo = new \DateTime($eventi[$key]['orario']);
+            $eventi[$key]['orario'] = $datatempo->format('H:m');
         }
         return [
             'title' => $title,

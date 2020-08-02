@@ -11,9 +11,9 @@
   top: 0;
   width: 100%;
   z-index: 100;
-  background-color: rgba(0, 0, 0, 0.795);
+  background-color: white;
   margin-bottom: 2rem;
-  color: white;
+  color: black;
 }
 
 .nav .logo {
@@ -51,7 +51,7 @@
 }
 
 .nav-l .ul ul li a {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
@@ -175,7 +175,12 @@
   display: block;
   margin: 3rem 0;
   text-align: center;
-  color: white;
+  color: black;
+}
+
+.day.trans {
+  -webkit-transform: translateY(300px);
+          transform: translateY(300px);
 }
 
 .day .date {
@@ -195,7 +200,6 @@
           justify-content: center;
   margin: 1rem auto;
   overflow: visible;
-  background-color: 0;
 }
 
 .day .programmazione .evento {
@@ -230,12 +234,85 @@
 }
 
 .day .informazioni {
-  margin: 2rem 2rem;
+  margin: 2rem 0rem;
+  padding: 0.5rem 1rem;
   line-height: 1.2rem;
+  display: none;
+  border: 2px solid white;
 }
 
-.day .open {
+.day .informazioni.open {
   display: block;
+}
+
+footer {
+  width: 100%;
+  height: 20rem;
+  background: black;
+  background: -webkit-gradient(linear, left bottom, left top, from(black), color-stop(36%, black), to(rgba(0, 212, 255, 0)));
+  background: linear-gradient(0deg, black 0%, black 36%, rgba(0, 212, 255, 0) 100%);
+}
+
+.register-form, .login-form, .prenotazione-form {
+  border-radius: 0.4rem;
+  -webkit-box-shadow: 0px 0px 26px -1px #616161;
+          box-shadow: 0px 0px 26px -1px #616161;
+  padding: 1.5rem;
+  background-color: white;
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.register-form input, .register-form textarea, .login-form input, .login-form textarea, .prenotazione-form input, .prenotazione-form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 0.3rem;
+  border-radius: 0.3rem;
+  border: 1px solid gray;
+  outline: none;
+  padding: 0.5rem 1.25rem;
+  color: black;
+  font-size: 1.2rem;
+}
+
+.register-form label, .login-form label, .prenotazione-form label {
+  font-size: 1.3rem;
+}
+
+.register-form .campo, .login-form .campo, .prenotazione-form .campo {
+  margin: 1rem 0rem;
+}
+
+.film-container, .event-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  row-gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.evento-prenotazione {
+  margin-top: 2rem;
+  background-color: white;
+  text-align: center;
+}
+
+.evento-prenotazione .locandina-container img {
+  width: 15rem;
+  height: 20rem;
+  border-radius: 0.4rem;
+}
+
+.evento-prenotazione .descrizione {
+  margin: 1rem;
+}
+
+.evento-prenotazione .descrizione h2 {
+  margin: 0.5rem 0;
 }
 
 body {
@@ -243,6 +320,8 @@ body {
   height: 100vh;
   line-height: 1;
   font-family: 'Poppins', Arial, sans-serif;
+  background-color: #DAE0E6;
+  /* Resize the background image to cover the entire container */
 }
 
 body a {
@@ -264,7 +343,7 @@ main {
   padding: 1rem 0.5rem;
   margin: 7rem auto;
   min-height: 80%;
-  background-color: rgba(0, 0, 0, 0.795);
+  background-color: white;
   border-radius: 0.5rem;
 }
 

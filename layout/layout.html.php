@@ -16,14 +16,14 @@
         <!--NAV L-->
         <div class="nav-l">
             <div class="logo">
-                <a href="">
+                <a href="index.php">
                     <img src="img/Apollo11_logo.png" alt="logo">
                 </a>
             </div>
             <div class="ul">
                 <ul>
                     <li>
-                        <a href="">Home</a>
+                        <a href="index.php">Home</a>
                     </li>
                     <li>
                         <a href="">Programmazione</a>
@@ -57,13 +57,13 @@
                         <a href="">Home</a>
                     </li>
                     <li>
-                        <a href=""><i class="icon fas fa-search"></i>Programmazione</a>
+                        <a href="">Programmazione</a>
                     </li>
                     <li>
-                        <a href=""><i class="icon fas fa-user-circle"></i>Storia</a>
+                        <a href="">Storia</a>
                     </li>
                     <li>
-                        <a href=""><i class="icon fas fa-user-circle"></i>Contatti</a>
+                        <a href="">Contatti</a>
                     </li>
                 </div>
             </div>
@@ -75,7 +75,7 @@
         <?=$output?>
     </main>
 
-    <script src=".\js\main.js"></script>
+    <script src="js\main.js"></script>
 
     <!-- FOOTER -->
     <footer>
