@@ -22,4 +22,7 @@
         <?php endforeach; ?>
     </div>
 <?php endforeach; ?>
+<div class="iscrizione-soci">
+    <a href="">Richiesta per diventare soci</a>
+</div>
 </div>

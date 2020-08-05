@@ -70,6 +70,15 @@ class ApolloRoutes implements \Framework\Interfaces\RoutesInterface{
                 ]
             ],
 
+            'register/success' => [
+                'GET' => [
+                    'controller' => $registerController,
+                    'action' => 'registerSuccess',
+                ],
+
+                'login' => true,
+            ],
+
         ];
         return $routes;
     }

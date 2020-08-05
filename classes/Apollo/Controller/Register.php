@@ -68,6 +68,16 @@ class Register {
             ];
         }
     }
+
+    public function registerSuccess() {
+        $title = 'registrazione completata';
+        return [
+            'title' => $title,
+            'templates' => [  
+                'template' => 'register_success.html.php',
+            ],
+        ];
+    }
 }
 
 ?>
