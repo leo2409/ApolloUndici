@@ -1,4 +1,7 @@
 <?php
+# probabilemnte questa classe è inutile
+# forse si può utilizzare un altro metodo in AdminRoutes (getAjaxRoute()) o anche sesnsa
+
 namespace AD;
 
 class AjaxRoutes implements \Framework\Interfaces\RoutesInterface{

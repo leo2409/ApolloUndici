@@ -159,7 +159,6 @@ class AdminRoutes implements \Framework\Interfaces\RoutesInterface{
     
     public function redirect() {
         header('location: ADAG.php?route=login');
-        # find by id and then confirmed result
     }
 
 }
