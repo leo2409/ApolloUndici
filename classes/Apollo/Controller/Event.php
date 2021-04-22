@@ -12,8 +12,12 @@ class Event {
 
     public function home() {
         $title = 'Apollo Undici';
-        $sql = 'SELECT evento.data FROM evento GROUP BY evento.data ORDER by evento.data, evento.orario limit 5';
-        $stmt = $this->eventTable->query($sql);
+        $cordata = new \DateTime;
+        $parameters = [
+            ':datacor' => $cordata->format('Y-m-d'),
+        ];
+        $sql = 'SELECT evento.data FROM evento WHERE evento.data >= :datacor GROUP BY evento.data ORDER by evento.data, evento.orario limit 5';
+        $stmt = $this->eventTable->query($sql, $parameters);
         $date = $stmt->fetchAll();
         foreach ($date as $key => $data) {
             $date[$key]['events'] = $this->eventTable->find('data',$data['data']);

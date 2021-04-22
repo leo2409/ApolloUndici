@@ -1,6 +1,5 @@
 .day {
     display: block;
-    margin: 3rem 0;
     text-align: center;
     color: white;
 
@@ -50,7 +49,6 @@
     }
 
     .informazioni {
-        margin: 2rem 0rem;
         padding: 0.5rem 1rem;
         line-height: 1.2rem;
         display: none;
@@ -60,6 +58,20 @@
             display: block;
         }
     }
+}
 
+.iscrizione-soci {
+    border-radius: 0.7rem;
+    background-image: url("../img/apollo.jpg");
+    height: 20rem;
+    width: 100%;
+
+    .testo {
+        color: white;
+        line-height: 1.1rem;
+        padding: 1rem;
+        background-color: rgba(0, 0, 0, 0.788);
+        border-radius: 0.7rem 0.7rem 0 0;
+    }
 
 }

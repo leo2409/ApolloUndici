@@ -22,16 +22,18 @@
     border-top: 2px solid rgb(170, 170, 170);
 
     a {
-        border: 1px solid $link;
+        color: black;
+        //border: 2px solid $link;
         border-radius: 0.4rem;
         margin: 0 0.5rem;
+        background-color: #ffffff;
     }
 }
 
 .film, .evento {
     border-radius: 0.4rem;
     background-color: white;
-    box-shadow: 0px 2px 13px -3px rgba(97,97,97,1);
+    //box-shadow: 0px 2px 13px -3px rgba(97,97,97,1);
     overflow: hidden;
     width: 100%;
 
@@ -49,14 +51,16 @@
         }
     
         .descrizione {
-            margin: 1rem;
-    
+            margin: 0.5rem;
+            max-height: 5rem;
+            overflow: scroll;
             h2 {
                 margin: 0.5rem 0;
             }
         }
     }
 }
+
 
 .suddivisione {
     width: 100%;
@@ -66,9 +70,17 @@
 .add-event, .add-film {
     border-radius: 0.4rem;
     background-color: white;
-    box-shadow: 0 2px 3px rgba(0,0,0,.1);
+    //box-shadow: 0 2px 3px rgba(0,0,0,.1);
     margin: 0 auto;
     padding: 0.5rem 1rem;
+}
+
+.apolloIframe {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    width: 30%;
+    height: 30%;
 }
 
 @media screen and (min-width: 601px) {

@@ -1,13 +1,18 @@
 <?php foreach ($date as $data) : ?>
     <div class="day">
         <div class="date">
-            <h2><?=$data['data']?></h2>
+            <h2 class="data"><?=$data['data']?></h2>
         </div>
         <div class="programmazione">
             <?php foreach ($data['events'] as $event) : ?>
                 <div class="evento" id="<?=$event['id_evento'] ?? '' ?>">
-                    <img class="locandina" src="<?=$event['film']['locandina'] ?? '' ?>" alt="locandina">
-                    <p><?=$event['film']['titolo'] ?? '' ?> <?=$event['orario'] ?? '' ?></p>
+                    <div class="sfondo">
+                        <img class="locandina" src="<?=$event['film']['locandina'] ?? '' ?>" alt="locandina">
+                    </div>
+                    <div class="tit-ora">
+                        <p><?=$event['orario'] ?? '' ?></p>
+                        <h4><?=$event['film']['titolo'] ?? '' ?> </h4>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -23,6 +28,9 @@
     </div>
 <?php endforeach; ?>
 <div class="iscrizione-soci">
-    <a href="">Richiesta per diventare soci</a>
-</div>
+    <div class="testo">
+        <h2>Soci Apollo Undici</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas aliquid officiis optio distinctio praesentium corrupti, ipsa suscipit omnis. Illo, ab?</p>
+        <a href="">Richiesta per diventare soci ></a>
+    </div>
 </div>

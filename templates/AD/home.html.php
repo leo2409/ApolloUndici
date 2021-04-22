@@ -1,4 +1,6 @@
+
 <div class="suddivisione">
+
     <div class="films">
         <h1>Film</h1>
         <div class="film-container">
@@ -32,7 +34,7 @@
             <?php endforeach; ?>
 
             <div>
-                <a href="#">visualizza tutti ></a>
+                <a href="ADAG.php?route=film/all">visualizza tutti ></a>
             </div>
 
         </div>
@@ -88,3 +90,4 @@
         </div>
     </div>
 </div>
+<iframe src="http://93.42.99.214/ApolloUndici/public/" frameborder="0" class="apolloIframe"></iframe>

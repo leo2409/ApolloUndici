@@ -10,6 +10,22 @@
 </head>
 <body>
 <script src="js/admin.js"></script>
+    <nav>
+        <div class="nav-icon">
+            <a href="ADAG.php?route=home">
+                <div>
+                    <i class="far fa-calendar-alt"></i>
+                </div>
+            </a>
+        </div>
+        <div class="nav-icon">
+            <a href="ADAG.php?route=prenotazioni">
+                <div>
+                    <i class="fas fa-ticket-alt"></i>
+                </div>
+            </a>
+        </div>
+    </nav>
     <main>
         <?=$output?>    
     </main>

@@ -9,7 +9,7 @@ function showResult(stringa) {
         document.getElementById("results").innerHTML=this.responseText;
         }
     }
-    xmlhttp.open("GET","/ApolloUndici/public/pesce.php?q="+stringa,true);
+    xmlhttp.open("GET","/ApolloUndici/public/ajax.php?route=ajaxFilmSearch&s="+stringa,true);
     xmlhttp.send();
 }
 
@@ -25,3 +25,4 @@ function inserisciDati(id) {
    xmlhttp.open("GET","/ApolloUndici/public/ADAG.php?route=find-film&id="+id,true);
    xmlhttp.send();
 }
+

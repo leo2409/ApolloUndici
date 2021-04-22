@@ -14,7 +14,7 @@ class ApolloRoutes implements \Framework\Interfaces\RoutesInterface{
         $this->eventTable = new \Framework\DatabaseTable($pdo, 'apolloundici.evento', 'id_evento');
         $this->utenteTable = new \Framework\DatabaseTable($pdo, 'apolloundici.utente', 'id_utente');
         $this->prenotazioneTable = new \Framework\DatabaseTable($pdo, 'apolloundici.prenotazione', 'id_prenotazione');
-        $this->authentication = new \Framework\Authentication($this->utenteTable, 'email', 'password');
+        $this->authentication = new \Framework\Authentication($this->utenteTable, 'email', 'password','username','password');
     }
 
     public function getRoute(): array {
@@ -88,7 +88,12 @@ class ApolloRoutes implements \Framework\Interfaces\RoutesInterface{
     }
 
     public function redirect() {
-        header('location: index.php?route=login');
+        if (isset($_GET['id_evento'])) {
+            header('location: index.php?route=login&id_evento=' . $_GET['id_evento']);
+        } else {
+            header('location: index.php?route=login');
+        }
+        
     }
 }
 

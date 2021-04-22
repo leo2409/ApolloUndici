@@ -44,9 +44,13 @@ class DatabaseTable
       }
     }
 
-    public function findAll() 
+    public function findAll($limit = NULL) 
     {
-        $result = $this->query('SELECT * FROM ' . $this->table . ';');
+        if ($limit != NULL) {
+          $result = $this->query('SELECT * FROM ' . $this->table . ' limit ' . $limit . ';');
+        } else {
+          $result = $this->query('SELECT * FROM ' . $this->table . ';');
+        }
         return $result->fetchAll();
     }
 

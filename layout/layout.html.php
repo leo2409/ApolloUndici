@@ -23,10 +23,10 @@
             <div class="ul">
                 <ul>
                     <li>
-                        <a href="index.php">Home</a>
+                        <a href="index.php">Programmazione</a>
                     </li>
                     <li>
-                        <a href="">Programmazione</a>
+                        <a href="">Biglietti</a>
                     </li>
                     <li>
                         <a href="">Storia</a>

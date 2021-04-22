@@ -12,8 +12,8 @@ class Admin {
 
     public function home() {
         $title = 'admin';
-        $films = $this->filmTable->findAll();
-        $eventi = $this->eventTable->findAll();
+        $films = $this->filmTable->findAll(3);
+        $eventi = $this->eventTable->findAll(3);
         foreach ($eventi as $key => $evento) {
             $eventi[$key]['film'] = $this->filmTable->findById($evento['id_film']);
             $datatempo = new \DateTime($eventi[$key]['data']);
@@ -41,8 +41,21 @@ class Admin {
         if (!empty($_FILES["locandina"]['name'])) {
             $target_dir = "upload/";
             $target_file = $target_dir . basename($_FILES["locandina"]["name"]);
+            $file_name = $_FILES["locandina"]["tmp_name"];
+
+            list($width, $height) = getimagesize($file_name);
+            $ratio = $width / $height;
+            $new_width = 400;
+            $new_height = 400/$ratio;
+            $src = imagecreatefromstring(file_get_contents($file_name));
+            $dst = imagecreatetruecolor($new_width, $new_height);
+            imagecopyresampled( $dst, $src, 0, 0, 0, 0, $new_width, $new_height, $width, $height );
+            $file = "upload/" . $_FILES["locandina"]["name"];
+            imagepng($dst,$file);
+
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-            move_uploaded_file($_FILES["locandina"]["tmp_name"], $target_file);
+            //move_uploaded_file($_FILES["locandina"]["tmp_name"], $target_file);
+
             $fields['locandina'] = $target_dir . $_FILES['locandina']['name'];
         }
 
@@ -131,6 +144,34 @@ class Admin {
                 'film' => $film,
             ]
         ];
+    }
+
+    public function allFilm() {
+        $title = 'Films';
+        $films = $this->filmTable->findAll();
+        return [
+            'title' => $title,
+            'templates' => [
+                'template' => 'tutti_film.html.php',
+            ],
+            'variables' => [
+                'films' => $films,
+            ]
+        ];
+    }
+
+    public function ajaxFilmSearch() {
+        $stringa = $_GET['s'];
+    
+        $films = $this->filmTable->findByInitials($stringa,'titolo');
+        if (!isset($films[0])) {
+            echo '<p>no result</p>';
+        } else {
+            foreach ($films as $film) {
+                echo '<button class="search-result" id="' . $film['id_film'] . '" onclick="inserisciDati(' . $film['id_film'] . ')">' . $film['titolo'] . '</button>';
+            }
+        }
+        
     }
 }
 ?>

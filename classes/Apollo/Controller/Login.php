@@ -17,6 +17,9 @@ class Login {
             'title' => $title,
             'templates' => [
                 'template' => 'login.html.php',
+            ],
+            'variables' => [
+                'id_evento' => $_GET['id_evento'],
             ]
         ];
     }
@@ -24,7 +27,12 @@ class Login {
     public function loginProcess() {
         $title = 'login';
         if ($this->authentication->login($_POST['email'],$_POST['password'])) {
-           header('location: index.php');
+            if (isset($_POST['id_evento'])) {
+                $url = 'index.php?route=prenota&id_evento=' .  $_POST['id_evento'];
+                header('location: ' . $url);
+            } else {
+                header('location: index.php');
+            }
         } else {
             return [
                 'title'=> $title,
@@ -34,6 +42,7 @@ class Login {
                 'variables' => [
                     'email' => $_POST['email'],
                     'error' => 'invalid email/password',
+                    'id_evento' => $_POST['id_evento'],
                 ]
             ];
         }

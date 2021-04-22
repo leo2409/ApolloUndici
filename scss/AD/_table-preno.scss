@@ -1,0 +1,36 @@
+.contenuto {
+    border-radius: 0.4rem;
+    padding: 1rem;
+    background-color: white;
+    margin-bottom: 0.5rem;
+    overflow: scroll;
+
+    .titolo-orario {
+        margin-bottom: 1rem;
+        h2 {
+            display: inline;
+        }
+    
+        p {
+            text-align: end;
+            display: inline;
+        }
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            
+        }
+    }
+}
