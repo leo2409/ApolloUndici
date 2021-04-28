@@ -13,28 +13,33 @@
             <p><?= $evento['orario'] ?></p>
             <p>occupati <?= $evento['occupati'] ?> liberi <?= $evento['posti'] - $evento['occupati'] ?></p>
         </div>
-        <table>
-            <tr>
-                <th>Nome</th>
-                <th>Cognome</th>
-                <th>Posti</th>
-                <th>Email</th>
-                <th>Numero</th>
-                <th></th>
-            </tr>
-            <?php foreach($evento['prenotazioni'] as $prenotazione) : ?>
+        <div class="table">
+            <table>
                 <tr>
-                    <td><?= $prenotazione['utente']['nome'] ?></td>
-                    <td><?= $prenotazione['utente']['cognome'] ?></td>
-                    <td><?= $prenotazione['posti'] ?></td>
-                    <td><?= $prenotazione['utente']['email'] ?></td>
-                    <td><?= $prenotazione['telefono'] ?></td>
-                    <td>
-                        <a href="ADAG.php?route=prenotazione/modifica&id_prenotazione=<?= $prenotazione['id_prenotazione'] ?>">modifica</a>
-                        <a href="ADAG.php?route=prenotazione/elimina&id_prenotazione=<?= $prenotazione['id_prenotazione'] ?>">elimina</a>
-                    </td>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Posti</th>
+                    <th>Email</th>
+                    <th>Numero</th>
+                    <th></th>
                 </tr>
-            <?php endforeach; ?>
-        </table>
+                <?php foreach($evento['prenotazioni'] as $prenotazione) : ?>
+                    <tr id="<?= $prenotazione['id_prenotazione'] ?>">
+                        <td><?= $prenotazione['utente']['nome'] ?></td>
+                        <td><?= $prenotazione['utente']['cognome'] ?></td>
+                        <td><?= $prenotazione['posti'] ?></td>
+                        <td><?= $prenotazione['utente']['email'] ?></td>
+                        <td><?= $prenotazione['telefono'] ?></td>
+                        <td>
+                            <button type="button" onclick="modifica_prenotazione(<?= $prenotazione['id_prenotazione'] ?>)">modifica</button>
+                            <button type="button" onclick="elimina_prenotazione(<?= $prenotazione['id_prenotazione'] ?>)">elimina</button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
     </div>
 <?php endforeach; ?>
+<div class="prenotazione-form">
+    
+</div>

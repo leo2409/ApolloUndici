@@ -42,6 +42,8 @@ class Prenotazione {
 
     public function ajaxDeletePrenotazione() {
         $this->prenotazioneTable->remove($_GET['id_prenotazione']);
+        $myJSON = json_encode('eliminato correttamente');
+        echo $myJSON;
     }
 }
 ?>

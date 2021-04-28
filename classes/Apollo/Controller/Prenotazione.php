@@ -77,6 +77,7 @@ class Prenotazione {
             $this->prenotazioneTable->save($prenotazione);
             $film = $this->filmTable->findById($evento['id_film']);
             
+            /*
             // GESTIONE EMAIL 
             // FORSE CONVIENE CREARE UNA CLASSE CHE SE NE OCCUPA
             // passing true in constructor enables exceptions in PHPMailers
@@ -110,6 +111,7 @@ class Prenotazione {
                 echo "Error in sending email. Mailer Error: {$mail->ErrorInfo}";
             }
             // FINE ROBA EMAIL
+            */
             
             $title = 'success';
             return [

@@ -1,8 +1,7 @@
-.register-form, .login-form, .prenotazione-form {
+.register-form, .login-form, .prenotazione-form, .form {
     border-radius: 0.4rem;
-    box-shadow: 0px 0px 26px -1px rgba(97,97,97,1);
     padding: 1.5rem;
-    background-color: white;
+    
     max-width: 30rem;
     margin: 0 auto;
 
@@ -15,15 +14,41 @@
         border: 1px solid gray;
         outline: none;
         padding: 0.5rem 1.25rem;
-        color: black;
+        
         font-size: 1.2rem;
     }
-    
+
     label {
         font-size: 1.3rem;
     }
+
+    input#newsletter {
+        display: inline;
+        width: 25px;
+        height: 25px;
+        margin: 0.2rem;
+    }
+
+    label#newsletter {
+        display: inline;
+        font-size: 0.9rem;
+    }
     
-    .campo {
+    section.campo {
         margin: 1rem 0rem;
+        position: relative;
+    }
+
+    button#toggle-password {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 300;
+        padding: 0;
+        font-size: var(--mobile-font-size);
+        /* Display at the top right of the container */
+        position: absolute;
+        top: 5px;
+        right: 0;
     }
 }

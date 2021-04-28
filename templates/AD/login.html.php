@@ -14,7 +14,7 @@
     <form action="" method="POST">
         <section class="campo">
             <label for="username">username</label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" name="username" autofocus>
         </section>
         <section class="campo">
             <label for="password">password</label>

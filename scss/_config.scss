@@ -8,7 +8,22 @@ $link: #0a84ff;
     padding: 0;
     -webkit-tap-highlight-color: transparent;
 }
+/*
+html {
+    font-size: 16px;
+}
 
+@media screen and (min-width: 320px) {
+    html {
+      font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+    }
+}
+  @media screen and (min-width: 1000px) {
+    html {
+      font-size: 22px;
+    }
+}
+*/
 @mixin transition-ease {
     transition: all 0.5s ease-in-out;
 }

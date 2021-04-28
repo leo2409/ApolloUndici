@@ -6,6 +6,22 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+/*
+html {
+    font-size: 16px;
+}
+
+@media screen and (min-width: 320px) {
+    html {
+      font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+    }
+}
+  @media screen and (min-width: 1000px) {
+    html {
+      font-size: 22px;
+    }
+}
+*/
 .nav {
   position: absolute;
   top: 0;
@@ -261,23 +277,35 @@
   border-radius: 0.7rem 0.7rem 0 0;
 }
 
+.contenuto {
+  border-radius: 0.4rem;
+  padding: 1.5rem;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.contenuto .mappa {
+  border-radius: 0.5rem;
+  border: 1px solid rgba(136, 136, 136, 0.493);
+  width: 22rem;
+  max-width: 100%;
+  height: 22rem;
+}
+
 footer {
   width: 100%;
   height: 20rem;
   background: black;
 }
 
-.register-form, .login-form, .prenotazione-form {
+.register-form, .login-form, .prenotazione-form, .form {
   border-radius: 0.4rem;
-  -webkit-box-shadow: 0px 0px 26px -1px #616161;
-          box-shadow: 0px 0px 26px -1px #616161;
   padding: 1.5rem;
-  background-color: white;
   max-width: 30rem;
   margin: 0 auto;
 }
 
-.register-form input, .register-form textarea, .login-form input, .login-form textarea, .prenotazione-form input, .prenotazione-form textarea {
+.register-form input, .register-form textarea, .login-form input, .login-form textarea, .prenotazione-form input, .prenotazione-form textarea, .form input, .form textarea {
   display: block;
   width: 100%;
   margin-top: 0.3rem;
@@ -285,16 +313,41 @@ footer {
   border: 1px solid gray;
   outline: none;
   padding: 0.5rem 1.25rem;
-  color: black;
   font-size: 1.2rem;
 }
 
-.register-form label, .login-form label, .prenotazione-form label {
+.register-form label, .login-form label, .prenotazione-form label, .form label {
   font-size: 1.3rem;
 }
 
-.register-form .campo, .login-form .campo, .prenotazione-form .campo {
+.register-form input#newsletter, .login-form input#newsletter, .prenotazione-form input#newsletter, .form input#newsletter {
+  display: inline;
+  width: 25px;
+  height: 25px;
+  margin: 0.2rem;
+}
+
+.register-form label#newsletter, .login-form label#newsletter, .prenotazione-form label#newsletter, .form label#newsletter {
+  display: inline;
+  font-size: 0.9rem;
+}
+
+.register-form section.campo, .login-form section.campo, .prenotazione-form section.campo, .form section.campo {
   margin: 1rem 0rem;
+  position: relative;
+}
+
+.register-form button#toggle-password, .login-form button#toggle-password, .prenotazione-form button#toggle-password, .form button#toggle-password {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 300;
+  padding: 0;
+  font-size: var(--mobile-font-size);
+  /* Display at the top right of the container */
+  position: absolute;
+  top: 5px;
+  right: 0;
 }
 
 .film-container, .event-container {
@@ -362,6 +415,28 @@ main {
   margin: 4rem auto;
   min-height: 80%;
   border-radius: 0.5rem;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #202020;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  height: 57px;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 @media screen and (min-width: 601px) {

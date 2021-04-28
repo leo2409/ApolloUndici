@@ -164,7 +164,6 @@ nav .nav-icon:hover {
   padding: 1rem;
   background-color: white;
   margin-bottom: 0.5rem;
-  overflow: scroll;
 }
 
 .contenuto .titolo-orario {
@@ -178,6 +177,10 @@ nav .nav-icon:hover {
 .contenuto .titolo-orario p {
   text-align: end;
   display: inline;
+}
+
+.contenuto .table {
+  overflow: scroll;
 }
 
 .contenuto table {
@@ -226,7 +229,7 @@ h1, h2 {
   margin-bottom: 1.5rem;
 }
 
-.film-form, .event-form, .login-form {
+.film-form, .event-form, .login-form, .prenotazione-form {
   border-radius: 0.4rem;
   -webkit-box-shadow: 0px 0px 26px -1px #616161;
           box-shadow: 0px 0px 26px -1px #616161;
@@ -236,7 +239,7 @@ h1, h2 {
   margin: 0 auto;
 }
 
-.film-form input, .film-form textarea, .event-form input, .event-form textarea, .login-form input, .login-form textarea {
+.film-form input, .film-form textarea, .event-form input, .event-form textarea, .login-form input, .login-form textarea, .prenotazione-form input, .prenotazione-form textarea {
   display: block;
   width: 100%;
   margin-top: 0.3rem;
@@ -248,11 +251,11 @@ h1, h2 {
   font-size: 1.2rem;
 }
 
-.film-form label, .event-form label, .login-form label {
+.film-form label, .event-form label, .login-form label, .prenotazione-form label {
   font-size: 1.3rem;
 }
 
-.film-form .campo, .event-form .campo, .login-form .campo {
+.film-form .campo, .event-form .campo, .login-form .campo, .prenotazione-form .campo {
   margin: 1rem 0rem;
 }
 

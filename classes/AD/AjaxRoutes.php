@@ -37,6 +37,15 @@ class AjaxRoutes implements \Framework\Interfaces\RoutesInterface{
                 'login' => true,
             ],
 
+            'prenotazione/elimina' => [
+                'GET' => [
+                    'controller' => $prenotazioneController,
+                    'action' => 'ajaxDeletePrenotazione',
+                ],
+
+                'login' => true,
+            ],
+
         ];
         return $routes;
     }

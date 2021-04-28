@@ -34,6 +34,7 @@ class AdminRoutes implements \Framework\Interfaces\RoutesInterface{
                 'login' => true,
             ],
 
+            # login
             'login' => [
                 'GET' => [
                     'controller' => $loginController,
@@ -46,6 +47,7 @@ class AdminRoutes implements \Framework\Interfaces\RoutesInterface{
                 ]
             ],
             
+            # ricerca film
             'liveSearch' => [
                 'GET' => [
                     'controller' => $adminController,
@@ -55,6 +57,7 @@ class AdminRoutes implements \Framework\Interfaces\RoutesInterface{
                 'login' => true,
             ],
 
+            # modifica film
             'film/edit' => [
                 'GET' => [
                     'controller' => $adminController,

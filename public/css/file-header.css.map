@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": ";AAAA;;;;;;;;;;;;;;;;;EAiBE",
+    "sources": [
+        "../../wordpress/wp-content/themes/twentytwentyone/assets/sass/01-settings/file-header.scss"
+    ],
+    "names": [],
+    "file": "file-header.css"
+}

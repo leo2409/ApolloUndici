@@ -10,6 +10,13 @@
 </head>
 <body>
 
+    
+
+    <!--ROBA FACEBOOK-->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v10.0" nonce="k8ZuExFP"></script>
+    <!--FINE ROBA FACEBOOK-->
+
     <!--NAV -->
     <nav class="nav">
 
@@ -26,13 +33,13 @@
                         <a href="index.php">Programmazione</a>
                     </li>
                     <li>
-                        <a href="">Biglietti</a>
+                        <a href="index.php?route=tesseramento/info">Tesseramento</a>
                     </li>
                     <li>
-                        <a href="">Storia</a>
+                        <a href="">chi siamo</a>
                     </li>
                     <li>
-                        <a href="">Contatti</a>
+                        <a href="">contatti</a>
                     </li>
                 </ul>
             </div>
@@ -76,7 +83,6 @@
     </main>
 
     <script src="js\main.js"></script>
-
     <!-- FOOTER -->
     <footer>
         

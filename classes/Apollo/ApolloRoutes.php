@@ -22,6 +22,7 @@ class ApolloRoutes implements \Framework\Interfaces\RoutesInterface{
         $prenotazioneController = new \Apollo\Controller\Prenotazione( $this->utenteTable, $this->eventTable, $this->prenotazioneTable, $this->filmTable, $this->authentication);
         $loginController = new \Apollo\Controller\Login( $this->utenteTable, $this->authentication);
         $registerController = new \Apollo\Controller\Register($this->utenteTable);
+        $tesseramentoController = new \Apollo\Controller\Tesseramento($this->utenteTable, $this->authentication);
 
         $routes = [
             #PROGRAMMAZIONE
@@ -30,6 +31,20 @@ class ApolloRoutes implements \Framework\Interfaces\RoutesInterface{
                     'controller' => $eventController,
                     'action' => 'home',
                 ]
+            ],
+
+            'tesseramento/info' => [
+                'GET' => [
+                    'controller' => $tesseramentoController,
+                    'action' => 'tesseramentoInfo',
+                ],
+            ],
+
+            'tesseramento/modulo' => [
+                'GET' => [
+                    'controller' => $tesseramentoController,
+                    'action' => 'tesseramentoForm',
+                ],
             ],
 
             'prenota' => [

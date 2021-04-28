@@ -43,6 +43,28 @@ main {
     
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #202020; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+    height: 57px;
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
 @media screen and (min-width: 601px) {
     .nav-s {
         display: none;
@@ -64,7 +86,4 @@ main {
     .nav-l {
         display: none;
     }
-
-    
-
 }
