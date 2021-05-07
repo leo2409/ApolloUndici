@@ -40,8 +40,38 @@ inputs.forEach(function (input) {
   })
 })
 
+// Preview locandina
+function loadFile(event) {
+  var preview = document.getElementById('preview');
+  preview.style.display='block';
+  preview.src = URL.createObjectURL(event.target.files[0]);
+  preview.onload = function() {
+    URL.revokeObjectURL(preview.scr);
+  }
+}
 
+function imgHide() {
+  var preview = document.getElementById('preview');
+  preview.style.display='none';
+}
 
+var n_date = document.querySelectorAll('div.data').length;
+
+function aggiungi_data() {
+  var data = document.getElementById('add_data').value;
+  var orario = document.getElementById('add_orario').value;
+  var posti = document.getElementById('add_posti').value;
+  var contenitore = document.getElementById('contenitore-date');
+  contenitore.innerHTML += '<div class="data"><small>data: </small><span>' + data +
+   '</span><small>  orario: </small><span>' + orario + '</span><small>  posti: </small><span>' + posti +
+    '</span><button type="button" onclick="eliminaData(this)"><i class="far fa-times-circle"></i></button><input type="hidden" name="eventi[' + n_date + '][data]" value="' + data + '"></input><input type="hidden" name="eventi[' + n_date + '][orario]" value="' + orario + '"><input type="hidden" name="eventi[' + n_date + '][posti]" value="' + posti + '"></div>'
+  n_date += 1;
+}
+
+// elimina data programmazione
+function eliminaData(button) {
+  button.parentNode.remove();
+}
 /*
 const validationErrorClass = 'validation-error'
 const parentErrorClass = 'has-validation-error'

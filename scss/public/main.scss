@@ -1,0 +1,167 @@
+@import 'config';
+@import 'interpolate';
+@import 'footer';
+@import 'nav';
+@import 'form';
+
+body {
+    background-color: $backgraound;
+    color: white;
+    margin: 0;
+    font-family: "SF Pro Text","Myriad Set Pro","SF Pro Icons","Apple Legacy Chevron","Helvetica Neue","Helvetica","Arial",sans-serif
+}
+
+.button {
+    @include interpolate(font-size, 320px, 1000px, 16px, 24px);
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 1rem;
+    padding: 0.4rem 1rem;
+}
+
+.button.blue {
+    background-color: $blue;
+    color: black;
+
+    &:hover {
+        background-color: $hover_blue;
+        color: black;
+        transition: all 0.2s ease-in-out;
+    }
+}
+
+.button.red {
+    border: 2px solid $red;
+    color: $red;
+
+    &:hover {
+        color: $hvoer_red;
+        border: 2px solid $hvoer_red;
+        transition: all 0.2s ease-in-out;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $blue;
+    
+    &:hover {
+        color: $hover_blue;
+    }
+}
+
+a.red {
+    color: $red;
+
+    &:hover {
+        color: $hvoer_red;
+    }
+}
+
+/* Single property */
+html {
+    scroll-behavior: smooth;
+	@include interpolate(font-size, 320px, 1000px, 14px, 22px);
+}
+
+/* Multiple properties with same values */
+h1,h2,h3,h4,h5 {
+	@include interpolate((padding-top, padding-bottom), 20rem, 70rem, 0rem, .5rem);
+    margin-top: 0;
+}
+
+.soft-round {
+    border-radius: 0.2rem;
+}
+
+.round {
+    border-radius: 0.4rem;
+}
+
+.contenuto {
+    padding: 0.8rem 1.5rem;
+    background-color: #ffffff1a;
+    color: white;
+    margin: 0 auto 2rem auto;
+    border: 1px solid $gray;
+    
+}
+
+main {
+    width: 100%;
+    max-width: 1000px;
+    padding: 1rem 0.5rem;
+    margin: 4rem auto;
+    min-height: 80%;
+    border-radius: 0.5rem;
+    
+}
+
+.cerchio {
+    width: 3rem;
+    height: 3rem;
+    background-color: $red;
+    border-radius: 2rem;
+    position: relative;
+
+    img {
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        top: 0.5rem;
+        left: 0.7rem;
+    }
+}
+
+div.eco{
+    display: block;
+    font-size: 5rem;
+    text-align: center;
+    height:20rem;
+    line-height: 7rem;
+    color: #fcedd8;
+    //background: #d52e3f;
+    font-family: 'Niconne', cursive;
+    font-weight: 700;
+    text-shadow: 5px 5px 0px #eb452b, 
+                  10px 10px 0px #efa032, 
+                  15px 15px 0px #46b59b, 
+                  20px 20px 0px #017e7f, 
+                  25px 25px 0px #052939, 
+                  30px 30px 0px $backgraound, 
+                  35px 35px 0px $backgraound, 
+                  40px 40px 0px $backgraound, 
+                  //45px 45px 0px $backgraound;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:900i&display=swap');
+
+span.eco{
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size:3rem;
+    letter-spacing:0.1em;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: $red;
+    text-shadow: 
+                          8px 8px $blue,
+                          20px 20px black;
+}
+
+div.neon {
+    font-family: 'Monoton';
+    font-size: 2rem;
+    color: $red;
+}
+
+div.flex-container {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    h2 {
+        margin-top: 0.7rem;
+        margin-bottom: 0.3rem;
+    }
+}

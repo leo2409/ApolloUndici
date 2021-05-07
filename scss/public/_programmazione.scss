@@ -1,0 +1,59 @@
+.day {
+    display: block;
+    text-align: center;
+    color: white;
+
+    &.trans {
+        transform: translateY(300px);
+    }
+
+    .date {
+        display: block;
+    }
+
+    .programmazione {
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        margin: 1rem auto;
+        overflow: visible;
+        
+        
+        .evento {
+            width: 30%;
+            margin: 0.5rem 0;
+                img {
+                    margin: 0 auto;
+                    width: 90%;
+                    border-radius: 0.3rem;
+                    box-shadow: 0px 0px 37px 5px rgba(0,0,0,0.75);
+                    cursor: pointer;
+                }
+
+                &:hover {
+                    transform: scale(1.1);
+                    transition: all 0.2s ease-in;
+                }
+
+            @media screen and (min-width: 601px) {
+                width: 30%;
+            }
+
+            @media screen and (max-width: 600px) {
+                .evento {
+                    width: 30%;
+                }
+            }
+
+        }
+    }
+    .informazioni {
+        padding: 0.5rem 1rem;
+        line-height: 1.2rem;
+        display: none;
+
+        &.open {
+            display: block;
+        }
+    }
+}

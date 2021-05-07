@@ -9,7 +9,7 @@
     <title><?=$title?></title>
 </head>
 <body>
-<script src="js/admin.js"></script>
+<script src="js/admin/admin.js"></script>
     <nav>
         <div class="nav-icon">
             <a href="ADAG.php?route=home">
@@ -22,6 +22,20 @@
             <a href="ADAG.php?route=prenotazioni">
                 <div>
                     <i class="fas fa-ticket-alt"></i>
+                </div>
+            </a>
+        </div>
+        <div class="nav-icon">
+            <a href="ADAG.php?route=soci">
+                <div>
+                    <i class="fas fa-users"></i>
+                </div>
+            </a>
+        </div>
+        <div class="nav-icon">
+            <a href="ADAG.php?route=soci/ricerca">
+                <div>
+                    <i class="fas fa-search"></i>
                 </div>
             </a>
         </div>

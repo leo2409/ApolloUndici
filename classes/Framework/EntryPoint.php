@@ -7,21 +7,21 @@ class EntryPoint {
     private $routes;
     private $templatesDir;
 
-    public function __construct(string $url, \Framework\Interfaces\RoutesInterface $routes, string $method, string $templatesDir = '/../../templates/') {
+    public function __construct(string $url, \Framework\Interfaces\RoutesInterface $routes, string $method, string $templatesDir) {
         $this->url = $url;
         $this->method = $method;
         $this->routes = $routes;
         $this->templatesDir = $templatesDir; 
         $this->urlCheck($this->url);
     }
-
+    
     private function urlCheck($route) {
         if ($route !== strtolower($route)) {
             http_response_code(301);
             header('location: ' . strtolower($route));
         }
     }
-
+    
     private function loadTemplate($templates, $variables = [] ) {
         extract($variables);
         ob_start();

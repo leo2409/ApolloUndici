@@ -1,0 +1,107 @@
+@import 'config';
+@import 'film-event';
+@import 'nav';
+@import 'table-preno';
+@import 'form';
+@import 'date-form';
+
+body {
+    width: 100%;
+    ;
+    line-height: 1;
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #DAE0E6;
+    padding-bottom: 5rem;
+
+    a {
+        text-decoration: none;
+        color: $link;
+        padding: 0.3rem 0.5rem;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+main {
+    max-width: 1800px;
+    width: 100%;
+    margin: 1rem auto;
+    padding: 0 1rem;
+    min-height: 80%;
+    
+}
+
+h1,h2 {
+    margin-bottom: 1.5rem;
+}
+.event-form, .login-form, .prenotazione-form {
+    border-radius: 0.4rem;
+    box-shadow: 0px 0px 26px -1px rgba(97,97,97,1);
+    padding: 1.5rem;
+    background-color: white;
+    max-width: 30rem;
+    margin: 0 auto;
+
+
+    input,textarea {
+        display: block;
+        width: 100%;
+        margin-top: 0.3rem;
+        border-radius: 0.3rem;
+        border: 1px solid gray;
+        outline: none;
+        padding: 0.5rem 1.25rem;
+        color: black;
+        font-size: 1.2rem;
+    }
+    
+    label {
+        font-size: 1.3rem;
+    }
+    
+    .campo {
+        margin: 1rem 0rem;
+    }
+}
+
+.livesearch {
+
+    .searchbar {
+        input {
+            width: 100%;
+        }
+    }
+
+    #results {
+
+        .search-result {
+            border-bottom:1px solid gray;
+            border-left:1px solid gray;
+            border-right:1px solid gray;
+            border-radius: 0.3rem;
+            width: 100%;
+            margin: 0;
+            font-size: 1rem;
+            padding: 0.5rem;
+            display: block;
+            text-decoration: none;
+            color: black;
+
+            &:hover {
+                background-color: rgb(166, 230, 255);
+            }
+        }
+    }
+}
+
+button.button {
+    font-size: 24px;
+    border: 2px solid gray;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 1rem;
+    padding: 0.4rem 1rem;
+    color: $link;
+}

@@ -1,0 +1,55 @@
+.film-form {
+    //border: 5px solid rgb(255, 255, 255);
+    //background-color: rgb(206, 206, 206);
+    h1 {
+        text-align: center;
+    }
+
+    button.submit {
+        width: 80%;
+        margin: 1rem auto;
+
+    }
+}
+
+.data-form {
+    .add-button {
+        margin-top: 1rem;
+        padding: 0;
+        button {
+            font-size: 1.3rem;
+            width: 100%;
+            padding: 0.5rem 1.5rem;
+            border-radius: 3rem;
+            color: $link;
+            border: 1px solid gray;
+        }
+    }
+}
+
+div#contenitore-date {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    background-color: #DAE0E6;
+    width: 100%;
+    margin-bottom: 1rem;
+    
+
+    div.data {
+        background-color: white;
+        border-radius: 2rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid gray;
+        margin: 0.3rem;
+
+        button {
+            float: right;
+            background:none;
+            border: none;
+            i {
+                color: $error;
+                font-size: 1rem;
+            }
+        }
+    }
+}

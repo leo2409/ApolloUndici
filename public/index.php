@@ -10,10 +10,12 @@ try {
     # metodo della richiesta (GET O POST)
     $method = $_SERVER['REQUEST_METHOD'];
 
+    $templatesDir = '/../../templates/public/';
+
     # classe generale che si occupa di controllare l'url,
     # verificare se necessario il login attraverso la classe Authentication 
     # e caricare i templace
-    $entryPoint = new \Framework\EntryPoint($route,  new \Apollo\ApolloRoutes(), $method);
+    $entryPoint = new \Framework\EntryPoint($route,  new \Apollo\ApolloRoutes(), $method, $templatesDir);
     
     #carica il layout generale con nav in alto e footer e vari meta, css, js
     $layout = 'layout.html.php';

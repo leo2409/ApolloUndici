@@ -5,7 +5,7 @@
         <h1>Film</h1>
         <div class="film-container">
 
-            <div class="add-film">
+            <div class="add-button">
                 <a href="ADAG.php?route=film/edit"><i class="fas fa-plus-circle 2x"></i> Aggiungi film</a>
             </div>
 
@@ -14,7 +14,7 @@
                     <div class="flex-container">
                         <div class="locandina-container">
                             <div class="img">
-                                <img src="<?=$film['locandina']?>" alt="<?php echo 'locandina ' . $film['title'] ?>">
+                                <img src="<?=$film['locandina'] . '.webp' ?>" alt="<?php echo 'locandina ' . $film['title'] ?>">
                             </div>
                         </div>
                         <div class="descrizione">
@@ -44,7 +44,7 @@
         <h1>Eventi</h1>
         <div class="event-container">
 
-            <div class="add-event">
+            <div class="add-button">
                 <a href="ADAG.php?route=event/edit"><i class="fas fa-plus-circle 2x"></i> Aggiungi evento</a>
             </div>
 
@@ -54,7 +54,7 @@
                     <div class="flex-container">
                         <div class="locandina-container">
                             <div class="img">
-                                <img src="<?=$evento['film']['locandina']?>" alt="<?php echo 'locandina ' . $evento['film']['titolo'] ?>">
+                                <img src="<?=$evento['film']['locandina'] . '.webp' ?>" alt="<?php echo 'locandina ' . $evento['film']['titolo'] ?>">
                             </div>
                         </div>
                         <div class="descrizione">
@@ -90,4 +90,4 @@
         </div>
     </div>
 </div>
-<iframe src="http://93.42.99.214/ApolloUndici/public/" frameborder="0" class="apolloIframe"></iframe>
+<!--<iframe src="http://93.42.99.214/ApolloUndici/public/" frameborder="0" class="apolloIframe"></iframe>-->

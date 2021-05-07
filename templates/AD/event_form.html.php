@@ -2,7 +2,7 @@
 <div class="event-form">
     <div class="event-stuff">
         <form action="ADAG.php?route=event/edit" method="post" id="form-event">
-            <img src="<?=$film['locandina'] ?>" alt="locandina" class="locandina-preview">
+            <img src="<?=$film['locandina'] . '.webp'?>" alt="locandina" class="locandina-preview">
             <input type="hidden" name="evento[id_evento]" value="<?=$evento['id_evento'] ?? '' ?>">
             <input type="hidden" name="evento[id_film]" value="<?=$film['id_film']?>">
             <section class="campo">

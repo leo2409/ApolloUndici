@@ -5,7 +5,7 @@
         <input type="search">
     </form>
 </div>
-<h1><?= $eventi[0]['data'] ?? 'NON CI SONO EVENTI IN PROGRAMMAZIONE PER QUESTO GIORNO'?></h1>
+<h1><?= $eventi[0]['data'] ?? 'Nessun evento'?></h1>
 <?php foreach($eventi as $evento) : ?>
     <div class="contenuto">
         <div class="titolo-orario">
@@ -40,6 +40,6 @@
         </div>
     </div>
 <?php endforeach; ?>
-<div class="prenotazione-form">
-    
+<div class="add-button">
+    <a href=""><i class="fas fa-plus-circle 2x"></i> Aggiungi prenotazione</a>
 </div>

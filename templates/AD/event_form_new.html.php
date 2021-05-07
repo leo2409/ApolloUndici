@@ -1,5 +1,5 @@
 <div class="event-stuff">
-    <img src="<?=$film['locandina'] ?>" alt="locandina" class="locandina-preview">
+    <img src="<?=$film['locandina'] . '.webp' ?>" alt="locandina" class="locandina-preview">
     <input type="hidden" name="evento[id_film]" value="<?=$film['id_film']?>">
     <section class="campo">
         <label for="date">data</label>

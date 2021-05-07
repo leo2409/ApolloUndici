@@ -1,0 +1,132 @@
+.form {
+    color: black;
+    border-radius: 0.4rem;
+    padding: 1.5rem;
+    
+    max-width: 50rem;
+    margin: 0 auto;
+
+
+    input,textarea {
+        display: block;
+        background-color: rgba(255, 255, 255, 0.103);
+        width: 20rem;
+        border-radius: 0.3rem;
+        margin-top: 0.3rem;
+        border: 1px solid gray;
+        outline: none;
+        padding: 0.5rem 1.25rem;
+        font-size: 1.2rem;
+    }
+
+    input:focus, textarea:focus {
+        border: 2px solid rgb(170, 170, 170);
+        margin-top: 0.3rem;
+    }
+
+    input.invalid {
+        border: 2px solid $error;
+        margin-top: 0.3rem;
+    }
+
+    input.valid {
+        border: 2px solid $connected;
+        margin-top: 0.3rem;
+    }
+
+    
+
+    label {
+        font-size: 1.3rem;
+    }
+
+    input#newsletter {
+        display: inline;
+        width: 25px;
+        height: 25px;
+        margin: 0.2rem;
+    }
+
+    input.checkbox {
+        display: inline;
+        width: 30px;
+        height: 30px;
+        margin: 0.5rem;
+    }
+
+    label#newsletter {
+        position: absolute;
+        left: 40px;
+    }
+
+    label#newsletter {
+        display: inline;
+        font-size: 0.9rem;
+    }
+    
+    section.campo {
+        margin: 1rem 0rem;
+        
+    }
+
+    button#toggle-password {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 300;
+        padding: 0;
+        font-size: var(--mobile-font-size);
+        /* Display at the top right of the container */
+        position: absolute;
+        top: 5px;
+        right: 0;
+    }
+
+    button.submit {
+        display: block;
+        margin-top: 0.3rem;
+        border-radius: 0.3rem;
+        border: 1px solid gray;
+        outline: none;
+        padding: 0.5rem 1.25rem;
+        font-size: 1.2rem;
+        color: $link;
+        background-color: white;
+
+        &:hover {
+            border: 2px solid $link;
+            
+        }
+
+        &:active {
+            
+            color: $connected;
+            border: 2px solid $connected;
+        }
+    }
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
+
+
+    button.submit {
+        margin: 0 auto;
+        width: 30rem;
+    }
+
+}
+
+
+@media screen and (max-width: 950px) {
+    .form-grid {
+        grid-template-columns: auto;
+        
+    }
+
+    .form {
+        width: 30rem;
+    }
+}

@@ -7,6 +7,8 @@ class AdminRoutes implements \Framework\Interfaces\RoutesInterface{
     private $adminTable;
     private $authentication;
     private $utenteTable;
+    private $socioTable;
+    
 
     public function __construct() {
         include_once __DIR__ . '/../../includes/DatabaseConnection.php';
@@ -15,6 +17,7 @@ class AdminRoutes implements \Framework\Interfaces\RoutesInterface{
         $this->adminTable = new \Framework\DatabaseTable($pdo, 'apolloundici.amministratore', 'id_amministratore');
         $this->prenotazioneTable = new \Framework\DatabaseTable($pdo, 'apolloundici.prenotazione', 'id_prenotazione');
         $this->utenteTable = new \Framework\DatabaseTable($pdo, 'apolloundici.utente', 'id_utente');
+        $this->socioTable = new \Framework\DatabaseTable($pdo, 'apolloundici.socio', 'id_socio');
         $this->authentication = new \Framework\Authentication($this->adminTable, 'username', 'password', 'adminUser', 'adminPassword');
     }
 
@@ -22,6 +25,7 @@ class AdminRoutes implements \Framework\Interfaces\RoutesInterface{
         $adminController = new \AD\Controller\Admin( $this->filmTable, $this->eventTable);
         $loginController = new \AD\Controller\Login( $this->adminTable, $this->authentication);
         $prenotazioneController = new \AD\Controller\Prenotazione($this->filmTable, $this->eventTable, $this->prenotazioneTable, $this->utenteTable);
+        $tessereController = new \AD\Controller\Tessere( $this->socioTable);
 
         $routes = [
             #PROGRAMMAZIONE
@@ -45,6 +49,24 @@ class AdminRoutes implements \Framework\Interfaces\RoutesInterface{
                     'controller' => $loginController,
                     'action' => 'loginProcess',
                 ]
+            ],
+
+            'soci' => [
+                'GET' => [
+                    'controller' => $tessereController,
+                    'action' => 'soci',
+                ],
+
+                'login' => true,
+            ],
+
+            'soci/ricerca' => [
+                'GET' => [
+                    'controller' => $tessereController,
+                    'action' => 'searchSoci'
+                ],
+
+                'login' => true,
             ],
             
             # ricerca film

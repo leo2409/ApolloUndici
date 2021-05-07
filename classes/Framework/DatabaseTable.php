@@ -38,10 +38,12 @@ class DatabaseTable
         }
         // INSERT
         $this->insert($record);
+        return $this->pdo->lastInsertId();
       } catch (\PDOException $e) {
         // UPDATE
         $this->update($record);
       }
+
     }
 
     public function findAll($limit = NULL) 

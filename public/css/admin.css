@@ -1,19 +1,17 @@
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .film-container, .event-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
+  flex-flow: column;
   row-gap: 1.5rem;
   margin-bottom: 3rem;
 }
@@ -21,6 +19,7 @@
 .locandina-preview {
   height: 20rem;
   border-radius: 0.4rem;
+  display: none;
 }
 
 .edit-delete {
@@ -47,8 +46,6 @@
 }
 
 .film .flex-container, .evento .flex-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -76,7 +73,7 @@
   width: 100%;
 }
 
-.add-event, .add-film {
+.add-button {
   border-radius: 0.4rem;
   background-color: white;
   margin: 0 auto;
@@ -93,29 +90,20 @@
 
 @media screen and (min-width: 601px) {
   .flex-container {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: row;
-            flex-flow: row;
+    flex-flow: row;
   }
 }
 
 @media screen and (max-width: 600px) {
   .flex-container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: column;
-            flex-flow: column;
+    flex-flow: column;
   }
 }
 
 @media screen and (min-width: 1101px) {
   .suddivisione {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-column-gap: 2rem;
-            column-gap: 2rem;
+    column-gap: 2rem;
   }
 }
 
@@ -126,15 +114,9 @@
 }
 
 nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   gap: 3rem;
   border-bottom: 2px solid #535353;
   background-color: white;
@@ -193,18 +175,232 @@ nav .nav-icon:hover {
   background-color: #dddddd;
 }
 
+.contenuto table tr.A-F {
+  background-color: lightcoral;
+}
+
+.contenuto table tr.A-T {
+  background-color: lightgreen;
+}
+
 .contenuto table td, .contenuto table th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
 
+.ricerca {
+  padding: 1rem;
+  background-color: lightgrey;
+  border: 1px solid gray;
+  border-radius: 1rem;
+}
+
+.ricerca form {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1rem;
+}
+
+.ricerca input {
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  outline: none;
+  border: 1px solid gray;
+}
+
+.ricerca input:focus {
+  border: 2px solid black;
+}
+
+.ricerca input#validi {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.ricerca button {
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+}
+
+.form {
+  color: black;
+  border-radius: 0.4rem;
+  padding: 1.5rem;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.form input, .form textarea {
+  display: block;
+  background-color: rgba(255, 255, 255, 0.103);
+  width: 20rem;
+  border-radius: 0.3rem;
+  margin-top: 0.3rem;
+  border: 1px solid gray;
+  outline: none;
+  padding: 0.5rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+.form input:focus, .form textarea:focus {
+  border: 2px solid #aaaaaa;
+  margin-top: 0.3rem;
+}
+
+.form input.invalid {
+  border: 2px solid #CF6679;
+  margin-top: 0.3rem;
+}
+
+.form input.valid {
+  border: 2px solid #54c958;
+  margin-top: 0.3rem;
+}
+
+.form label {
+  font-size: 1.3rem;
+}
+
+.form input#newsletter {
+  display: inline;
+  width: 25px;
+  height: 25px;
+  margin: 0.2rem;
+}
+
+.form input.checkbox {
+  display: inline;
+  width: 30px;
+  height: 30px;
+  margin: 0.5rem;
+}
+
+.form label#newsletter {
+  position: absolute;
+  left: 40px;
+}
+
+.form label#newsletter {
+  display: inline;
+  font-size: 0.9rem;
+}
+
+.form section.campo {
+  margin: 1rem 0rem;
+}
+
+.form button#toggle-password {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 300;
+  padding: 0;
+  font-size: var(--mobile-font-size);
+  /* Display at the top right of the container */
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+
+.form button.submit {
+  display: block;
+  margin-top: 0.3rem;
+  border-radius: 0.3rem;
+  border: 1px solid gray;
+  outline: none;
+  padding: 0.5rem 1.25rem;
+  font-size: 1.2rem;
+  color: #0a84ff;
+  background-color: white;
+}
+
+.form button.submit:hover {
+  border: 2px solid #0a84ff;
+}
+
+.form button.submit:active {
+  color: #54c958;
+  border: 2px solid #54c958;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem;
+}
+
+.form-grid button.submit {
+  margin: 0 auto;
+  width: 30rem;
+}
+
+@media screen and (max-width: 950px) {
+  .form-grid {
+    grid-template-columns: auto;
+  }
+  .form {
+    width: 30rem;
+  }
+}
+
+.film-form h1 {
+  text-align: center;
+}
+
+.film-form button.submit {
+  width: 80%;
+  margin: 1rem auto;
+}
+
+.data-form .add-button {
+  margin-top: 1rem;
+  padding: 0;
+}
+
+.data-form .add-button button {
+  font-size: 1.3rem;
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+  border-radius: 3rem;
+  color: #0a84ff;
+  border: 1px solid gray;
+}
+
+div#contenitore-date {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: #DAE0E6;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+div#contenitore-date div.data {
+  background-color: white;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid gray;
+  margin: 0.3rem;
+}
+
+div#contenitore-date div.data button {
+  float: right;
+  background: none;
+  border: none;
+}
+
+div#contenitore-date div.data button i {
+  color: #CF6679;
+  font-size: 1rem;
+}
+
 body {
   width: 100%;
-  height: 100vh;
   line-height: 1;
   font-family: 'Poppins', Arial, sans-serif;
   background-color: #DAE0E6;
+  padding-bottom: 5rem;
 }
 
 body a {
@@ -229,17 +425,16 @@ h1, h2 {
   margin-bottom: 1.5rem;
 }
 
-.film-form, .event-form, .login-form, .prenotazione-form {
+.event-form, .login-form, .prenotazione-form {
   border-radius: 0.4rem;
-  -webkit-box-shadow: 0px 0px 26px -1px #616161;
-          box-shadow: 0px 0px 26px -1px #616161;
+  box-shadow: 0px 0px 26px -1px #616161;
   padding: 1.5rem;
   background-color: white;
   max-width: 30rem;
   margin: 0 auto;
 }
 
-.film-form input, .film-form textarea, .event-form input, .event-form textarea, .login-form input, .login-form textarea, .prenotazione-form input, .prenotazione-form textarea {
+.event-form input, .event-form textarea, .login-form input, .login-form textarea, .prenotazione-form input, .prenotazione-form textarea {
   display: block;
   width: 100%;
   margin-top: 0.3rem;
@@ -251,11 +446,11 @@ h1, h2 {
   font-size: 1.2rem;
 }
 
-.film-form label, .event-form label, .login-form label, .prenotazione-form label {
+.event-form label, .login-form label, .prenotazione-form label {
   font-size: 1.3rem;
 }
 
-.film-form .campo, .event-form .campo, .login-form .campo, .prenotazione-form .campo {
+.event-form .campo, .login-form .campo, .prenotazione-form .campo {
   margin: 1rem 0rem;
 }
 
@@ -279,5 +474,15 @@ h1, h2 {
 
 .livesearch #results .search-result:hover {
   background-color: #a6e6ff;
+}
+
+button.button {
+  font-size: 24px;
+  border: 2px solid gray;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 1rem;
+  padding: 0.4rem 1rem;
+  color: #0a84ff;
 }
 /*# sourceMappingURL=admin.css.map */

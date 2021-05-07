@@ -1,0 +1,24 @@
+footer {
+    width: 100%;
+    min-height: 10vw;
+    padding: 3rem;
+    margin-top: 2rem;
+    border-top: 3px solid $blue;
+    background-color: rgba(255, 255, 255, 0.062);
+    text-align: center;
+
+    .footer {
+        p {
+            line-height: 2rem;
+        }
+
+        i {
+            font-size: 2rem;
+            margin: 1.5rem 0.4rem;
+        }
+    }
+
+    small {
+        color: rgb(167, 167, 167);
+    }
+}

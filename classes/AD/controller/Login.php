@@ -32,7 +32,7 @@ class Login {
                     'template' => 'login.html.php',
                 ],
                 'variables' => [
-                    'error' => 'invalid email/password',
+                    'error' => 'invalid username/password',
                 ]
             ];
         }

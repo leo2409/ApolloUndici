@@ -9,6 +9,79 @@ class Admin {
         $this->filmTable = $filmTable;
         $this->eventTable = $eventTable;
     }
+    //GLI PASSI UNA FOTO E UNA QUALITA' DI COMPRESSIONE E METTE IN UPLOAD CARTELLA DUE FILE UNO WEBP E UN'ALTRO JPEG (sicuro webp per safari jpeg 2000 e jpeg?? (3!!!)) (FA UNA SCALA???) (SI PERCHE' GESTISCO SOLO LOCANDINE)
+    //DEVE GESTIRE I FORMATI PIU' COMUNI 
+    private function upload_image($file, $name, $new_width, $compression_quality = 80) {
+
+        // controllo se la locandine già esiste
+        $output_file = 'upload/' . $name;
+        if (file_exists($output_file . '.webp')) {
+            return [
+                'esito' => false,
+                'errore' => 'la locandina è gia presente nel server',
+            ];
+        }
+
+        // recupero il formato
+        $file_type = $file['type'];
+        echo $file_type;
+
+        //file temp
+        $temp_file = $file['tmp_name'];
+
+        // creo l'immagine in base al formato
+        
+        switch ($file_type) {
+            case 'image/jpeg':
+            case 'image/jpg':
+                $image = imagecreatefromjpeg($temp_file);
+                break;
+
+            case 'image/png':
+                $image = imagecreatefrompng($temp_file);
+                imagepalettetotruecolor($image);
+                imagealphablending($image, true);
+                imagesavealpha($image, true);
+                break;
+
+            case 'image/gif':
+                $image = imagecreatefromgif($temp_file);
+                break;
+            default:
+                return [
+                    'esito' => false,
+                    'errore' => 'formato locandina non supportato (supportati: jpeg, png, gif)',
+                ];
+        }
+        
+
+        //resize foto
+        list($width, $height) = getimagesize($temp_file);
+        $ratio = $width / $height;
+        $new_height = $new_width/$ratio;
+        $image_scaled = imagescale($image , $new_width , $new_height ,IMG_BILINEAR_FIXED);
+        if ($image_scaled == false) {
+            return [
+                'esito' => false,
+                'errore' => 'impossibile modificare scala immagine',
+            ];
+        }
+
+
+        // converto l'immagine in webp
+        $result_webp = imagewebp($image_scaled, $output_file . '.webp', $compression_quality);
+        $result_jpeg = imagejpeg($image_scaled, $output_file . '.jpeg', $compression_quality);
+        if ($result_jpeg === false and $result_webp === false) {
+            return [
+                'esito' => false,
+                'errore' => 'impossibile convertire la locandina nel formato',
+            ];
+        }
+        // libero memoria 
+        imagedestroy($image);
+        imagedestroy($image_scaled);
+        
+    }
 
     public function home() {
         $title = 'admin';
@@ -31,36 +104,27 @@ class Admin {
                 'eventi' => $eventi,
             ]
         ];
-
     }
 
     public function saveFilm() {
-
+        $eventi = $_POST['eventi'];
+        
         $fields = $_POST['film'];
 
         if (!empty($_FILES["locandina"]['name'])) {
+            $name = $_POST['film']['titolo'];
+            $esito = $this->upload_image($_FILES['locandina'], $name, 300, 80);
             $target_dir = "upload/";
-            $target_file = $target_dir . basename($_FILES["locandina"]["name"]);
-            $file_name = $_FILES["locandina"]["tmp_name"];
-
-            list($width, $height) = getimagesize($file_name);
-            $ratio = $width / $height;
-            $new_width = 400;
-            $new_height = 400/$ratio;
-            $src = imagecreatefromstring(file_get_contents($file_name));
-            $dst = imagecreatetruecolor($new_width, $new_height);
-            imagecopyresampled( $dst, $src, 0, 0, 0, 0, $new_width, $new_height, $width, $height );
-            $file = "upload/" . $_FILES["locandina"]["name"];
-            imagepng($dst,$file);
-
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-            //move_uploaded_file($_FILES["locandina"]["tmp_name"], $target_file);
-
-            $fields['locandina'] = $target_dir . $_FILES['locandina']['name'];
+            $fields['locandina'] = $target_dir . $_POST['film']['titolo'];
         }
 
 
-        $this->filmTable->save($fields);
+        $id_film = $this->filmTable->save($fields);
+        foreach ($eventi as $evento) {
+            $evento['id_film'] = $id_film;
+            $evento['descrizione'] = $fields['descrizione'];
+            $this->eventTable->save($evento);
+        }
 
         header('location: ADAG.php');
     }

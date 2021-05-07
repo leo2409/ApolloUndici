@@ -6,12 +6,14 @@ class ApolloRoutes implements \Framework\Interfaces\RoutesInterface{
     private $eventTable;
     private $prenotazioneTable;
     private $utenteTable;
+    private $socioTable;
     private $authentication;
 
     public function __construct() {
         include_once __DIR__ . '/../../includes/DatabaseConnection.php';
         $this->filmTable = new \Framework\DatabaseTable($pdo, 'apolloundici.film', 'id_film');
         $this->eventTable = new \Framework\DatabaseTable($pdo, 'apolloundici.evento', 'id_evento');
+        $this->socioTable = new \Framework\DatabaseTable($pdo, 'apolloundici.socio', 'id_socio');
         $this->utenteTable = new \Framework\DatabaseTable($pdo, 'apolloundici.utente', 'id_utente');
         $this->prenotazioneTable = new \Framework\DatabaseTable($pdo, 'apolloundici.prenotazione', 'id_prenotazione');
         $this->authentication = new \Framework\Authentication($this->utenteTable, 'email', 'password','username','password');
@@ -22,7 +24,7 @@ class ApolloRoutes implements \Framework\Interfaces\RoutesInterface{
         $prenotazioneController = new \Apollo\Controller\Prenotazione( $this->utenteTable, $this->eventTable, $this->prenotazioneTable, $this->filmTable, $this->authentication);
         $loginController = new \Apollo\Controller\Login( $this->utenteTable, $this->authentication);
         $registerController = new \Apollo\Controller\Register($this->utenteTable);
-        $tesseramentoController = new \Apollo\Controller\Tesseramento($this->utenteTable, $this->authentication);
+        $tesseramentoController = new \Apollo\Controller\Tesseramento($this->socioTable, $this->authentication);
 
         $routes = [
             #PROGRAMMAZIONE
@@ -40,11 +42,24 @@ class ApolloRoutes implements \Framework\Interfaces\RoutesInterface{
                 ],
             ],
 
+            #TESSERAMENTO
             'tesseramento/modulo' => [
                 'GET' => [
                     'controller' => $tesseramentoController,
                     'action' => 'tesseramentoForm',
                 ],
+
+                'POST' => [
+                    'controller' => $tesseramentoController,
+                    'action' => 'tesseramentoProcess'
+                ]
+            ],
+
+            'tesseramento/success' => [
+                'GET' => [
+                    'cotroller' => $tesseramentoController,
+                    'action' => 'tesseramentoEsito',
+                ]
             ],
 
             'prenota' => [
@@ -103,12 +118,7 @@ class ApolloRoutes implements \Framework\Interfaces\RoutesInterface{
     }
 
     public function redirect() {
-        if (isset($_GET['id_evento'])) {
-            header('location: index.php?route=login&id_evento=' . $_GET['id_evento']);
-        } else {
-            header('location: index.php?route=login');
-        }
-        
+        header('location: index.php?route=login');
     }
 }
 

@@ -1,0 +1,90 @@
+.form {
+    border-radius: 0.4rem;
+    padding: 1.5rem;
+    
+    max-width: 30rem;
+    margin: 0 auto;
+
+
+    input,textarea {
+        display: block;
+        background-color: rgba(255, 255, 255, 0.102);
+        width: 100%;
+        margin-top: 0.3rem;
+        border-radius: 0.3rem;
+        border: 1px solid gray;
+        color: white;
+        outline: none;
+        padding: 0.5rem 1.25rem;
+        font-size: 1.2rem;
+    }
+
+    input:focus {
+        border: 2px solid rgb(170, 170, 170);
+    }
+
+    input.invalid {
+        border: 2px solid $error;
+    }
+
+    input.valid {
+        border: 2px solid $connected;
+    }
+
+    
+
+    label {
+        font-size: 1.3rem;
+    }
+
+    input#newsletter {
+        display: inline;
+        width: 25px;
+        height: 25px;
+        margin: 0.2rem;
+    }
+
+    label#newsletter {
+        position: absolute;
+        left: 40px;
+    }
+
+    label#newsletter {
+        display: inline;
+        font-size: 0.9rem;
+    }
+    
+    section.campo {
+        margin: 1rem 0rem;
+        position: relative;
+    }
+
+    button#toggle-password {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 300;
+        padding: 0;
+        font-size: var(--mobile-font-size);
+        /* Display at the top right of the container */
+        position: absolute;
+        top: 5px;
+        right: 0;
+    }
+
+    button.submit {
+
+        &:active {
+            color: $connected;
+            border: 2px solid $connected;
+        }
+    }
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
