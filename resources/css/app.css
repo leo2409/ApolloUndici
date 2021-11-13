@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    @variants responsive, hover, focus {
+        .text-shadow-sm-yellow {
+            text-shadow:  0 0 3px rgb(255, 215, 99);
+        }
+        .text-shadow-sm-red {
+            text-shadow:  0 0 3px rgb(250, 67, 127);
+        }
+        .text-shadow-sm-blue {
+            text-shadow:  0 0 3px rgb(155, 249, 249);
+        }
+    }
+}
