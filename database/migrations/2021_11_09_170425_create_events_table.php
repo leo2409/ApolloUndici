@@ -18,8 +18,10 @@ class CreateEventsTable extends Migration
             $table->foreignId('film_id');
             $table->date('date');
             $table->time('time');
-            $table->integer('seats');
-            $table->text('description');
+            $table->integer('seats')->default(60);
+            $table->string('tag')->nullable();
+            $table->text('info')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

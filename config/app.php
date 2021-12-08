@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => env('APP_TIMEZONE', 'UTC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'it',
 
     /*
     |--------------------------------------------------------------------------
@@ -139,6 +139,9 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        //Image Intervention
+        Intervention\Image\ImageServiceProvider::class,
+
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -189,6 +192,8 @@ return [
     */
 
     'aliases' => [
+        // image intervention
+        'Image' => Intervention\Image\Facades\Image::class,
 
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,

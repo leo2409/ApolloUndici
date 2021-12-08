@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer utilities {
-    @variants responsive, hover, focus {
+    @variants  hover, focus, active {
         .text-shadow-sm-yellow {
             text-shadow:  0 0 3px rgb(255, 215, 99);
         }
@@ -14,4 +14,22 @@
             text-shadow:  0 0 3px rgb(155, 249, 249);
         }
     }
+}
+
+@layer base {
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+@layer utilities {
+    .no-double-tap-zoom {
+        touch-action: manipulation;
+    }
+}
+
+nav {
+    backdrop-filter: saturate(150%) blur(7px);
 }

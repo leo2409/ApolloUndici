@@ -8,10 +8,36 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    //mutators
+    public function setCfAttribute($cf) {
+        $this->attributes['cf'] = strtoupper($cf);
+    }
+
+    public function getStatusAttribute() {
+        if ($this->accepted && $this->associate->year == now()->year) {
+            return 'attivo';
+        } elseif ($this->attributes['accepted'] === 1) {
+            return 'rinnovo';
+        } elseif ($this->attributes['accepted'] === null) {
+            return 'nuovo';
+        } elseif ($this->attributes['accepted'] === 0) {
+            return 'rifiutato';
+        }
+    }
+
+    public function setNameAttribute($name) {
+        $this->attributes['name'] = ucwords(strtolower($name));
+    }
+
+    public function setEmailAttribute($email) {
+        $this->attributes['email'] = strtolower($email);
+    }
+
+        //relations
     public function bookings() {
         return $this->hasMany(Booking::class);
     }
@@ -21,11 +47,7 @@ class User extends Authenticatable
      *
      * @var string[]
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -44,5 +66,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'associate' => 'datetime',
     ];
 }

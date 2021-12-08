@@ -14,12 +14,14 @@ class EventFactory extends Factory
      */
     public function definition()
     {
+        $random = mt_rand(0,1);
         return [
-            'film_id' => Film::factory(),
+            'film_id' => $this->faker->numberBetween(1,15),
             'seats' => $this->faker->numberBetween(10,70),
-            'date' => $this->faker->dateTimeBetween('+0 days', '+15 days')->format('Y-m-d'),
+            'date' => $this->faker->dateTimeBetween('-1 days', '+15 days')->format('Y-m-d'),
             'time' => $this->faker->time(),
-            'description' => $this->faker->text(),
+            'tag' => $random ? $this->faker->randomElement(['presentazione', 'q&a', 'rassegna']) : null,
+            'description' => $random ? $this->faker->text() : null,
         ];
     }
 }

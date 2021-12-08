@@ -15,5 +15,10 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require("tailwindcss"),
     ]);
+mix.js('resources/js/admin.js','public/js');
+
+mix.postCss('resources/css/admin.css', 'public/css', [
+    require("tailwindcss"),
+]);
 
 mix.browserSync('http://127.0.0.1:8000');

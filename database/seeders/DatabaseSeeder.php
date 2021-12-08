@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Event;
+use App\Models\Film;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +16,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::factory(10)->create();
+        Film::factory(15)->create();
+        Event::factory(40)->create();
     }
 }

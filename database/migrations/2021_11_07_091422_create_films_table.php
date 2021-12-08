@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Film;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,8 +17,10 @@ class CreateFilmsTable extends Migration
         Schema::create('films', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
-            $table->string('poster');
+            $table->string('tag')->nullable();
+            $table->text('synopsis');
+            $table->json('info')->nullable();
+            $table->string('poster')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +32,10 @@ class CreateFilmsTable extends Migration
      */
     public function down()
     {
+        $films = Film::all();
+        foreach ($films as $film) {
+            $film->delete();
+        }
         Schema::dropIfExists('films');
     }
 }
