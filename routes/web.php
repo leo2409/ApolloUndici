@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Associates\AssociateController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EventController;
@@ -63,7 +64,13 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 })->name('verification.verify');
 
 
-Route::prefix('/admin')->group(function () {
+Route::middleware('auth:admin')->prefix('/admin')->name('admin.')->group(function () {
+
+    Route::get('/login', [AdminController::class, 'loginForm'])->name('login.form')->withoutMiddleware('auth:admin')->middleware('guest:admin');
+
+    Route::post('/login', [AdminController::class, 'login'])->name('login')->withoutMiddleware('auth:admin')->middleware('guest:admin');
+
+    Route::get('/', function () { return redirect('/admin/film');} );
 
     Route::get('/soci', [AssociateController::class, 'index']);
 

@@ -21,6 +21,8 @@ class CreateFilmsTable extends Migration
             $table->text('synopsis');
             $table->json('info')->nullable();
             $table->string('poster')->nullable();
+            $table->json('organizers')->nullable();
+            $table->boolean('festival')->default(false);
             $table->timestamps();
         });
     }

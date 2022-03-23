@@ -20,8 +20,9 @@ class CreateEventsTable extends Migration
             $table->time('time');
             $table->integer('seats')->default(60);
             $table->string('tag')->nullable();
-            $table->text('info')->nullable();
+            $table->json('info')->nullable();
             $table->text('description')->nullable();
+            $table->string('poster')->nullable();
             $table->timestamps();
         });
     }

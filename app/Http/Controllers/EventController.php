@@ -51,7 +51,7 @@ class EventController extends Controller
         $event->time = $validated['time'];
         $event->film_id = $film->id;
         $event->save();
-        return response()->redirectToRoute('film.events.create', ['film' => $film->id]);
+        return response()->redirectToRoute('admin.film.events.create', ['film' => $film->id]);
     }
 
     /**
@@ -90,7 +90,7 @@ class EventController extends Controller
     {
         $validated = $request->validated();
         $event->update($validated);
-        return response()->redirectToRoute('film.events.create', ['film' => $film->id]);
+        return response()->redirectToRoute('admin.film.events.create', ['film' => $film->id]);
     }
 
     /**
@@ -103,6 +103,6 @@ class EventController extends Controller
     public function destroy(Film $film, Event $event)
     {
         $event->delete();
-        return response()->redirectToRoute('film.events.create', ['film' => $film->id]);
+        return response()->redirectToRoute('admin.film.events.create', ['film' => $film->id]);
     }
 }

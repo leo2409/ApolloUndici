@@ -29,7 +29,7 @@
                 <tr class="my-2">
                     <th class="pr-4">{{ $list[0]->date_readable }}</th>
                     @foreach($list as $e)
-                        <td>
+                        <td class="py-2">
                             @if($event->description)
                                 <a href="{{ URL::route('film.info', ['title' => $film->slug_title, 'event' => $e->id]) }}" class="border border-a-yellow rounded-full px-1 py-1 w-14 text-a-yellow">
                                     {{ $e->time }}

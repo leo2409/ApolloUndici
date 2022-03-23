@@ -23,6 +23,7 @@ class Film extends Model
 
     protected $casts = [
         'info' => 'array',
+        'organizers' => 'array',
     ];
 
     protected $attributes = [];

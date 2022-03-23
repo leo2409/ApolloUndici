@@ -63,7 +63,7 @@ class FilmController extends Controller
             }
         }
 
-        return response()->redirectToRoute('film.events.create', ['film' => $film->id]);
+        return response()->redirectToRoute('admin.film.events.create', ['film' => $film->id]);
     }
 
     /**
@@ -123,7 +123,7 @@ class FilmController extends Controller
             $film->poster = $path;
         }
         $film->save();
-        return response()->redirectToRoute('film.index');
+        return response()->redirectToRoute('admin.film.index');
     }
 
 
@@ -131,6 +131,6 @@ class FilmController extends Controller
     {
         $film->events()->delete();
         $film->delete();
-        return response()->redirectToRoute('film.index');
+        return response()->redirectToRoute('admin.film.index');
     }
 }

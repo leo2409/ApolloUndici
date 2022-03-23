@@ -45,8 +45,8 @@
                     <div x-show="open" x-transition class="w-full flex flex-row flex-wrap justify-center items-center gap-1.5 py-2 border border-t-0 rounded-br-xl rounded-bl-xl">
                         @if( isset($film->events[0]) )
                             @foreach($film->events as $event)
-                                <div class="border rounded-lg border-gray-300">
-                                    <a href="" class="block px-1 py-0.5 text-center">
+                                <div @class(['border', 'rounded-lg', 'border-gray-300', 'bg-a-yellow' => (bool) $event->description])>
+                                    <a href="{{ URL::route('admin.film.events.edit',['film' => $film->id, 'event' => $event->id]) }}" class="block px-1 py-0.5 text-center">
                                         <span class="font-semibold block">{{ $event->carbon_date->translatedFormat('j D') }}</span>
                                         <span class="block">{{ $event->time }}</span>
                                     </a>

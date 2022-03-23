@@ -5,16 +5,23 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory;
 
     //mutators
     public function setCfAttribute($cf) {
         $this->attributes['cf'] = strtoupper($cf);
+    }
+
+    public function setNameAttribute($name) {
+        $this->attributes['name'] = ucwords(strtolower($name));
+    }
+
+    public function setEmailAttribute($email) {
+        $this->attributes['email'] = strtolower($email);
     }
 
     public function getStatusAttribute() {
@@ -27,14 +34,6 @@ class User extends Authenticatable implements MustVerifyEmail
         } elseif ($this->attributes['accepted'] === 0) {
             return 'rifiutato';
         }
-    }
-
-    public function setNameAttribute($name) {
-        $this->attributes['name'] = ucwords(strtolower($name));
-    }
-
-    public function setEmailAttribute($email) {
-        $this->attributes['email'] = strtolower($email);
     }
 
         //relations
