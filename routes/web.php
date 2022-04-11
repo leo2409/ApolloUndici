@@ -5,8 +5,10 @@ use App\Http\Controllers\Associates\AssociateController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
+use App\http\Controllers\FestivalController;
 use App\Mail\prova;
 use App\Models\Event;
+use App\Models\Festival;
 use App\Models\Film;
 use App\Http\Requests\User\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
@@ -23,10 +25,13 @@ use App\Http\Controllers\FilmController;
 |
 */
 
+
+//------------- PUBLIC ROUTES -----------------
+
 Route::get('/', function () {
     return view('home', [
-        'title' => 'Apollo 11',
-        'days' => Event::with('film')
+        'title' => 'Apollo 11 - Programmazione',
+        'days' => Event::with('film','festival')
             ->where('date','>=', today())
             ->orderBy('date')->orderBy('time')->get()
             ->groupBy('date')->slice(0,5),
@@ -34,11 +39,13 @@ Route::get('/', function () {
 })->name('home_page');
 
 Route::get('/film/{title}/{event}', function ($title, Event $event) {
+    $festival = $event->festival;
     $film = $event->film()->get()->first();
     return view('event-info', [
         'title' => "{$film->title} Date e Orari - Apollo 11",
         'event' => $event,
         'film' => $film,
+        'rassegna' => $festival,
         'other_dates' => $film->events()
             ->select('date','time', 'id')
             ->where('date','>=',today())
@@ -47,22 +54,59 @@ Route::get('/film/{title}/{event}', function ($title, Event $event) {
     ]);
 })->whereNumber('event')->name('film.info');
 
+/*
+Route::get('/rassegne', function () {
+    return view('rassegne-index', [
+        'title' => "Rassegne - Apollo 11",
+        'rassegne' => Festival::paginate(),
+    ]);
+})->name('rassegne.index');
+*/
+
+Route::get('/rassegne/{name}/{festival}', function ($name, Festival $festival){
+    $events = $festival->events()->orderBy('date')->orderBy('time')->get();
+    return view('rassegne-show', [
+        'title' => "{$festival->name} - Apollo 11",
+        'rassegna' => $festival,
+        'events' => $events,
+    ]);
+})->name('rassegne.show');
+
+Route::get('/chi-siamo', function() {
+   return view('chi-siamo', [
+       'title' => 'Chi siamo - Apollo 11',
+   ]);
+})->name('chi-siamo');
+
+Route::get('/contatti', function() {
+    return view('contatti', [
+        'title' => 'Contatti - Apollo 11',
+    ]);
+})->name('contatti');
+
 Route::get('/soci/info', [UserController::class, 'index']);
 
-Route::get('/soci/modulo', [UserController::class, 'create']);
+// TODO: RIATTIVARE QUESTE ROUTE
+//Route::get('/soci/modulo', [UserController::class, 'create']);
 
-Route::post('/soci/store', [UserController::class, 'store']);
+//Route::post('/soci/store', [UserController::class, 'store']);
 
+// TODO: ELIMINARE
+/* PROVA INVIO MAIL
 Route::get('/mail/prova', function () {
     Mail::to('pollo@argentino.com')->send(new prova());
 });
+*/
 
+/*
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
     return redirect('/');
 })->name('verification.verify');
+*/
 
+//----------- ADMIN ROUTES -------------------
 
 Route::middleware('auth:admin')->prefix('/admin')->name('admin.')->group(function () {
 
@@ -70,13 +114,18 @@ Route::middleware('auth:admin')->prefix('/admin')->name('admin.')->group(functio
 
     Route::post('/login', [AdminController::class, 'login'])->name('login')->withoutMiddleware('auth:admin')->middleware('guest:admin');
 
-    Route::get('/', function () { return redirect('/admin/film');} );
+    Route::get('/', function () { return redirect('/admin/film');});
 
-    Route::get('/soci', [AssociateController::class, 'index']);
+    //Route::get('/soci', [AssociateController::class, 'index'])->name('soci.index');
 
-    Route::get('/soci/search', [AssociateController::class, 'search']);
+    //Route::get('/soci/search', [AssociateController::class, 'search'])->name('soci.search');
 
-    Route::get('/booking', [BookingController::class, 'index']);
+    //Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
+
+
+
+
+    Route::resource('rassegne', FestivalController::class);
 
     //TODO ELEMINATE USELESS ROUTE
     Route::resource('film', FilmController::class);

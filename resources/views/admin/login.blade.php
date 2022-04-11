@@ -1,6 +1,6 @@
 <x-layouts.admin>
     <div class="mx-auto my-10 max-w-screen-sm ">
-        <form action="/admin/login" method="POST" class="border border-gray-300 rounded-xl bg-white mx-2 px-2 py-4 bg-admin-gray">
+        <form action="/admin/login" id="login-form" method="POST" class="border border-gray-300 rounded-xl bg-white mx-2 px-2 py-4 bg-admin-gray">
             @csrf
             <h1 class="text-center text-4xl w-full">Login</h1>
             <div class="space-y-4 mt-5">
@@ -32,7 +32,7 @@
                     @enderror
                 </div>
                 <div>
-                    <button type="submit" class="text-xl bg-blue-500 text-white py-2 mt-5 rounded-xl w-full">Accedi</button>
+                    <button type="submit" form="login-form" class="text-xl bg-blue-500 text-white py-2 mt-5 rounded-xl w-full">Accedi</button>
                 </div>
             </div>
         </form>

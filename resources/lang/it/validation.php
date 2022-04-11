@@ -122,11 +122,18 @@ return [
     'uploaded'             => ':attribute non è stato caricato.',
     'url'                  => 'Il formato del campo :attribute non è valido.',
     'uuid'                 => ':attribute deve essere un UUID valido.',
+
     'custom'               => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+
+        'cover' => [
+            'size' => 'le dimensioni del file sono maggiori del massimo di 8MB',
+            'mimes' => 'formato non supportato'
+        ]
     ],
+
     'attributes'           => [
         'address'               => 'indirizzo',
         'age'                   => 'età',

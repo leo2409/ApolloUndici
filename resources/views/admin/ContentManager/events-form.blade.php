@@ -36,15 +36,13 @@
                         </div>
                     </form>
                 </div>
-                <div id="events-container" class="w-full flex flex-row flex-wrap justify-center items-center gap-1.5 pb-2">
+                <div class="w-full flex flex-row flex-wrap justify-center items-center gap-1.5 pb-2">
                     @foreach($events as $event)
-                        <div class="border rounded-lg border-gray-300">
-                            <form id="form-event-edit" action="/admin/film/{{ $film->id }}/events/{{ $event->id }}/modifica" method="get">
-                                <button type="submit" form="form-event-edit" onclick="event_modal_form()" class="block px-1 py-0.5 text-center">
-                                    <span class="font-semibold block">{{ $event->carbon_date->translatedFormat('j M') }}</span>
-                                    <span class="block">{{ $event->time }}</span>
-                                </button>
-                            </form>
+                        <div @class(['border', 'rounded-lg', 'border-gray-300', 'bg-a-yellow' => ((bool) $event->description || (bool) $event->festival_id)])>
+                            <a href="{{ URL::route('admin.film.events.edit', ['film' => $film->id, 'event' => $event->id]) }}"   class="block px-1 py-0.5 text-center">
+                                <span class="font-semibold block">{{ $event->carbon_date->translatedFormat('j M') }}</span>
+                                <span class="block">{{ $event->time }}</span>
+                            </a>
                         </div>
                     @endforeach
                 </div>

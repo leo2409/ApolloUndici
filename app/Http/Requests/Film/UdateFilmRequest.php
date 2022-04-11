@@ -26,20 +26,21 @@ class UdateFilmRequest extends FormRequest
         return [
             'title' => 'required|string|min:2|max:255',
             'tag' => 'nullable|string|max:255',
-            'poster' => 'nullable|image|mimes:jpg,jpeg,png',
+            'poster' => 'nullable|image|mimes:jpg,jpeg,png,webp',
+            'frame' => 'nullable|image|mimes:jpg,jpeg,png,webp',
             'synopsis' => 'required|string',
             'info' => 'array',
-            'info.*' => 'array:tag,body',
-            'info.*.*' => 'required|string|max:255',
+            'info.*' => 'required|string',
         ];
     }
 
     public function attributes()
     {
         return [
-            'title' => 'pollo',
+            'title' => 'titolo',
             'tag' => 'etichetta',
             'poster' => 'locandina',
+            'frame' => 'frame',
             'synopsis' => 'sinossi',
             'info' => 'informazioni',
         ];

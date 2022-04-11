@@ -25,7 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function getStatusAttribute() {
-        if ($this->accepted && $this->associate->year == now()->year) {
+        if ($this->accepted && $this->associated_at->year == now()->year) {
             return 'attivo';
         } elseif ($this->attributes['accepted'] === 1) {
             return 'rinnovo';
@@ -65,6 +65,6 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'associate' => 'datetime',
+        'associated_at' => 'datetime',
     ];
 }

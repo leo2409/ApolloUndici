@@ -18,7 +18,7 @@
                 <label for="cf" class="block mb-0.5 font-semibold">
                     Codice Fiscale
                 </label>
-                <input type="text" name="cf" id="cf" value="{{ old('cf') }}" class="uppercase bg-up focus:border-a-blue focus:ring-a-blue rounded-lg w-full border-gray-500" required>
+                <input type="text" name="cf" id="cf" value="{{ old('cf') }}" class="uppercase bg-up focus:border-a-blue focus:ring-a-blue rounded-lg w-full border-gray-500" required pattern="[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]">
                 @error('cf')
                 <p class="text-sm text-red-500 mt-1">
                     {{ $message }}

@@ -9,3 +9,9 @@
         margin: 0;
     }
 }
+
+@layer utilities {
+    .no-double-tap-zoom {
+        touch-action: manipulation;
+    }
+}

@@ -39,7 +39,7 @@ class Event extends Model
         } elseif ($date->format('Y-m-d') === Carbon::tomorrow()->format('Y-m-d')) {
             return "Domani";
         } else {
-            return ucwords(Carbon::parse($this->date)->translatedFormat('l j M'));
+            return ucwords(Carbon::parse($this->date)->translatedFormat('l j F'));
         }
     }
 
@@ -48,9 +48,13 @@ class Event extends Model
     }
 
 
-    //RELETATIONSHIPS
+    //RELETIONSHIPS
     public function film() {
         return $this->belongsTo(Film::class);
+    }
+
+    public function festival() {
+        return $this->belongsTo(Festival::class);
     }
 
     public function bookings() {

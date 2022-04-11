@@ -15,7 +15,8 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('film_id');
+            $table->foreignId('film_id')->nullable();
+            $table->foreignId('festival_id')->nullable();
             $table->date('date');
             $table->time('time');
             $table->integer('seats')->default(60);

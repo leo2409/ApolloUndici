@@ -26,12 +26,11 @@ class StoreFilmRequest extends FormRequest
         return [
             'title' => 'required|string|min:2|max:255',
             'tag' => 'nullable|string|max:255',
-            'poster' => 'required|image|mimes:jpg,jpeg,png',
+            'poster' => 'required|image|mimes:jpg,jpeg,png,webp',
+            'frame' => 'required|image|mimes:jpg,jpeg,png,webp',
             'synopsis' => 'required|string',
             'info' => 'array',
-            'info.*' => 'array:tag,body',
-            'info.*.*' => 'required|string|max:255',
-
+            'info.*' => 'required|string',
             'events' => 'array',
             'events.*' => 'array:date,time',
             'events.*.date' => 'required|date',
@@ -42,12 +41,21 @@ class StoreFilmRequest extends FormRequest
     public function attributes()
     {
         return [
-            'title' => 'pollo',
+            'title' => 'titolo',
             'tag' => 'etichetta',
             'poster' => 'locandina',
+            'frame' => 'frame',
             'synopsis' => 'sinossi',
             'info' => 'informazioni',
             'events' => 'eventi',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'poster.mimes' => 'formato non supportato!',
+            'frame.mimes' => 'formato non supportato!',
         ];
     }
 }

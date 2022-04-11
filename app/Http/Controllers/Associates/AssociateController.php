@@ -13,7 +13,7 @@ class AssociateController extends Controller
             'users' => User::select('*')
                 ->orderByRaw('accepted IS NULL DESC')
                 ->orderBy('accepted','DESC')
-                ->orderBy('associate')->get(),
+                ->orderBy('associated_at')->get(),
         ]);
     }
 }

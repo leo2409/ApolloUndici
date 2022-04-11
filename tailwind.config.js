@@ -7,16 +7,19 @@ module.exports = {
             '405' : '315deg',
         },
         spacing: {
-          '30': '7.5rem',
-          '42': '10.5rem',
+            '30': '7.5rem',
+            '42': '10.5rem',
+            '92': '23.5rem',
         },
         colors: {
-            'a-gray': '#111111',
+            'a-gray': '#222628',
             'a-yellow': '#FFD763',
+            'a-orange': '#fd8c46',
             'a-yellow-100': '#fcd987',
             'a-yellow-50': '#ffe9b4',
             'a-yellow-900': '#b09760',
             'a-red': '#FA437F',
+            'a-orange-red': '#fa502c',
             'a-blue': '#9BF9F9',
             'up': 'rgba(255, 255, 255, 0.1)',
             '2up': 'rgba(255, 255, 255, 0.3)',
@@ -33,6 +36,8 @@ module.exports = {
             'sm-center-white': '0 0 7px rgba(255, 255, 255 , 0.24)',
             'a-red-light-sward':
                 '0 2px 7px rgb(250, 67, 127,1), 0 6px 18px rgb(250, 67, 127,1)',
+            'a-white-lightsaber':
+                '0 2px 7px rgb(250, 250, 250,1), 0 6px 18px rgb(250, 250, 250,1)',
             'a-blue-light-sward':
                 '0 2px 7px #9BF9F9, 0 6px 18px #9BF9F9',
             'a-yellow': '0 0 5px #FFD763',

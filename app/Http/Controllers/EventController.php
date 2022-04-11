@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Event\EventRequest;
 use App\Models\Event;
+use App\Models\Festival;
 use App\Models\Film;
 use Illuminate\Http\Request;
 
@@ -51,6 +52,7 @@ class EventController extends Controller
         $event->time = $validated['time'];
         $event->film_id = $film->id;
         $event->save();
+        $film->touch();
         return response()->redirectToRoute('admin.film.events.create', ['film' => $film->id]);
     }
 
@@ -75,7 +77,11 @@ class EventController extends Controller
      */
     public function edit(Film $film, Event $event)
     {
-        return response()->view('admin.ContentManager.event-form',['film' => $film, 'event' => $event]);
+        return response()->view('admin.ContentManager.event-form',[
+            'film' => $film,
+            'event' => $event,
+            'rassegne' => Festival::all(),
+        ]);
     }
 
     /**
@@ -89,7 +95,9 @@ class EventController extends Controller
     public function update(EventRequest $request, Film $film, Event $event)
     {
         $validated = $request->validated();
+        $validated['info'] = array_reverse($validated['info']);
         $event->update($validated);
+        $film->touch();
         return response()->redirectToRoute('admin.film.events.create', ['film' => $film->id]);
     }
 

@@ -18,6 +18,7 @@ class CreateAdministratorsTable extends Migration
             $table->string("username")->unique();
             $table->string("password");
             $table->string("email");
+            $table->boolean("big_boss")->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

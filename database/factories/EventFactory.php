@@ -17,6 +17,7 @@ class EventFactory extends Factory
         $random = mt_rand(0,1);
         return [
             'film_id' => $this->faker->numberBetween(1,15),
+            //'festival_id' =>  $this->faker->numberBetween(1,15),
             'seats' => $this->faker->numberBetween(10,70),
             'date' => $this->faker->dateTimeBetween('-1 days', '+15 days')->format('Y-m-d'),
             'time' => $this->faker->time(),

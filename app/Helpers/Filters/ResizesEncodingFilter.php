@@ -17,9 +17,11 @@ class ResizesEncodingFilter implements FilterInterface {
 
     public function applyFilter(Image $image)
     {
-        mkdir($this->path);
+        if (!file_exists($this->path)) {
+            mkdir($this->path);
+        }
         $image->backup();
-        $image->save($this->path . '/original' . $this->extension);
+        $image->save($this->path . '/original.' . $this->extension);
         $image->resize(200,null, function ($contraint) {
             $contraint->aspectRatio();
             $contraint->upsize();

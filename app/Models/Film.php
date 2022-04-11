@@ -18,12 +18,15 @@ class Film extends Model
 
 
     public function getSmallPosterAttribute() {
-        return 'storage/' . $this->poster . '/200.webp';
+        return "storage/{$this->poster}/200.webp";
+    }
+
+    public function getSmallFrameAttribute() {
+        return "storage/{$this->frame}/500.webp";
     }
 
     protected $casts = [
         'info' => 'array',
-        'organizers' => 'array',
     ];
 
     protected $attributes = [];
@@ -34,6 +37,7 @@ class Film extends Model
         return STR::slug($this->title, "-");
     }
 
+    // RELETIONSHIPS
     public function events() {
         return $this->hasMany(Event::class);
     }
@@ -45,8 +49,10 @@ class Film extends Model
      */
     protected static function booted() {
 
-        static::deleted(function ($user) {
-            $user->deletePoster();
+        static::deleted(function ($film) {
+            $film->deletePoster();
+            $film->deleteFrame();
+            $film->delete();
         });
     }
 
@@ -55,6 +61,15 @@ class Film extends Model
             $dir = storage_path("app/public/{$this->poster}");
             $this->deleteDirectory($dir);
             $this->poster = null;
+            $this->save();
+        }
+    }
+
+    public function deleteFrame() {
+        if (isset($this->frame)) {
+            $dir = storage_path("app/public/{$this->frame}");
+            $this->deleteDirectory($dir);
+            $this->frame = null;
             $this->save();
         }
     }

@@ -1,5 +1,8 @@
 require('./bootstrap');
 
+// TODO: dividere javascript public e admin
+// TODO: rimuovere alpine
+
 //ALPINE
 import Alpine from 'alpinejs'
 window.Alpine = Alpine
@@ -27,7 +30,7 @@ var info_container = document.querySelector('div#info-container');
 var info_template = document.querySelector('template#info-template');
 var events_container = document.querySelector('div#events-container');
 var date_time_template = document.querySelector('template#date-time-template');
-var n_info = document.querySelectorAll("div#info-div").length;
+var keys_info = [];
 var n_events = 0;
 
 window.addEvent = function (elem) {
@@ -51,18 +54,33 @@ window.addEvent = function (elem) {
     events_container.appendChild(clone);
 }
 
-window.addInfo = function() {
+window.addInfo = function(elem) {
+    let tag = elem.querySelector("input");
+    if (tag.value === '') {
+        window.alert('inserisci l\'etichetta!');
+        return;
+    }
+    if (keys_info.includes(tag.value)) {
+        window.alert('esiste già questa etichetta!');
+        return;
+    }
+    keys_info.push(tag.value);
     let clone = info_template.content.firstElementChild.cloneNode(true);
-    let inputs = clone.querySelectorAll("input");
-    let label = clone.querySelectorAll("label");
-    n_info++;
-    inputs[0].name = "info[" + n_info.toString() + "]" + "[tag]";
-    inputs[0].id = "info[" + n_info.toString() + "]" + "[tag]";
-    label[0].htmlFor = "info[" + n_info.toString() + "]" + "[tag]";
-    inputs[1].name = "info[" + n_info.toString() + "]" + "[body]";
-    inputs[1].id = "info[" + n_info.toString() + "]" + "[body]";
-    label[1].htmlFor = "info[" + n_info.toString() + "]" + "[tag]";
+    let label = clone.querySelector("label");
+    let input = clone.querySelector("input");
+    input.name = "info[" + tag.value + "]";
+    input.id = "info[" + tag.value + "]";
+    input.value = '';
+    label.htmlFor = "info[" + tag.value + "]";
+    label.textContent = tag.value;
     info_container.appendChild(clone);
+    tag.value = '';
+}
+
+window.removeInfo = function(elem) {
+    let key = elem.querySelector('label');
+    keys_info.splice(keys_info.indexOf(key.value),1);
+    elem.remove();
 }
 
 window.onclick = function(event) {
@@ -116,11 +134,13 @@ window.burgerButton = function (burger) {
     l2.classList.toggle('-translate-y-1.5');
 }
 
-var poster_preview = document.getElementById('poster_preview');
 
-window.posterChange = function(poster) {
+
+window.imagePreview = function(poster, id_preview) {
+    var image_preview = document.getElementById(id_preview);
     const [file] = poster.files;
     if (file) {
-        poster_preview.src = URL.createObjectURL(file);
+        image_preview.src = URL.createObjectURL(file);
     }
 }
+

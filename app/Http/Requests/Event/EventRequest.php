@@ -13,7 +13,7 @@ class EventRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,20 +24,21 @@ class EventRequest extends FormRequest
     public function rules()
     {
         return [
+            'festival_id' => 'nullable|exists:festivals,id',
             'date' => 'required|date',
             'time' => 'required|date_format:H:i',
             'seats' => 'required|numeric',
             'tag' => 'nullable|string|max:255',
             'description' => 'nullable|string',
             'info' => 'array',
-            'info.*' => 'array:tag,body',
-            'info.*.*' => 'required|string',
+            'info.*' => 'required|string',
         ];
     }
 
     public function attributes()
     {
         return [
+            'festival_id' => 'rassegna',
             'date' => 'data',
             'time' => 'orario',
             'seats' => 'posti',

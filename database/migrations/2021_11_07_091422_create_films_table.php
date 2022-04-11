@@ -21,8 +21,7 @@ class CreateFilmsTable extends Migration
             $table->text('synopsis');
             $table->json('info')->nullable();
             $table->string('poster')->nullable();
-            $table->json('organizers')->nullable();
-            $table->boolean('festival')->default(false);
+            $table->string('frame')->nullable();
             $table->timestamps();
         });
     }
@@ -36,6 +35,7 @@ class CreateFilmsTable extends Migration
     {
         $films = Film::all();
         foreach ($films as $film) {
+            $film->deletePoster();
             $film->delete();
         }
         Schema::dropIfExists('films');

@@ -1,7 +1,5 @@
 <x-layouts.admin>
-    <div class="mt-3 w-full text-center">
-        <h1 class="text-2xl">Soci</h1>
-    </div>
+    <h1 class="md:mt-3 text-2xl text-center bg-green-400 md:rounded-full px-8 py-0.5 max-w-screen-sm mx-auto font-semibold">SOCI</h1>
     <div id="switch-operation" class="w-full text-center flex flex-row justify-center mt-2">
         <button id="requests-button" class="border border-gray-300 rounded-l-full px-3 py-1 w-28">Richieste</button>
         <button id="payments-button" class="border border-l-0 border-gray-300 rounded-r-full px-3 py-1 w-28">Pagamenti</button>
