@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Storage;
 
 class Film extends Model
 {
@@ -58,7 +59,7 @@ class Film extends Model
 
     public function deletePoster() {
         if (isset($this->poster)) {
-            $dir = storage_path("app/public/{$this->poster}");
+            $dir ="public/{$this->poster}";
             $this->deleteDirectory($dir);
             $this->poster = null;
             $this->save();
@@ -67,7 +68,7 @@ class Film extends Model
 
     public function deleteFrame() {
         if (isset($this->frame)) {
-            $dir = storage_path("app/public/{$this->frame}");
+            $dir = "public/{$this->frame}";
             $this->deleteDirectory($dir);
             $this->frame = null;
             $this->save();
@@ -75,25 +76,8 @@ class Film extends Model
     }
 
     private function deleteDirectory($dir) {
-        if (!file_exists($dir)) {
-            return true;
-        }
-
-        if (!is_dir($dir)) {
-            return unlink($dir);
-        }
-
-        foreach (scandir($dir) as $item) {
-            if ($item == '.' || $item == '..') {
-                continue;
-            }
-
-            if (!$this->deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
-                return false;
-            }
-
-        }
-
-        return rmdir($dir);
+        $files = Storage::files($dir);
+        Storage::delete($files);
+        Storage::deleteDirectory($dir);
     }
 }

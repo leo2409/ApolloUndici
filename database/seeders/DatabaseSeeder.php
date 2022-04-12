@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
-        Film::factory(15)->create();
-        Event::factory(40)->create();
+        //User::factory(10)->create();
+        //Film::factory(15)->create();
+        //Event::factory(40)->create();
 
         //creazione admin
         $a = new Administrator();

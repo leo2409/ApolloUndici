@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Storage;
 
 class Festival extends Model
 {
@@ -28,7 +29,7 @@ class Festival extends Model
 
     public function deleteCover() {
         if (isset($this->cover)) {
-            $dir = storage_path("app/public/festivals/{$this->cover}");
+            $dir = "public/festivals/{$this->cover}";
             $this->deleteDirectory($dir);
             $this->cover = null;
             $this->save();
@@ -41,25 +42,8 @@ class Festival extends Model
     }
 
     private function deleteDirectory($dir) {
-        if (!file_exists($dir)) {
-            return true;
-        }
-
-        if (!is_dir($dir)) {
-            return unlink($dir);
-        }
-
-        foreach (scandir($dir) as $item) {
-            if ($item == '.' || $item == '..') {
-                continue;
-            }
-
-            if (!$this->deleteDirectory($dir . DIRECTORY_SEPARATOR . $item)) {
-                return false;
-            }
-
-        }
-
-        return rmdir($dir);
+        $files = Storage::files($dir);
+        Storage::delete($files);
+        Storage::deleteDirectory($dir);
     }
 }
