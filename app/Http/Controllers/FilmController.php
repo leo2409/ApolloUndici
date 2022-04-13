@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Film\StoreFilmRequest;
-use App\Http\Requests\Film\UdateFilmRequest;
+use App\Http\Requests\Film\UpdateFilmRequest;
 use App\Models\Event;
 use App\Models\Film;
 use App\Models\User;
@@ -109,7 +109,7 @@ class FilmController extends Controller
      * @param  \App\Models\Film  $film
      *
      */
-    public function update(UdateFilmRequest $request, Film $film)
+    public function update(UpdateFilmRequest $request, Film $film)
     {
         $validated = $request->validated();
         if (isset($validated['poster'])) {

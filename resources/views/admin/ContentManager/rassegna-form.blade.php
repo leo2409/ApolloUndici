@@ -7,7 +7,7 @@
         <div class="max-w-screen-md mx-auto sm:space-y-4">
             <h1 class="text-center text-2xl">Dati Rassegna</h1>
             <div class="w-96 h-56 mx-auto mt-6">
-                <img id="cover_preview" src="{{ isset($film) ? asset($film->small_poster) : '' }}" alt="copertina rassegna" class="cover w-96 h-56 border border-gray-500">
+                <img id="cover_preview" src="{{ isset($rassegna) ? asset($rassegna->medium_cover) : '' }}" alt="copertina rassegna" class="cover w-96 h-56 border border-gray-500">
             </div>
             <div class="mt-2 mx-3">
                 <label for="cover" class="mb-0 5 font-semibold">Copertina</label>
@@ -34,7 +34,7 @@
                 <label for="description" class="ml-3 block mb-0.5 font-semibold">
                     Descrizione
                 </label>
-                <textarea name="description" id="description" rows="10" class="w-full border-gray-500 rounded-xl" placeholder="descrizione..." required>{{ $film->description ?? old('description') }}</textarea>
+                <textarea name="description" id="description" rows="10" class="w-full border-gray-500 rounded-xl" placeholder="descrizione..." required>{{ $rassegna->description ?? old('description') }}</textarea>
                 @error('description')
                 <p class="text-sm text-red-500 mt-1">
                     {{ $message }}

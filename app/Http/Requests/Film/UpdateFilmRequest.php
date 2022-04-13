@@ -4,7 +4,7 @@ namespace App\Http\Requests\Film;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UdateFilmRequest extends FormRequest
+class UpdateFilmRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

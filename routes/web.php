@@ -5,7 +5,7 @@ use App\Http\Controllers\Associates\AssociateController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
-use App\http\Controllers\FestivalController;
+use App\Http\Controllers\FestivalController;
 use App\Mail\prova;
 use App\Models\Event;
 use App\Models\Festival;
@@ -121,7 +121,6 @@ Route::middleware('auth:admin')->prefix('/admin')->name('admin.')->group(functio
     //Route::get('/soci/search', [AssociateController::class, 'search'])->name('soci.search');
 
     //Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
-
 
 
 
