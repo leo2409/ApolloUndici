@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\Associates\AssociateController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FestivalController;
 use App\Mail\prova;
@@ -64,7 +66,10 @@ Route::get('/rassegne', function () {
 */
 
 Route::get('/rassegne/{name}/{festival}', function ($name, Festival $festival){
-    $events = $festival->events()->orderBy('date')->orderBy('time')->get();
+    $events = $festival->events()
+        ->where('date','>=',today())
+        ->orderBy('date')
+        ->orderBy('time')->get();
     return view('rassegne-show', [
         'title' => "{$festival->name} - Apollo 11",
         'rassegna' => $festival,
@@ -84,7 +89,7 @@ Route::get('/contatti', function() {
     ]);
 })->name('contatti');
 
-Route::get('/soci/info', [UserController::class, 'index']);
+Route::get('/soci/info', [UserController::class, 'index'])->name('soci.info');
 
 // TODO: RIATTIVARE QUESTE ROUTE
 //Route::get('/soci/modulo', [UserController::class, 'create']);
@@ -122,7 +127,10 @@ Route::middleware('auth:admin')->prefix('/admin')->name('admin.')->group(functio
 
     //Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
 
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/logout', [ProfileController::class, 'logOut'])->name('profile.logout');
 
+    Route::resource('administrator', AdministratorController::class)->middleware('isBigBoss');
 
     Route::resource('rassegne', FestivalController::class);
 

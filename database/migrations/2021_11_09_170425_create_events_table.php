@@ -19,7 +19,7 @@ class CreateEventsTable extends Migration
             $table->foreignId('festival_id')->nullable();
             $table->date('date');
             $table->time('time');
-            $table->integer('seats')->default(60);
+            $table->integer('seats')->default(80);
             $table->string('tag')->nullable();
             $table->json('info')->nullable();
             $table->text('description')->nullable();

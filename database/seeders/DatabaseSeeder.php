@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
 
         //creazione admin
         $a = new Administrator();
+        $a->name = 'Agostino Ferrente';
         $a->username = 'AgoErBoss';
         $a->password = Hash::make('Ago.Apollo11.ErBoss2022');
         $a->email = 'a.ferrente@gmail.com';

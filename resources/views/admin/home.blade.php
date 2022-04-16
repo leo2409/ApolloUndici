@@ -1,15 +1,15 @@
 <x-layouts.admin>
     <div class="space-y-4 md:mt-3">
         <h1 class="text-2xl text-center bg-a-blue md:rounded-full px-8 py-0.5 max-w-screen-sm mx-auto font-semibold">FILM</h1>
-        <a href="/admin/film/crea" class="w-max py-1 px-2 mx-auto border border-gray-300 rounded-full flex flex-row justify-center items-center gap-x-2 hover:bg-admin-gray">
+        <a href="{{ route('admin.film.create') }}" class="w-max py-1 px-2 mx-auto border border-gray-300 rounded-full flex flex-row justify-center items-center gap-x-2 hover:bg-admin-gray">
             <span class="text-sm font-semibold">Aggiungi</span>
             <img src="{{ asset('cms/images/plus.png') }}" alt="icon add" class="h-7">
         </a>
         <div class="flex flex-row justify-center flex-wrap items-start gap-4 max-w-screen-2xl mx-auto">
             @foreach($films as $film)
                 <div class="w-screen max-w-screen-sm">
-                    <div class="sm:border-l sm:border-r">
-                        <div class="flex flex-row justify-between items-center border-t border-gray-300 pl-3 pr-1">
+                    <div class="sm:border-l sm:border-r sm:rounded-xl">
+                        <div class="flex flex-row justify-between items-center border-t sm:rounded-t-xl border-gray-300 pl-3 pr-1">
                             <p class="text-gray-500 text-sm">Ultima modifica {{ $film->updated_at->diffForHumans() }}</p>
                             <div class="relative">
                                 <button role="button" onclick="toggleDropDown(this.nextElementSibling)" class="px-1 h-full">
@@ -31,8 +31,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="box-content w-full bg-admin-gray flex flex-row items-start border-b border-t border-gray-300 max-h-44">
-                            <img src="{{ asset($film->small_poster) }}" alt="locandina {{ $film->title }}" class="h-44 w-32">
+                        <div class="box-content w-full bg-admin-gray flex flex-row items-start border-b border-t border-gray-300 sm:rounded-b-xl max-h-44">
+                            <img src="{{ asset($film->small_poster) }}" alt="locandina {{ $film->title }}" class="h-44 w-32 sm:rounded-bl-xl">
                             <div class="flex-1 items-stretch h-44 overflow-auto px-2">
                                 <h2 class="text-left text-xl">{{ $film->title }}</h2>
                                 <p class="text-gray-500 text-sm max-w-full">{{ $film->tag }}</p>
