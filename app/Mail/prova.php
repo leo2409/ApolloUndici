@@ -28,6 +28,8 @@ class prova extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.prova');
+        return $this
+            ->from('editors@apolloundici.it')
+            ->markdown('mail.credenziali-administrator');
     }
 }

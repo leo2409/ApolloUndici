@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Administrator\AdministratorRequest;
 use App\Http\Requests\Administrator\UpdateAdministratorRequest;
+use App\Mail\credenziali_administrator;
 use App\Mail\prova;
 use App\Models\Administrator;
 use Illuminate\Http\Request;
@@ -31,12 +32,13 @@ class AdministratorController extends Controller
     public function store(AdministratorRequest $request)
     {
         $validated = $request->validated();
+        $password = $validated['password'];
         $validated['password'] = Hash::make($validated['password']);
         $administrator = new Administrator($validated);
         $administrator->save();
 
-        // TODO: implementare mail registrazione utente
-        Mail::to('mila.muhianov@gmail.com')->send(new prova());
+        Mail::to($administrator->email)
+            ->send(new Credenziali_administrator($administrator->name, $administrator->username, $password));
 
         return response()->redirectToRoute('admin.administrator.index');
     }
