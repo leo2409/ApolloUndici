@@ -5,7 +5,7 @@
         Queste sono le tue credenziali. <br><br></span>
     username:   <span style="color: black"> {{ $username }} <br></span>
     password:   <span style="color: black">{{ $password }}</span><br><br>
-    Per accedere all'area amministratori vai  <a href="{{ config('app.name') }}/admin">{{ config('app.name') }}/admin</a>
+    Per accedere all'area amministratori vai  <a href="{{ config('app.url') }}/admin">{{ config('app.url') }}/admin</a>
 </div>
 
 @component('mail::button', ['url' => route('admin.login')])
