@@ -14,7 +14,9 @@
     </div>
     <div class="grid grid-cols-2 grid-rows-5 gap-x-4 mt-2 mx-2">
         <div class="relative justify-self-center row-start-1 row-span-5">
-            <img src="{{ asset($event->film->small_poster) }}" alt="locandina {{ $event->film->title }}" class="h-64 object-cover rounded-xl border border-white shadow-sm-center-white">
+            <a href="{{ route('film.info', ['title' => $event->film->title, 'event' => $event->id]) }}">
+                <img src="{{ asset($event->film->small_poster) }}" alt="locandina {{ $event->film->title }}" class="h-64 object-cover rounded-xl border border-white shadow-sm-center-white">
+            </a>
             @if(isset($event->festival))
                 <div class="absolute w-full bottom-7 bg-a-orange text-black py-1 px-1">
                     <h3 class="text-xs whitespace-nowrap overflow-hidden font-bold">{{ strtoupper($event->festival->name) }}</h3>

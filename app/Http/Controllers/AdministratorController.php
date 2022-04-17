@@ -36,7 +36,7 @@ class AdministratorController extends Controller
         $administrator->save();
 
         // TODO: implementare mail registrazione utente
-        //Mail::to('mila.muhianov@gmail.com')->send(new prova());
+        Mail::to('mila.muhianov@gmail.com')->send(new prova());
 
         return response()->redirectToRoute('admin.administrator.index');
     }
