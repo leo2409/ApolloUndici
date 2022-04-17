@@ -7,9 +7,9 @@
                         @if(sizeof($day) == 1)
                             <x-event-card-lg :event="$day[0]" :i="$loop->index"/>
                         @else
+                            <div class=" h-0.5 w-6/12 bg-white mx-auto rounded-full shadow-a-white-lightsaber my-4"></div>
+                            <h2 class="text-4xl text-a-blue text-shadow-sm-blue">{{ $day[0]->date_readable }}</h2>
                             <div class="flex flex-row flex-wrap justify-center items-start pt-5 pb-4 space-x-1.5 md:space-x-4 gap-y-2">
-                                <h2 class="text-4xl text-a-blue text-shadow-sm-blue">{{ $day[0]->date_readable }}</h2>
-                                <div class=" h-0.5 w-6/12 bg-white mx-auto rounded-full shadow-a-white-lightsaber"></div>
                                 @foreach($day as $event)
                                     <x-event-card-sm :event="$event" />
                                 @endforeach
