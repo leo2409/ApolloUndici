@@ -3,7 +3,7 @@
         <div class="relative">
             <img src="{{ asset($event->film->small_poster) }}" alt="locandina {{ $event->film->title }}" class="h-48 sm:h-64  object-cover rounded-xl border border-white shadow-sm-center-white">
             @if(isset($event->festival))
-                <div class="absolute w-full bottom-4 right-0 left-0 bg-a-orange text-black text-sm py-0.5">
+                <div class="absolute w-full bottom-4 right-0 left-0 bg-a-orange text-black text-xs whitespace-nowrap overflow-hidden font-bold py-1 px-1">
                     <h3>{{ strtoupper($event->festival->name) }}</h3>
                 </div>
             @endif
