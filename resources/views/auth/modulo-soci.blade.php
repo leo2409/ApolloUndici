@@ -14,16 +14,29 @@
                 </p>
                 @enderror
             </div>
-            <div>
-                <label for="cf" class="block mb-0.5 font-semibold">
-                    Codice Fiscale
-                </label>
-                <input type="text" name="cf" id="cf" value="{{ old('cf') }}" class="uppercase bg-up focus:border-a-blue focus:ring-a-blue rounded-lg w-full border-gray-500" required pattern="[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]">
-                @error('cf')
-                <p class="text-sm text-red-500 mt-1">
-                    {{ $message }}
-                </p>
-                @enderror
+            <div class="flex flex-row justify-between gap-x-2">
+                <div>
+                    <label for="birth_place" class="block mb-0.5 font-semibold">
+                        Luogo di nascita
+                    </label>
+                    <input type="text" name="birth_place" id="birth_place" value="{{ old('birth_place') }}" class="bg-up focus:border-a-blue focus:ring-a-blue rounded-lg w-full border-gray-500" required>
+                    @error('birth_place')
+                    <p class="text-sm text-red-500 mt-1">
+                        {{ $message }}
+                    </p>
+                    @enderror
+                </div>
+                <div>
+                    <label for="birthday" class="block mb-0.5 font-semibold">
+                        Data di nascita
+                    </label>
+                    <input type="date" name="birthday" id="birthday" value="{{ old('birthday') }}" class="bg-up focus:border-a-blue focus:ring-a-blue rounded-lg w-full border-gray-500" required>
+                    @error('birthday')
+                    <p class="text-sm text-red-500 mt-1">
+                        {{ $message }}
+                    </p>
+                    @enderror
+                </div>
             </div>
             <div>
                 <label for="address" class="block mb-0.5 font-semibold">
@@ -66,6 +79,17 @@
                 </label>
                 <input type="email" name="email" id="email" value="{{ old('email') }}" class="lowercase bg-up focus:border-a-blue focus:ring-a-blue rounded-lg w-full border-gray-500" required>
                 @error('email')
+                <p class="text-sm text-red-500 mt-1">
+                    {{ $message }}
+                </p>
+                @enderror
+            </div>
+            <div>
+                <label for="email-confirm" class="block mb-0.5 font-semibold">
+                    Conferma Email
+                </label>
+                <input type="email" name="email_confirmation" id="email-confirm" value="{{ old('email_confirmation') }}" class="lowercase bg-up focus:border-a-blue focus:ring-a-blue rounded-lg w-full border-gray-500" required>
+                @error('email_confirmation')
                 <p class="text-sm text-red-500 mt-1">
                     {{ $message }}
                 </p>

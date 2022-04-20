@@ -10,9 +10,11 @@
                 <p>{{ $io->email }}</p>
             </div>
             <div class="mt-4 flex flex-row justify-end items-center gap-x-3">
+                {{--
                 <a href="{{ route('admin.profile.logout') }}" class="px-5 py-1 border border-gray-500 text-white bg-yellow-400 text-lg font-semibold rounded-full">
                     MODIFICA <img src="{{ asset('cms/images/edit.png') }}" alt="exit icon" class="pl-2 h-7 inline">
                 </a>
+                --}}
                 <a href="{{ route('admin.profile.logout') }}" class="px-5 py-1 border border-gray-500 text-white bg-red-500 text-lg font-semibold rounded-full">
                     ESCI <img src="{{ asset('cms/images/exit.png') }}" alt="exit icon" class="pl-2 h-7 inline">
                 </a>

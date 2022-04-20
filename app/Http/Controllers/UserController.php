@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\prova;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Mail;
 
 class UserController extends Controller
 {
@@ -26,15 +28,18 @@ class UserController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|min:3|max:255',
-            'cf' => 'required|string|size:16',
+            'birthday' => 'required|date',
+            'birth_place' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'cap' => 'required|numeric',
-            'email' => 'required|email|unique:users,email|max:255',
+            'email' => 'required|email|unique:users,email|confirmed|max:255',
         ]);
 
         $user = User::create($validated);
-        event(new Registered($user));
+
+        //Mail::mailer('no-reply')->to($user->email)->send(new prova());
+
         return view('auth.soci-conferma', [
             //TODO: RENDERLO NON INDICIZZABILE
             'mail' => $user->email,
@@ -42,48 +47,5 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
-    {
-        //
-    }
+    
 }

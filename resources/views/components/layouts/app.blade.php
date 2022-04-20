@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/favicon.png') }}">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Monoton" />
     <meta name="theme-color" content="#010101" />
 
     <title>{{ $title }}</title>
@@ -28,10 +27,10 @@
             <div class="max-w-screen-lg mx-auto flex flex-row justify-between items-center px-3">
                 <!-- logo -->
                 <a href="{{ route('home_page') }}">
-                    <img src="{{ asset('images/logo-colori-alterati.png') }}" alt="logo apollo" class="h-14 py-1 px-2">
+                    <img src="{{ asset('images/logo-navbar.png') }}" alt="logo apollo" class="h-14 py-1 px-2">
                 </a>
                 <!-- burger button  -->
-                <button type="button" onclick="burgerButton(this)" class="no-double-tap-zoom space-y-2 sm:hidden py-2 px-2 transition-all ease-in-out duration-200">
+                <button type="button" onclick="burgerButton()" class="no-double-tap-zoom space-y-2 sm:hidden py-2 px-2 transition-all ease-in-out duration-200">
                     <div id="l1" class="w-10 h-1 bg-gray-100 rounded-full transform transition-all ease-in-out duration-200"></div>
                     <div id="l2" class="w-10 h-1 bg-gray-100 rounded-full transform transition-all ease-in-out duration-200"></div>
                     <div id="l3" class="ml-auto w-7 h-1 bg-gray-100 rounded-full transform transition-all ease-in-out duration-400"></div>

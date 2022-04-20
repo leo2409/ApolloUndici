@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->dateTime('birthday');
+            $table->string('birth_place');
             $table->string('city');
             $table->string('address');
             $table->string('cap');

@@ -19,6 +19,7 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             //'cf' => $this->faker->regexify('[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]'),
             'birthday' => $this->faker->date(),
+            'birth_place' => $this->faker->city(),
             'address' => $this->faker->address(),
             'city' => $this->faker->city,
             'cap' => $this->faker->postcode(),

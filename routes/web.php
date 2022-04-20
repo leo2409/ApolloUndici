@@ -8,7 +8,6 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FestivalController;
-use App\Mail\prova;
 use App\Models\Event;
 use App\Models\Festival;
 use App\Models\Film;
@@ -96,13 +95,6 @@ Route::get('/soci/info', [UserController::class, 'index'])->name('soci.info');
 
 //Route::post('/soci/store', [UserController::class, 'store']);
 
-// TODO: ELIMINARE
-/* PROVA INVIO MAIL
-Route::get('/mail/prova', function () {
-    Mail::to('pollo@argentino.com')->send(new prova());
-});
-*/
-
 /*
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
@@ -121,14 +113,14 @@ Route::middleware('auth:admin')->prefix('/admin')->name('admin.')->group(functio
 
     Route::get('/', function () { return redirect('/admin/film');});
 
-    //Route::get('/soci', [AssociateController::class, 'index'])->name('soci.index');
-
     //Route::get('/soci/search', [AssociateController::class, 'search'])->name('soci.search');
 
     //Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
 
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/logout', [ProfileController::class, 'logOut'])->name('profile.logout');
+
+    Route::resource('soci', AssociateController::class);
 
     Route::resource('administrator', AdministratorController::class)->middleware('isBigBoss');
 

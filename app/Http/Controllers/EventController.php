@@ -10,16 +10,6 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @param  \App\Models\Film  $film
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Film $film)
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -57,18 +47,6 @@ class EventController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Film  $film
-     * @param  \App\Models\Event  $event
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Film $film, Event $event)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Film  $film
@@ -95,7 +73,6 @@ class EventController extends Controller
     public function update(EventRequest $request, Film $film, Event $event)
     {
         $validated = $request->validated();
-        $validated['info'] = array_reverse($validated['info']);
         $event->update($validated);
         $film->touch();
         return response()->redirectToRoute('admin.film.events.create', ['film' => $film->id]);

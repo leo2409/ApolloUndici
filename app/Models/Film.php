@@ -23,7 +23,7 @@ class Film extends Model
     }
 
     public function getSmallFrameAttribute() {
-        return "storage/{$this->frame}/500.webp";
+        return "storage/{$this->frame}/800.webp";
     }
 
     protected $casts = [

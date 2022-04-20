@@ -24,7 +24,7 @@ class Festival extends Model
     }
 
     public function getMediumCoverAttribute() {
-        return "storage/festivals/{$this->cover}/500.webp";
+        return "storage/festivals/{$this->cover}/800.webp";
     }
 
     public function deleteCover() {

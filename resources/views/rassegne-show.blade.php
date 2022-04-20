@@ -16,13 +16,13 @@
                 </div>
             </div>
             <div class="px-3">
-                <h2 class="text-center text-a-blue text-2xl">Altri Appuntamenti</h2>
-                <div class="flex-row flex flex-nowrap overflow-x-scroll gap-x-4 my-4 mx-4">
+                <h2 class="text-center text-a-blue text-3xl">Prossimi Appuntamenti</h2>
+                <div class="flex-row flex flex-nowrap items-start overflow-x-scroll gap-x-4 my-4 mx-4">
                     @foreach($events ?? [] as $event)
-                        <div>
+                        <div class="w-36">
                             <a href="/film/{{ $event->film->slug_title }}/{{ $event->id }}">
                                 <div class="text-center mb-1 ">
-                                    <p class="uppercase">{{ $event->date_readable }}</p>
+                                    <p class="uppercase">{{ $event->carbon_date->translatedFormat('D j M') }}</p>
                                 </div>
                                 <div class="relative">
                                     <img src="{{ asset($event->film->small_poster) }}" alt="locandina {{ $event->film->title }}" class="h-52 object-cover rounded-xl border border-white shadow-sm-center-white">

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Administrator\AdministratorRequest;
 use App\Http\Requests\Administrator\UpdateAdministratorRequest;
-use app\Mail\Credenziali_administrator;
+use App\Mail\Credenziali_administrator;
 use App\Models\Administrator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
