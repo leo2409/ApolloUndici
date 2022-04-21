@@ -7,7 +7,7 @@
     <td class="px-3 py-1">{{ $user->name }}</td>
     <td class="px-3 py-1">{{ $user->status }}</td>
     <td class="px-3 py-1">
-        <button type="button" class="border border-gray-700 rounded-full px-3 py-1 bg-blue-300 font-semibold">Accetta</button>
-        <button type="button" class="border border-gray-700 rounded-full px-3 py-1 bg-blue-300 font-semibold">{{ $user->accepted ? 'Paga' : 'Accetta e Paga' }}</button>
+        <button id="accept-button" type="button" class="border border-gray-700 rounded-full px-3 py-1 bg-blue-300 font-semibold">Accetta</button>
+        <button id="pay-button" type="button" class="border border-gray-700 rounded-full px-3 py-1 bg-blue-300 font-semibold hidden">{{ $user->accepted ? 'Paga' : 'Accetta e Paga' }}</button>
     </td>
 </tr>

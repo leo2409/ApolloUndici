@@ -1,9 +1,6 @@
 require('./bootstrap');
 
-// TODO: dividere javascript public e admin
-// TODO: rimuovere alpine
-
-window.burgerButton = function (burger) {
+window.burgerButton = function () {
     var menu = document.getElementById('menu');
     var l1 = document.getElementById('l1');
     var l2 = document.getElementById('l2');

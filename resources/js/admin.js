@@ -125,3 +125,29 @@ window.imagePreview = function(poster, id_preview) {
         image_preview.src = URL.createObjectURL(file);
     }
 }
+
+window.onlyAccept = function(button) {
+    if (!button.classList.contains('text-blue-600')) {
+        button.classList.add('text-blue-600', 'bg-gray-200')
+        document.getElementById('payments-button').classList.remove('text-blue-600', 'bg-gray-200');
+        var acceptButtons = document.querySelectorAll("button#accept-button");
+        var payButtons = document.querySelectorAll("button#pay-button")
+        for (var i = 0; i < acceptButtons.length; i++) {
+            acceptButtons[i].classList.remove('hidden');
+            payButtons[i].classList.add('hidden');
+        }
+    }
+}
+
+window.alsoPayments = function(button) {
+    if (!button.classList.contains('text-blue-600')) {
+        button.classList.add('text-blue-600', 'bg-gray-200')
+        document.getElementById('requests-button').classList.remove('text-blue-600', 'bg-gray-200');
+        var acceptButtons = document.querySelectorAll("button#accept-button");
+        var payButtons = document.querySelectorAll("button#pay-button")
+        for (var i = 0; i < acceptButtons.length; i++) {
+            acceptButtons[i].classList.add('hidden');
+            payButtons[i].classList.remove('hidden');
+        }
+    }
+}

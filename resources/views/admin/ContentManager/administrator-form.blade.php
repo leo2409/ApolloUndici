@@ -5,7 +5,7 @@
             @method('PUT')
         @endif
         <div class="max-w-screen-md mx-auto sm:space-y-4 font-semibold">
-            <h1 class="text-center text-2xl">Dati film</h1>
+            <h1 class="text-center text-2xl">Dati amministratore</h1>
             <div class="mx-3 space-y-3">
                 <div>
                     <label for="name" class="ml-3 block mb-0.5 font-semibold">
