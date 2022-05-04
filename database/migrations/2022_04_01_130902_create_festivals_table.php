@@ -17,7 +17,7 @@ class CreateFestivalsTable extends Migration
         Schema::create('festivals', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('cover')->nullable();
+            $table->string('slug')->unique()->nullable();
             $table->text('description');
             $table->json('organizers')->nullable();
             //TODO: DURATA    permanente / finito / ultimo evento
@@ -35,7 +35,6 @@ class CreateFestivalsTable extends Migration
     {
         $rassegne = Festival::all();
         foreach ($rassegne as $rassegna) {
-            $rassegna->deleteCover();
             $rassegna->delete();
         }
         Schema::dropIfExists('festivals');

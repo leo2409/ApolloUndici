@@ -1,5 +1,5 @@
 <div>
-    <a href="/film/{{ $event->film->slug_title }}/{{ $event->id }}">
+    <a href="{{ route('film.info', ['film' => $event->film->slug, 'event' => $event->id]) }}">
         <div class="relative">
             <img src="{{ asset($event->film->small_poster) }}" alt="locandina {{ $event->film->title }}" class="h-48 sm:h-64  object-cover rounded-xl border border-white shadow-sm-center-white">
             @if(isset($event->festival))

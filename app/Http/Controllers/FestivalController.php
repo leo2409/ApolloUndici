@@ -8,6 +8,8 @@ use App\Models\Festival;
 use Illuminate\Http\Request;
 use Image;
 use App\Helpers\Filters\FrameResizesEncodingFilter;
+use Storage;
+use Str;
 
 class FestivalController extends Controller
 {
@@ -46,12 +48,19 @@ class FestivalController extends Controller
         $validated_festival = $request->validated();
         $festival = Festival::create($validated_festival);
 
-        $path = 'covers/' . $festival->slug_name . "-" . $festival->id;
+        if (Festival::query()->where('name', '=', $validated_festival['name'])->count() > 1) {
+            $festival->slug = Str::slug($festival->name, '-') . '-' . $festival->id;
+        } else {
+            $festival->slug = Str::slug($festival->name, '-');
+        }
+
+        $path = 'covers/' . $festival->slug;
+
         $festival->cover = $path;
         $festival->save();
 
 
-        Image::make($request->file('cover'))->filter(new FrameResizesEncodingFilter($request->file('cover')->extension(), storage_path('app/public/festivals/' . $path)));
+        Image::make($request->file('cover'))->filter(new FrameResizesEncodingFilter( storage_path('app/public/festivals/' . $path)));
 
         return response()->redirectToRoute('admin.rassegne.index');
     }
@@ -75,20 +84,27 @@ class FestivalController extends Controller
         $rassegne->name = $validated['name'];
         $rassegne->description = $validated['description'];
 
+        if (Festival::query()->where('name', '==', $validated['name'])->count() > 1) {
+            $rassegne->slug = STR::slug($rassegne->name, '-') . '-' . $rassegne->id;
+        } else {
+            $rassegne->slug = STR::slug($rassegne->name, '-');
+        }
+
         if (isset($validated['cover'])) {
-            $path = 'covers/' . $rassegne->slug_name . "-" . $rassegne->id;
+            $path = 'covers/' . $rassegne->slug;
             $rassegne->deleteCover();
-            Image::make($request->file('cover'))->filter(new FrameResizesEncodingFilter($request->file('cover')->extension(), storage_path('app/public/festivals/' . $path)));
+            Storage::makeDirectory("public/films/festivals/{$path}");
+            Image::make($request->file('cover'))->filter(new FrameResizesEncodingFilter( storage_path('app/public/festivals/' . $path)));
             $rassegne->cover = $path;
         }
 
         $rassegne->save();
+
         return response()->redirectToRoute('admin.rassegne.index');
     }
 
     public function destroy(Festival $rassegne, Request $request)
     {
-        $rassegne->deleteCover();
         $rassegne->delete();
         return response()->redirectToRoute('admin.rassegne.index');
     }

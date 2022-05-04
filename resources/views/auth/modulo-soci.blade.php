@@ -1,5 +1,5 @@
 <x-layouts.app :title="$title">
-    <div class="max-w-screen-sm mx-auto rounded-4xl bg-3down py-6 shadow-lg-center-black border border-black">
+    <div class="max-w-screen-sm mx-auto rounded-4xl bg-3down py-6 shadow-lg-center-black border border-black mt-4">
         <h1 class="text-center text-3xl text-a-yellow text-shadow-sm-yellow">Domanda adesione soci</h1>
         <form action="/soci/store" method="POST" class="max-w-sm space-y-3 mx-auto mt-4 px-4">
             @csrf

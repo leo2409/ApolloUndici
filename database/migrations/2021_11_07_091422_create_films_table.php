@@ -17,11 +17,12 @@ class CreateFilmsTable extends Migration
         Schema::create('films', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug')->unique()->nullable();
             $table->string('tag')->nullable();
+            $table->string('director');
             $table->text('synopsis');
-            $table->json('info')->nullable();
-            $table->string('poster')->nullable();
-            $table->string('frame')->nullable();
+            $table->text('info')->nullable();
+            $table->string('trailer')->nullable();
             $table->timestamps();
         });
     }
@@ -35,7 +36,6 @@ class CreateFilmsTable extends Migration
     {
         $films = Film::all();
         foreach ($films as $film) {
-            $film->deletePoster();
             $film->delete();
         }
         Schema::dropIfExists('films');

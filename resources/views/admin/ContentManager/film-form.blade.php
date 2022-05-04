@@ -53,8 +53,19 @@
                     Frame
                 </label>
                 <input type="file" onchange="imagePreview(this, 'frame_preview')" name="frame" id="frame" accept="image/jpeg,image/png,image/webp" tabindex="0"/>
-                <p class="text-sm text-gray-700">File png o jpeg in proporzioni 16:9 dimensioni file < 8MB</p>
+                <p class="text-sm text-gray-700">File png o jpeg in proporzioni 16:9, min 1000px width e dimensioni file < 8MB</p>
                 @error('frame')
+                <p class="text-sm text-red-500 mt-1">
+                    {{ $message }}
+                </p>
+                @enderror
+            </div>
+            <div class="mx-3">
+                <label for="director" class="ml-3 block mb-0.5 font-semibold">
+                    Regia
+                </label>
+                <input type="text" name="director" id="director" placeholder="regia" value="{{ $film->director ?? old('director') }}" class="rounded-lg w-full border-gray-500" required>
+                @error('director')
                 <p class="text-sm text-red-500 mt-1">
                     {{ $message }}
                 </p>
@@ -66,6 +77,17 @@
                 </label>
                 <textarea name="synopsis" id="synopsis" rows="10" class="w-full border-gray-500 rounded-xl" placeholder="sinossi..." required>{{ $film->synopsis ?? old('synopsis') }}</textarea>
                 @error('synopsis')
+                <p class="text-sm text-red-500 mt-1">
+                    {{ $message }}
+                </p>
+                @enderror
+            </div>
+            <div class="mx-3">
+                <label for="trailer" class="ml-3 block mb-0.5 font-semibold">
+                    Trailer
+                </label>
+                <input type="text" name="trailer" id="trailer" placeholder="trailer" value="{{ $film->trailer ?? old('trailer') }}" class="rounded-lg w-full border-gray-500" required>
+                @error('trailer')
                 <p class="text-sm text-red-500 mt-1">
                     {{ $message }}
                 </p>
@@ -90,12 +112,6 @@
                             </button>
                         </div>
                     </div>
-                    @if(!isset($film->info['Regia']) && old('title') === null)
-                        <x-admin.component-info-form :key="'Regia'" :value="''"/>
-                    @endif
-                    @if(!isset($film->info['Trailer']) && old('title') === null)
-                        <x-admin.component-info-form :key="'Trailer'" :value="''"/>
-                    @endif
                     @foreach($film->info ?? old('info') ?? [] as $key => $value)
                         <x-admin.component-info-form :key="$key" :value="$value"/>
                     @endforeach

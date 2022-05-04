@@ -4,26 +4,33 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 use Storage;
 
 class Film extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
 
-
-    public function getSmallPosterAttribute() {
-        return "storage/{$this->poster}/200.webp";
+    public function setSlugAttribute($value) {
+        if (isset($this->slug) && Storage::exists("public/films/{$this->slug}")) {
+            if ($value != $this->slug)
+            Storage::move("public/films/{$this->slug}", "public/films/{$value}");
+        } else {
+            Storage::makeDirectory("public/films/{$value}");
+            Storage::makeDirectory("public/films/{$value}/poster");
+            Storage::makeDirectory("public/films/{$value}/frame");
+        }
+        $this->attributes['slug'] = $value;
     }
 
-    public function getSmallFrameAttribute() {
-        return "storage/{$this->frame}/800.webp";
+    public function getSmallPosterAttribute(): string
+    {
+        return "storage/films/{$this->slug}/poster/200.webp";
+    }
+
+    public function getSmallFrameAttribute(): string
+    {
+        return "storage/films/{$this->slug}/frame/1000.webp";
     }
 
     protected $casts = [
@@ -33,10 +40,6 @@ class Film extends Model
     protected $attributes = [];
 
     protected $guarded = [];
-
-    public function getSlugTitleAttribute() {
-        return STR::slug($this->title, "-");
-    }
 
     // RELETIONSHIPS
     public function events() {
@@ -51,33 +54,34 @@ class Film extends Model
     protected static function booted() {
 
         static::deleted(function ($film) {
-            $film->deletePoster();
-            $film->deleteFrame();
+            $film->deleteDirectoryFilm();
             $film->delete();
         });
+
+    }
+
+    public function deleteDirectoryFilm() {
+        $dir = "public/films/{$this->slug}";
+        $this->deleteDirectory($dir);
     }
 
     public function deletePoster() {
-        if (isset($this->poster)) {
-            $dir ="public/{$this->poster}";
-            $this->deleteDirectory($dir);
-            $this->poster = null;
-            $this->save();
-        }
+        $dir = "public/films/{$this->slug}/poster";
+        $this->deleteFiles($dir);
     }
 
     public function deleteFrame() {
-        if (isset($this->frame)) {
-            $dir = "public/{$this->frame}";
-            $this->deleteDirectory($dir);
-            $this->frame = null;
-            $this->save();
-        }
+        $dir = "public/films/{$this->slug}/frame";
+        $this->deleteFiles($dir);
+    }
+
+    private function deleteFiles($dir) {
+        $files = Storage::files($dir);
+        Storage::delete($files);
     }
 
     private function deleteDirectory($dir) {
-        $files = Storage::files($dir);
-        Storage::delete($files);
+        $this->deleteFiles($dir);
         Storage::deleteDirectory($dir);
     }
 }

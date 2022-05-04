@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Film\StoreFilmRequest;
 use App\Http\Requests\Film\UpdateFilmRequest;
 use App\Models\Event;
+use App\Models\Festival;
 use App\Models\Film;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Image;
-use App\Helpers\Filters;
+use App\Helpers\Filters\FrameResizesEncodingFilter;
+use App\Helpers\Filters\ResizesEncodingFilter;
+use Str;
 
 class FilmController extends Controller
 {
@@ -46,20 +49,20 @@ class FilmController extends Controller
      */
     public function store(StoreFilmRequest $request)
     {
-        $validated_film = $request->safe()->only(['title', 'tag', 'poster', 'synopsis', 'info']);
+        $validated_film = $request->safe()->only(['title', 'tag', 'director', 'synopsis','trailer', 'info']);
         $validated_events = $request->safe()->collect()->only(['events'])->first();
-
-        //$validated_film['info'] = array_reverse($validated_film['info']);
-
         $film = Film::create($validated_film);
-        $title_slug = $film->slug_title;
-        $path = 'posters/' . $title_slug . "-" . $film->id;
-        $path_frame = 'frames/' . $title_slug . "-" . $film->id;
-        $film->poster = $path;
-        $film->frame = $path_frame;
+
+        if (Film::query()->where('title', '=', $validated_film['title'])->count() > 1) {
+            $film->slug = Str::slug($film->title, '-') . '-' . $film->id;
+        } else {
+            $film->slug = Str::slug($film->title, '-');
+        }
+
+        $path = "app/public/films/{$film->slug}";
         $film->save();
-        Image::make($request->file('poster'))->filter(new Filters\ResizesEncodingFilter($request->file('poster')->extension(), storage_path('app/public/' . $path)));
-        Image::make($request->file('frame'))->filter(new Filters\FrameResizesEncodingFilter($request->file('frame')->extension(), storage_path('app/public/' . $path_frame)));
+        Image::make($request->file('poster'))->filter(new ResizesEncodingFilter( storage_path("{$path}/poster")));
+        Image::make($request->file('frame'))->filter(new FrameResizesEncodingFilter( storage_path("{$path}/frame")));
         if ($validated_events) {
             foreach ($validated_events as $event) {
                 $event = new Event($event);
@@ -112,26 +115,29 @@ class FilmController extends Controller
     public function update(UpdateFilmRequest $request, Film $film)
     {
         $validated = $request->validated();
-        if (isset($validated['poster'])) {
-            $film->deletePoster();
-        }
         $film->title = $validated['title'];
         $film->synopsis = $validated['synopsis'];
         $film->tag = $validated['tag'];
-        if (isset($validated['info'])) {
-            $film->info = $validated['info'];
+        $film->info = $validated['info'];
+
+        if (Film::query()->where('title', '=',$validated['title'])->count() > 1) {
+            $film->slug = Str::slug($film->title, '-') . '-' . $film->id;
+        } else {
+            $film->slug = Str::slug($film->title, '-');
         }
-        $title_slug = $film->slug_title;
-        $path = 'posters/' . $title_slug . "-" . $film->id;
-        $path_frame = 'frames/' . $title_slug . "-" . $film->id;
+
+        $path = "app/public/films/{$film->slug}";
+
         if (isset($validated['poster'])) {
-            Image::make($request->file('poster'))->filter(new Filters\ResizesEncodingFilter($request->file('poster')->extension(), storage_path('app/public/' . $path)));
-            $film->poster = $path;
+            $film->deletePoster();
+            Image::make($request->file('poster'))->filter(new ResizesEncodingFilter( storage_path("{$path}/poster")));
         }
+
         if (isset($validated['frame'])) {
-            Image::make($request->file('frame'))->filter(new Filters\FrameResizesEncodingFilter($request->file('frame')->extension(), storage_path('app/public/' . $path_frame)));
-            $film->frame = $path_frame;
+            $film->deleteFrame();
+            Image::make($request->file('frame'))->filter(new FrameResizesEncodingFilter( storage_path("{$path}/frame")));
         }
+
         $film->save();
         return response()->redirectToRoute('admin.film.index');
     }
@@ -140,8 +146,6 @@ class FilmController extends Controller
     public function destroy(Film $film, Request $request)
     {
         $film->events()->delete();
-        $film->deletePoster();
-        $film->deleteFrame();
         $film->delete();
         return response()->redirectToRoute('admin.film.index');
     }

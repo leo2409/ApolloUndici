@@ -19,12 +19,17 @@ class Festival extends Model
         'organizers' => 'array',
     ];
 
-    public function getSlugNameAttribute() {
-        return STR::slug($this->name, "-");
+    public function getMediumCoverAttribute(): string
+    {
+        return "storage/festivals/{$this->cover}/1000.webp";
     }
 
-    public function getMediumCoverAttribute() {
-        return "storage/festivals/{$this->cover}/800.webp";
+    protected static function booted() {
+
+        static::deleted(function ($film) {
+            $film->deleteCover();
+            $film->delete();
+        });
     }
 
     public function deleteCover() {

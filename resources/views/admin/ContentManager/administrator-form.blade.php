@@ -1,5 +1,5 @@
 <x-layouts.admin>
-    <form action="/admin/administrator{{ isset($administrator->id) ? "/{$administrator->id}" : "" }}" method="post" enctype="multipart/form-data" class="pb-5 mt-3 bg-admin-gray space-y-4 border-t border-b border-gray-300">
+    <form action="/admin/administrator{{ isset($administrator->id) ? "/{$administrator->id}" : "" }}" method="post" class="pb-5 mt-3 bg-admin-gray space-y-4 border-t border-b border-gray-300">
         @csrf
         @if(isset($administrator))
             @method('PUT')

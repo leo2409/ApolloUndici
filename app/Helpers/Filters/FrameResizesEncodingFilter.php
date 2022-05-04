@@ -7,29 +7,33 @@ use Intervention\Image\Image;
 
 class FrameResizesEncodingFilter implements FilterInterface {
 
-    private $extension;
     private $path;
 
-    public function __construct($extension, $path) {
-        $this->extension = $extension;
+    public function __construct($path) {
         $this->path = $path;
     }
 
     public function applyFilter(Image $image)
     {
-        if (!file_exists($this->path)) {
-            mkdir($this->path);
-        }
         $image->backup();
-        $image->save($this->path . '/original.' . $this->extension);
+
+        $image->resize(1000,null, function ($contraint) {
+            $contraint->aspectRatio();
+            $contraint->upsize();
+        })->save($this->path . '/1000.jpg');
+
+        $image->reset();
+
         $image->resize(500,null, function ($contraint) {
             $contraint->aspectRatio();
             $contraint->upsize();
         })->save($this->path . '/500.webp');
+
         $image->reset();
-        $image->resize(800,null, function ($contraint) {
+
+        $image->resize(1000,null, function ($contraint) {
             $contraint->aspectRatio();
             $contraint->upsize();
-        })->save($this->path . '/800.webp');
+        })->save($this->path . '/1000.webp');
     }
 }

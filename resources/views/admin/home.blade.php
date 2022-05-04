@@ -5,7 +5,7 @@
             <span class="text-sm font-semibold">Aggiungi</span>
             <img src="{{ asset('cms/images/plus.png') }}" alt="icon add" class="h-7">
         </a>
-        <div class="flex flex-row justify-center flex-wrap items-start gap-4 max-w-screen-2xl mx-auto">
+        <div class="flex flex-row justify-center flex-wrap items-start gap-4 max-w-screen-2xl mx-auto pb-10">
             @foreach($films as $film)
                 <div class="w-screen max-w-screen-sm">
                     <div class="sm:border-l sm:border-r sm:rounded-xl">
@@ -35,8 +35,12 @@
                             <img src="{{ asset($film->small_poster) }}" alt="locandina {{ $film->title }}" class="h-44 w-32 sm:rounded-bl-xl">
                             <div class="flex-1 items-stretch h-44 overflow-auto px-2">
                                 <h2 class="text-left text-xl">{{ $film->title }}</h2>
+                                <p class="" >di {{ $film->director }}</p>
                                 <p class="text-gray-500 text-sm max-w-full">{{ $film->tag }}</p>
                                 <p class="text-sm font-normal">{{ $film->synopsis }}</p>
+                                <hr>
+                                <a href="{{ $film->trailer }}" class="text-blue-600">Trailer</a>
+                                <hr>
                                 @if($film->info)
                                     @foreach($film->info as $key => $value)
                                         <x-film-info :key="$key" :value="$value"/>

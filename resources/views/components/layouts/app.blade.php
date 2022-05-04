@@ -4,9 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+    <link rel=”apple-touch-icon” href=”{{ asset('images/apple-touch-icon.png') }}” />
     <meta name="theme-color" content="#010101" />
 
     <title>{{ $title }}</title>
+
+    <!-- TODO: RENDERLE ASYNCH -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0RG2KDLCZ"></script>
@@ -17,9 +22,6 @@
 
         gtag('config', 'G-Y0RG2KDLCZ');
     </script>
-
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body class="pt-16 bg-a-gray text-white min-h-screen flex flex-col justify-between font-sans">
     <div class="">
@@ -27,27 +29,27 @@
             <div class="max-w-screen-lg mx-auto flex flex-row justify-between items-center px-3">
                 <!-- logo -->
                 <a href="{{ route('home_page') }}">
-                    <img src="{{ asset('images/logo-navbar.png') }}" alt="logo apollo" class="h-14 py-1 px-2">
+                    <img src="{{ asset('images/logo/logo-colori-nuovi.webp') }}" alt="logo apollo" class="h-14 py-1 px-2">
                 </a>
                 <!-- burger button  -->
-                <button type="button" onclick="burgerButton()" class="no-double-tap-zoom space-y-2 sm:hidden py-2 px-2 transition-all ease-in-out duration-200">
+                <button type="button" onclick="burgerButton()" class="no-double-tap-zoom space-y-2 md:hidden py-2 px-2 transition-all ease-in-out duration-200">
                     <div id="l1" class="w-10 h-1 bg-gray-100 rounded-full transform transition-all ease-in-out duration-200"></div>
                     <div id="l2" class="w-10 h-1 bg-gray-100 rounded-full transform transition-all ease-in-out duration-200"></div>
                     <div id="l3" class="ml-auto w-7 h-1 bg-gray-100 rounded-full transform transition-all ease-in-out duration-400"></div>
                 </button>
 
-                <div class="hidden sm:block flex sm:flex-row space-x-3">
-                    <a href="/soci/info" class="text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1">Tesseramento</a>
-                    <a href="{{ route('rassegne.show', ['name' => 'racconti-dal-vero', 'festival' => 1]) }}" class="text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1">Racconti dal Vero</a>
-                    <a href="{{ route('chi-siamo') }}" class="text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1">Chi Siamo</a>
-                    <a href="{{ route('contatti') }}" class="text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1">Contatti</a>
+                <div class="hidden md:block flex sm:flex-row space-x-3  ">
+                    <a href="/soci/info" class="text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1 tracking-wide">Tesseramento</a>
+                    <a href="{{ route('rassegne.show', ['festival' => 'racconti-dal-vero']) }}" class="text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1 tracking-wide">Racconti dal Vero</a>
+                    <a href="{{ route('chi-siamo') }}" class="text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1 tracking-wide">Chi Siamo</a>
+                    <a href="{{ route('contatti') }}" class="text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1 tracking-wide">Contatti</a>
                 </div>
             </div>
             <div id="menu" class="w-full hidden flex-col flex transform space-y-4 justify-center text-center my-4">
-                <a href="/soci/info" class="text-lg text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1">Tesseramento</a>
-                <a href="{{ route('rassegne.show', ['name' => 'racconti-dal-vero', 'festival' => 1]) }}" class="text-lg text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1">Racconti dal Vero</a>
-                <a href="{{ route('chi-siamo') }}" class="text-lg text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1">Chi siamo</a>
-                <a href="{{ route('contatti') }}" class="text-lg text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1">Contatti</a>
+                <a href="/soci/info" class="text-lg text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1 font-bold tracking-wider">TESSERAMENTO</a>
+                <a href="{{ route('rassegne.show', ['name' => 'racconti-dal-vero', 'festival' => 1]) }}" class="text-lg text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1 font-bold tracking-wider">RACCONTI DAL VERO</a>
+                <a href="{{ route('chi-siamo') }}" class="text-lg text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1 font-bold tracking-wider">CHI SIAMO</a>
+                <a href="{{ route('contatti') }}" class="text-lg text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1 font-bold tracking-wider">CONTATTI</a>
                 <div class="w-full flex-row flex justify-center items-center gap-x-4 pt-2">
                     <a href="https://it-it.facebook.com/apollo.undici.31/">
                         <img src="{{ asset('images/facebook.png') }}" alt="Facebook icon" class="h-8">

@@ -1,7 +1,7 @@
 <x-layouts.app :title="$title">
-    <main class="mt-2 max-w-screen-md mx-auto rounded-4xl bg-3down text-center py-6 shadow-lg-center-black border border-black relative">
+    <main class="mt-4 max-w-screen-md mx-auto rounded-4xl bg-3down text-center py-6 shadow-lg-center-black border border-black relative">
         <div class="space-y-6">
-            @if (isset($days))
+            @if (sizeof($days) > 0)
                 @foreach ($days as $date => $day)
                     <section>
                         @if(sizeof($day) == 1)
@@ -20,7 +20,7 @@
                     </section>
                 @endforeach
             @else
-                <h2 class="text-4xl text-a-orange text-shadow-sm-orange">Non ci sono eventi in programma</h2>
+                <h2 class="text-2xl text-a-orange text-shadow-sm-orange">Non ci sono eventi in programma</h2>
             @endif
         </div>
         <div class="absolute w-full h-full bg-texture top-0 opacity-10 hidden"></div>

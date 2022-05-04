@@ -1,5 +1,5 @@
 <x-layouts.app :title="$title">
-    <main class="mt-2 max-w-screen-md mx-auto rounded-4xl bg-3down text-left py-6 shadow-lg-center-black border border-black relative px-4 my-3 leading-7">
+    <main class="mt-4 max-w-screen-md mx-auto rounded-4xl bg-3down text-left py-6 shadow-lg-center-black border border-black relative px-4 my-3 leading-7">
         <div class="space-y-3 text-gray-400">
             <p>
                 È impossibile riassumere più di vent’anni di attività in poche righe… dunque questo è un accenno non esaustivo, mancano certamente iniziative, eventi, nominativi di partner, collaboratori, ecc.

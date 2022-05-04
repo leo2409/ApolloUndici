@@ -24,11 +24,13 @@ class StoreFilmRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|min:2|max:255',
+            'title' => 'required|string|max:255',
             'tag' => 'nullable|string|max:255',
             'poster' => 'required|image|mimes:jpg,jpeg,png,webp',
             'frame' => 'required|image|mimes:jpg,jpeg,png,webp',
+            'director' => 'required|string|max:255',
             'synopsis' => 'required|string',
+            'trailer' => 'nullable|url|string|max:255',
             'info' => 'array',
             'info.*' => 'required|string',
             'events' => 'array',

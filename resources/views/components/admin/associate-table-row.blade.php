@@ -7,7 +7,11 @@
     <td class="px-3 py-1">{{ $user->name }}</td>
     <td class="px-3 py-1">{{ $user->status }}</td>
     <td class="px-3 py-1">
-        <button id="accept-button" type="button" class="border border-gray-700 rounded-full px-3 py-1 bg-blue-300 font-semibold">Accetta</button>
-        <button id="pay-button" type="button" class="border border-gray-700 rounded-full px-3 py-1 bg-blue-300 font-semibold hidden">{{ $user->accepted ? 'Paga' : 'Accetta e Paga' }}</button>
+        @if(!$user->accepted || $user->accepted == null)
+            <button id="accept-button" onclick="acceptAssociate({{ $user->id }})" type="button" class="border border-gray-700 rounded-full px-3 py-1 bg-blue-300 font-semibold">Accetta</button>
+        @endif
+        @if($user->status != 'attivo')
+                <button id="pay-button" onclick="accept({{ $user->id }})" type="button" class="border border-gray-700 rounded-full px-3 py-1 bg-blue-300 font-semibold hidden">{{ $user->accepted ? 'Paga' : 'Accetta e Paga' }}</button>
+        @endif
     </td>
 </tr>

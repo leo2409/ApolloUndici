@@ -11,7 +11,7 @@
             </div>
             <div class="mt-2 mx-3">
                 <label for="cover" class="mb-0 5 font-semibold">Copertina</label>
-                <input type="file" onchange="imagePreview(this, 'cover_preview')" name="cover" id="cover" accept="image/jpeg,image/png" tabindex="0"/>
+                <input type="file" onchange="imagePreview(this, 'cover_preview')" name="cover" id="cover" accept="image/jpeg,image/png" tabindex="0" autofocus/>
                 <p class="text-sm text-gray-700 ml-3">File png o jpeg proporzioni 16:9 dimensioni file < 8MB</p>
                 @error('cover')
                 <p class="text-sm text-red-500 mt-1">

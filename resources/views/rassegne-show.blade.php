@@ -1,5 +1,5 @@
 <x-layouts.app :title="$title">
-    <main class="rounded-4xl bg-3down mt-3 pb-4 shadow-lg-center-black border border-black max-w-screen-md mx-auto">
+    <main class="rounded-4xl bg-3down mt-4 pb-4 shadow-lg-center-black border border-black max-w-screen-md mx-auto">
         <div>
             <div class="mx-6 mb-2 mt-3 font-bold">
                 <p>RASSEGNA</p>
@@ -17,10 +17,10 @@
             </div>
             <div class="px-3">
                 <h2 class="text-center text-a-blue text-3xl">Prossimi Appuntamenti</h2>
-                <div class="flex-row flex flex-nowrap items-start overflow-x-scroll gap-x-4 my-4 mx-4">
+                <div class="flex-row flex flex-nowrap items-start overflow-x-scroll gap-x-4 my-4 ml-4">
                     @foreach($events ?? [] as $event)
                         <div class="w-36">
-                            <a href="/film/{{ $event->film->slug_title }}/{{ $event->id }}">
+                            <a href="/film/{{ $event->film->slug }}/{{ $event->id }}">
                                 <div class="text-center mb-1 ">
                                     <p class="uppercase">{{ $event->carbon_date->translatedFormat('D j M') }}</p>
                                 </div>

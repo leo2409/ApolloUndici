@@ -39,11 +39,13 @@ Route::get('/', function () {
     ]);
 })->name('home_page');
 
-Route::get('/film/{title}/{event}', function ($title, Event $event) {
+Route::get('/film/{film:slug}/{event}', function (Film $film, Event $event) {
+    if ($event->film_id != $film->id) {
+        abort(404);
+    }
     $festival = $event->festival;
-    $film = $event->film()->get()->first();
     return view('event-info', [
-        'title' => "{$film->title} Date e Orari - Apollo 11",
+        'title' => "{$film->title} - Apollo 11",
         'event' => $event,
         'film' => $film,
         'rassegna' => $festival,
@@ -64,7 +66,7 @@ Route::get('/rassegne', function () {
 })->name('rassegne.index');
 */
 
-Route::get('/rassegne/{name}/{festival}', function ($name, Festival $festival){
+Route::get('/rassegne/{festival:slug}', function (Festival $festival){
     $events = $festival->events()
         ->where('date','>=',today())
         ->orderBy('date')
@@ -119,6 +121,9 @@ Route::middleware('auth:admin')->prefix('/admin')->name('admin.')->group(functio
 
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/logout', [ProfileController::class, 'logOut'])->name('profile.logout');
+
+    // TODO: RICONTROLLARE
+    Route::get('/soci/ajax-search', [AssociateController::class, 'ajaxSearch']);
 
     Route::resource('soci', AssociateController::class);
 

@@ -2,7 +2,7 @@
     <div class="pb-5 pt-2 mt-5 bg-admin-gray border-t border-b border-gray-300">
         <div class="max-w-screen-md mx-auto px-2">
             <div class="flex flex-row flex-nowrap justify-end gap-x-6 items-center px-2 pb-4">
-                <a href="/film/{{ $film->slug_title }}/{{ $film->events[0]->id }}" class="text-center text-white border border-gray-300 rounded-full bg-blue-600 px-4 py-2 hover:bg-gray-300 block" role="menuitem">Visualizza</a>
+                <a href="/film/{{ $film->slug }}/{{ $film->events[0]->id }}" class="text-center text-white border border-gray-300 rounded-full bg-blue-600 px-4 py-2 hover:bg-gray-300 block" role="menuitem">Visualizza</a>
                 <form id="delete" action="/admin/film/{{ $film->id }}/events/{{ $event->id }}" method="post">
                     @csrf
                     @method('DELETE')
@@ -108,10 +108,10 @@
                                 </button>
                             </div>
                         </div>
-                        @if(!isset($event->info['incontro con']) && old('title') === null)
+                        @if((!isset($event) || empty($event['info'])) && old('title') === null)
                             <x-admin.component-info-form :key="'incontro con'" :value="''"/>
                         @endif
-                        @if(!isset($event->info['a cura di']) && old('title') === null)
+                        @if((!isset($event) || empty($event['info'])) && old('title') === null)
                             <x-admin.component-info-form :key="'a cura di'" :value="''"/>
                         @endif
                         @foreach(old('info') ?? $event->info ?? [] as $key => $value)

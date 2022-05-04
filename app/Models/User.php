@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\UserStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
@@ -25,18 +26,10 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function getStatusAttribute() {
-        if ($this->accepted && $this->associated_at->year == now()->year) {
-            return 'attivo';
-        } elseif ($this->attributes['accepted'] === 1) {
-            return 'rinnovo';
-        } elseif ($this->attributes['accepted'] === null) {
-            return 'nuovo';
-        } elseif ($this->attributes['accepted'] === 0) {
-            return 'rifiutato';
-        }
+
     }
 
-        //relations
+    //relations
     public function bookings() {
         return $this->hasMany(Booking::class);
     }
@@ -66,5 +59,6 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
         'associated_at' => 'datetime',
+        'status' => UserStatus::class,
     ];
 }

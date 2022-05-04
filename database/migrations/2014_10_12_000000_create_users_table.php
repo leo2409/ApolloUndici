@@ -25,11 +25,14 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('accepted')->nullable();
             $table->timestamp('associated_at')->nullable();
+            $table->enum('status', ['richiedente', 'nuovo', 'rinnovo', 'rifiutato']);
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
     }
+
+    //TODO: ADD STATUS COLUMN MIGRATION
 
     /**
      * Reverse the migrations.

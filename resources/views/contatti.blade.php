@@ -1,5 +1,5 @@
 <x-layouts.app :title="$title">
-    <main class="mt-2 max-w-screen-md mx-auto rounded-4xl bg-3down text-left py-6 shadow-lg-center-black border border-black relative">
+    <main class="mt-4 max-w-screen-md mx-auto rounded-4xl bg-3down text-left py-6 shadow-lg-center-black border border-black relative">
         <div class="mx-6">
             <h1 class="text-3xl text-a-orange mb-2">CONTATTI</h1>
             <p>

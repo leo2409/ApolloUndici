@@ -1,53 +1,52 @@
 <x-layouts.app :title="$title">
-    <main class="rounded-4xl bg-3down pb-6 shadow-lg-center-black border border-black max-w-screen-md mx-auto mt-3">
+    <main class="rounded-4xl bg-3down pb-6 shadow-lg-center-black border border-black max-w-screen-md mx-auto mt-4">
         <div>
             <div class="my-2 flex flex-row justify-between mx-4 pt-1 items-center">
                 <div class="flex flex-row gap-5 font-bold">
                     <p>{{ strtoupper($event->date_readable) }}</p>
                     <p>H {{ $event->time }}</p>
                 </div>
-                @if(isset($film->info['Trailer']))
-                    <div>
-                        <a href="{{ $film->info['Trailer'] }}" class="text-blue-400 px-1 font-bold">Trailer</a>
-                    </div>
-                @endif
+                <div>
+                    <a href="{{ $film->trailer }}" class="text-blue-400 px-1 font-bold">Trailer</a>
+                </div>
             </div>
             <div class="relative">
                 <img src="{{ asset($film->small_frame) }}" alt="frame di {{ $film->title }}" class="w-full">
                 @if(isset($rassegna))
-                    <a class="absolute bottom-6 right-0 bg-a-orange text-black px-3 py-1 text-md font-semibold" href="{{ route('rassegne.show', ['name' => $rassegna->slug_name,'festival' => $rassegna->id]) }}">
+                    <a class="absolute bottom-6 right-0 bg-a-orange text-black px-3 py-1 text-md font-semibold" href="{{ route('rassegne.show', ['festival' => $rassegna->slug]) }}">
                         {{ strtoupper($rassegna->name) }}
                     </a>
                 @endif
             </div>
             <div class="px-3 mt-4">
-                <div>
+                <div class="pb-1">
                     <p class="font-semibold text-sm text-gray-300" >{{ $film->tag }}</p>
                     <h1 class="text-a-blue text-2xl">{{ strtoupper($film->title) }}</h1>
-                    @if(isset($film->info['Regia']))
-                        <p><span class="text-gray-500">di </span>{{ $film->info['Regia'] }}</p>
-                    @endif
+                    <p><span class="text-gray-400">di </span>{{ $film->director }}</p>
                 </div>
                 <div class="space-y-3 my-2">
-                    <div>
-                        @foreach($event->info ?? [] as $key => $value)
+                    @if(isset($event->info))
+                        <hr>
+                        <div>
+                            @foreach($event->info ?? [] as $key => $value)
                                 <div>
-                                    <h6 class="text-gray-500 inline">{{ $key }}: </h6>
+                                    <h6 class="text-gray-400 inline">{{ $key }}: </h6>
                                     <span class="text-a-orange">{{ $value }}</span>
                                 </div>
-                        @endforeach
-                    </div>
+                            @endforeach
+                        </div>
+                        <hr>
+                    @endif
                     @if(isset($film->synopsis))
                         <div>
-                            <h6>Sinossi:</h6>
-                            <p class="text-gray-500">{{ $film->synopsis }}</p>
+                            <p class="text-gray-400">{{ $film->synopsis }}</p>
                         </div>
                     @endif
                     <div class="space-y-1">
                         @foreach($film->info ?? [] as $key => $value)
                             <div>
-                                <h6 class="text-white inline">{{ $key }}: </h6>
-                                <p class="text-gray-500">{{ $value }}</p>
+                                <h6 class="text-gray-400 inline-block">{{ $key }}: </h6>
+                                <p class="">{{ $value }}</p>
                             </div>
                         @endforeach
                     </div>
@@ -69,11 +68,11 @@
                             @foreach($list as $e)
                                 <td class="py-2">
                                     @if($event->description)
-                                        <a href="{{ URL::route('film.info', ['title' => $film->slug_title, 'event' => $e->id]) }}" class="border border-a-yellow rounded-full px-1 py-1 w-14 text-a-yellow">
+                                        <a href="{{ URL::route('film.info', ['film' => $film->slug, 'event' => $e->id]) }}" class="border border-a-yellow rounded-full px-1 py-1 w-14 text-a-yellow">
                                             {{ $e->time }}
                                         </a>
                                     @else
-                                        <a href="{{ URL::route('film.info', ['title' => $film->slug_title, 'event' => $e->id]) }}" class="border border-gray-300 rounded-full px-1 py-1 w-14">
+                                        <a href="{{ URL::route('film.info', ['film' => $film->slug, 'event' => $e->id]) }}" class="border border-gray-300 rounded-full px-1 py-1 w-14">
                                             {{ $e->time }}
                                         </a>
                                     @endif

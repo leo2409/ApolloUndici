@@ -73,6 +73,9 @@ class EventController extends Controller
     public function update(EventRequest $request, Film $film, Event $event)
     {
         $validated = $request->validated();
+        if (!isset($validated['info'])) {
+            $validated['info'] = [];
+        }
         $event->update($validated);
         $film->touch();
         return response()->redirectToRoute('admin.film.events.create', ['film' => $film->id]);
