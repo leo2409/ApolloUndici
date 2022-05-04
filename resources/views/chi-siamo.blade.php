@@ -112,10 +112,10 @@
         </article>
         <div class="mt-5">
             <h2 class="text-2xl text-a-blue pb-1 font-bold">PARTNER</h2>
-            <div>
-                <p>
-                    Da definire (tra associazioni di autori e comitati di quartiere, Premio Solinas per il Documentario per il Cinema, Zalab, Punto Einaudi via Merulana, Edizioni dll’Asino, Accademia delle Belle Arti di Roma)
-                </p>
+            <div class="mt-2">
+                <a href="https://www.periferiacapitale.org/">
+                    <img class=" w-80" src="{{ asset('images/partner/periferiacapitale.png') }}" alt="logo periferia capitale">
+                </a>
             </div>
         </div>
     </main>

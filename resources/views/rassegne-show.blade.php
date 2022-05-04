@@ -17,7 +17,7 @@
             </div>
             <div class="px-3">
                 <h2 class="text-center text-a-blue text-3xl">Prossimi Appuntamenti</h2>
-                <div class="flex-row flex flex-nowrap items-start overflow-x-scroll gap-x-4 my-4 ml-4">
+                <div class="flex-row flex flex-nowrap items-start overflow-x-scroll gap-x-4 my-4 ml-2">
                     @foreach($events ?? [] as $event)
                         <div class="w-36">
                             <a href="/film/{{ $event->film->slug }}/{{ $event->id }}">
