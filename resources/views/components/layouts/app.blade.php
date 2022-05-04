@@ -47,7 +47,7 @@
             </div>
             <div id="menu" class="w-full hidden flex-col flex transform space-y-4 justify-center text-center my-4">
                 <a href="/soci/info" class="text-lg text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1 font-bold tracking-wider">TESSERAMENTO</a>
-                <a href="{{ route('rassegne.show', ['name' => 'racconti-dal-vero', 'festival' => 1]) }}" class="text-lg text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1 font-bold tracking-wider">RACCONTI DAL VERO</a>
+                <a href="{{ route('rassegne.show', ['festival' => 'racconti-dal-vero']) }}" class="text-lg text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1 font-bold tracking-wider">RACCONTI DAL VERO</a>
                 <a href="{{ route('chi-siamo') }}" class="text-lg text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1 font-bold tracking-wider">CHI SIAMO</a>
                 <a href="{{ route('contatti') }}" class="text-lg text-a-blue hover:text-shadow-sm-blue active:text-a-orange active:text-shadow-sm-orange py-2 px-1 font-bold tracking-wider">CONTATTI</a>
                 <div class="w-full flex-row flex justify-center items-center gap-x-4 pt-2">
