@@ -112,9 +112,12 @@
         </article>
         <div class="mt-5">
             <h2 class="text-2xl text-a-blue pb-1 font-bold">PARTNER</h2>
-            <div class="mt-2">
-                <a href="https://www.periferiacapitale.org/">
-                    <img class=" w-80" src="{{ asset('images/partner/periferiacapitale.png') }}" alt="logo periferia capitale">
+            <div class="mt-2 flex gap-x-4 flex-row flex-wrap justify-center items-center">
+                <a class="rounded-xl px-3 py-4 hover:shadow-sm-center-white" href="https://www.periferiacapitale.org/" target="_blank">
+                    <img class="w-56" src="{{ asset('images/partner/periferiacapitale.png') }}" alt="logo periferia capitale">
+                </a>
+                <a class="" href="https://www.zalab.org/" target="_blank">
+                    <img class="w-24" src="{{ asset('images/partner/logo ZaLab BIANCO trasparente.png') }}" alt="logo zalab">
                 </a>
             </div>
         </div>

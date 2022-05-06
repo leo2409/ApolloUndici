@@ -14,6 +14,7 @@ use App\Models\Film;
 use App\Http\Requests\User\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FilmController;
+use Spatie\Sitemap\SitemapGenerator;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,6 +93,11 @@ Route::get('/contatti', function() {
 
 Route::get('/soci/info', [UserController::class, 'index'])->name('soci.info');
 
+Route::get('/sitemap', function () {
+    $path = public_path().'/sitemap.xml';
+    SitemapGenerator::create('https://apolloundici.it')->writeToFile($path);
+});
+
 // TODO: RIATTIVARE QUESTE ROUTE
 //Route::get('/soci/modulo', [UserController::class, 'create']);
 
@@ -131,7 +137,7 @@ Route::middleware('auth:admin')->prefix('/admin')->name('admin.')->group(functio
 
     Route::resource('rassegne', FestivalController::class);
 
-    //TODO ELEMINATE USELESS ROUTE
+    // TODO ELEMINATE USELESS ROUTE
     Route::resource('film', FilmController::class);
 
     Route::resource('film.events', EventController::class);
