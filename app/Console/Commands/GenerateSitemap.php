@@ -8,7 +8,6 @@ use Illuminate\Console\Command;
 use Carbon\Carbon;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
-use function Sodium\add;
 
 
 class GenerateSitemap extends Command
