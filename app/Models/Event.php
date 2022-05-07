@@ -73,7 +73,7 @@ class Event extends Model implements Sitemapable
                 ->setPriority(0.8);
         } else {
             $url->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
-                ->setPriority(0.4)->setUrl();
+                ->setPriority(0.4);
         }
         return $url;
     }
