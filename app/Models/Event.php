@@ -5,8 +5,10 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sitemap\Contracts\Sitemapable;
+use Spatie\Sitemap\Tags\Url;
 
-class Event extends Model
+class Event extends Model implements Sitemapable
 {
     use HasFactory;
 
@@ -59,5 +61,20 @@ class Event extends Model
 
     public function bookings() {
         return $this->hasMany(Booking::class);
+    }
+
+    public function toSitemapTag(): Url|string|array
+    {
+        $url =  Url::create(route('film.info', ['film' => $this->film->slug, 'event' => $this->id]))
+            ->setLastModificationDate($this->updated_at);
+
+        if ($this->carbon_date->gt(now()))  {
+            $url->setChangeFrequency(Url::CHANGE_FREQUENCY_DAILY)
+                ->setPriority(0.8);
+        } else {
+            $url->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                ->setPriority(0.4)->setUrl();
+        }
+        return $url;
     }
 }

@@ -2,10 +2,13 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Event;
+use App\Models\Festival;
 use Illuminate\Console\Command;
 use Carbon\Carbon;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
+use function Sodium\add;
 
 
 class GenerateSitemap extends Command
@@ -57,6 +60,12 @@ class GenerateSitemap extends Command
                 ->setLastModificationDate(Carbon::yesterday())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                 ->setPriority(1.0))
+            ->add(Url::create('/soci/info')
+                ->setLastModificationDate(Carbon::yesterday())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                ->setPriority(1.0))
+            ->add(Event::all())
+            ->add(Festival::all())
             ->writeToFile($path);
     }
 }
