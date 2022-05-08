@@ -120,7 +120,7 @@ class FilmController extends Controller
         $film->title = $validated['title'];
         $film->synopsis = $validated['synopsis'];
         $film->tag = $validated['tag'];
-        $film->info = $validated['info'];
+        $film->info = $validated['info'] ?? [];
 
         if (Film::query()->where('title', '=',$validated['title'])->count() > 1) {
             $slug = Str::slug($film->title, '-') . '-' . $film->id;
