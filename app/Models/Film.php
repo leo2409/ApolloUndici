@@ -56,7 +56,9 @@ class Film extends Model
 
     public function renameDirectoryFilm($slug) {
         if (Storage::exists("public/films/{$this->slug}")) {
-            Storage::move("public/films/{$this->slug}", "public/films/{$slug}");
+            if ($slug != $this->slug) {
+                Storage::move("public/films/{$this->slug}", "public/films/{$slug}");
+            }
         } else {
             $this->makeDirectoryFilm($slug);
         }
