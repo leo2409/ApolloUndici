@@ -11,18 +11,6 @@ class Film extends Model
     use HasFactory;
 
 
-    public function setSlugAttribute($value) {
-        if (isset($this->slug) && Storage::exists("public/films/{$this->slug}")) {
-            if ($value != $this->slug)
-            Storage::move("public/films/{$this->slug}", "public/films/{$value}");
-        } else {
-            Storage::makeDirectory("public/films/{$value}");
-            Storage::makeDirectory("public/films/{$value}/poster");
-            Storage::makeDirectory("public/films/{$value}/frame");
-        }
-        $this->attributes['slug'] = $value;
-    }
-
     public function getSmallPosterAttribute(): string
     {
         return "storage/films/{$this->slug}/poster/200.webp";
@@ -58,6 +46,20 @@ class Film extends Model
             $film->delete();
         });
 
+    }
+
+    public function makeDirectoryFilm($slug) {
+        Storage::makeDirectory("public/films/{$slug}");
+        Storage::makeDirectory("public/films/{$slug}/poster");
+        Storage::makeDirectory("public/films/{$slug}/frame");
+    }
+
+    public function renameDirectoryFilm($slug) {
+        if (Storage::exists("public/films/{$this->slug}")) {
+            Storage::move("public/films/{$this->slug}", "public/films/{$slug}");
+        } else {
+            $this->makeDirectoryFilm($slug);
+        }
     }
 
     public function deleteDirectoryFilm() {

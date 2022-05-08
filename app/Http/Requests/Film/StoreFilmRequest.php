@@ -23,6 +23,7 @@ class StoreFilmRequest extends FormRequest
      */
     public function rules()
     {
+        //TODO: add max size file
         return [
             'title' => 'required|string|max:255',
             'tag' => 'nullable|string|max:255',

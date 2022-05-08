@@ -59,6 +59,8 @@ class FilmController extends Controller
             $film->slug = Str::slug($film->title, '-');
         }
 
+        $film->makeDirectoryFilm($film->slug);
+
         $path = "app/public/films/{$film->slug}";
         $film->save();
         Image::make($request->file('poster'))->filter(new ResizesEncodingFilter( storage_path("{$path}/poster")));
@@ -121,10 +123,13 @@ class FilmController extends Controller
         $film->info = $validated['info'];
 
         if (Film::query()->where('title', '=',$validated['title'])->count() > 1) {
-            $film->slug = Str::slug($film->title, '-') . '-' . $film->id;
+            $slug = Str::slug($film->title, '-') . '-' . $film->id;
         } else {
-            $film->slug = Str::slug($film->title, '-');
+            $slug = Str::slug($film->title, '-');
         }
+
+        $film->renameDirectoryFilm($slug);
+        $film->slug = $slug;
 
         $path = "app/public/films/{$film->slug}";
 
