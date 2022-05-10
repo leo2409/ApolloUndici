@@ -22,7 +22,7 @@
                                 <form id="delete-{{ $rassegna->id }}" method="post" action="{{ route('admin.rassegne.destroy', ['rassegne' => $rassegna->id]) }}">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" form="delete-{{ $rassegna->id }}" onclick="return confirm('Sei sicuro di volerlo eliminare?\nVerranno eliminati acnhe tutti gli eventi associati a questo film!')" class="w-full px-4 py-2 text-red-500 hover:bg-gray-300 block" role="menuitem">Elimina</button>
+                                    <button type="submit" form="delete-{{ $rassegna->id }}" onclick="return confirm('Sei sicuro di volerlo eliminare?')" class="w-full px-4 py-2 text-red-500 hover:bg-gray-300 block" role="menuitem">Elimina</button>
                                 </form>
                             </div>
                         </div>

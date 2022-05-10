@@ -50,6 +50,7 @@ class FilmController extends Controller
     public function store(StoreFilmRequest $request)
     {
         $validated_film = $request->safe()->only(['title', 'tag', 'director', 'synopsis','trailer', 'info']);
+        $request->safe()->only(['poster','frame']);
         $validated_events = $request->safe()->collect()->only(['events'])->first();
         $film = Film::create($validated_film);
 

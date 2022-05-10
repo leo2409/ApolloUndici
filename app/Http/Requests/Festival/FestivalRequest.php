@@ -25,7 +25,7 @@ class FestivalRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'cover' => 'required|image|mimes:jpg,jpeg,png,webp|dimensions:min_width=1000',
+            'cover' => 'required|image|mimes:jpg,jpeg,png,webp|max:6200',
             'description' => 'required|string',
             'organizers' => 'array',
             'organizers.*' => 'array:tag,body',

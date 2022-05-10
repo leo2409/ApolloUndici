@@ -23,24 +23,15 @@ class Festival extends Model implements Sitemapable
 
     public function getMediumCoverAttribute(): string
     {
-        return "storage/festivals/{$this->cover}/1000.webp";
+        return "storage/festivals/{$this->slug}/cover/1000.webp";
     }
 
     protected static function booted() {
 
-        static::deleted(function ($film) {
-            $film->deleteCover();
-            $film->delete();
+        static::deleted(function ($festival) {
+            $festival->deleteDirectoryFestival();
+            $festival->delete();
         });
-    }
-
-    public function deleteCover() {
-        if (isset($this->cover)) {
-            $dir = "public/festivals/{$this->cover}";
-            $this->deleteDirectory($dir);
-            $this->cover = null;
-            $this->save();
-        }
     }
 
     //RELETIONSHIPS
@@ -48,9 +39,38 @@ class Festival extends Model implements Sitemapable
         return $this->hasMany(Event::class);
     }
 
-    private function deleteDirectory($dir) {
+    public function makeDirectoryFestival($slug) {
+        Storage::makeDirectory("public/festivals/{$slug}");
+        Storage::makeDirectory("public/festivals/{$slug}/cover");
+    }
+
+    public function renameDirectoryFestival($slug) {
+        if (Storage::exists("public/festivals/{$this->slug}")) {
+            if ($slug != $this->slug) {
+                Storage::move("public/festivals/{$this->slug}", "public/festivals/{$slug}");
+            }
+        } else {
+            $this->makeDirectoryFestival($slug);
+        }
+    }
+
+    public function deleteDirectoryFestival() {
+        $dir = "public/festival/{$this->slug}";
+        $this->deleteDirectory($dir);
+    }
+
+    public function deleteCover() {
+        $dir = "public/festivals/{$this->slug}/cover";
+        $this->deleteFiles($dir);
+    }
+
+    private function deleteFiles($dir) {
         $files = Storage::files($dir);
         Storage::delete($files);
+    }
+
+    private function deleteDirectory($dir) {
+        $this->deleteFiles($dir);
         Storage::deleteDirectory($dir);
     }
 

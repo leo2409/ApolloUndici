@@ -26,8 +26,8 @@ class UpdateFilmRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'tag' => 'nullable|string|max:255',
-            'poster' => 'nullable|image|mimes:jpg,jpeg,png,webp',
-            'frame' => 'nullable|image|mimes:jpg,jpeg,png,webp',
+            'poster' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:6200',
+            'frame' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:6200',
             'director' => 'required|string|max:255',
             'synopsis' => 'required|string',
             'trailer' => 'nullable|url|string|max:255',

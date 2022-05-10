@@ -121,6 +121,12 @@ window.onclick = function(event) {
 window.imagePreview = function(poster, id_preview) {
     var image_preview = document.getElementById(id_preview);
     const [file] = poster.files;
+    if(file.size > 6291456){
+        alert("File is too big! file < 6MB");
+        poster.value = "";
+        image_preview.src = '';
+        return;
+    }
     if (file) {
         image_preview.src = URL.createObjectURL(file);
     }

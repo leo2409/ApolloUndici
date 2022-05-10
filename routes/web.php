@@ -58,14 +58,13 @@ Route::get('/film/{film:slug}/{event}', function (Film $film, Event $event) {
     ]);
 })->whereNumber('event')->name('film.info');
 
-/*
+
 Route::get('/rassegne', function () {
     return view('rassegne-index', [
         'title' => "Rassegne - Apollo 11",
         'rassegne' => Festival::paginate(),
     ]);
 })->name('rassegne.index');
-*/
 
 Route::get('/rassegne/{festival:slug}', function (Festival $festival){
     $events = $festival->events()
@@ -99,9 +98,9 @@ Route::get('/sitemap', function () {
 });
 
 // TODO: RIATTIVARE QUESTE ROUTE
-//Route::get('/soci/modulo', [UserController::class, 'create']);
+Route::get('/soci/modulo', [UserController::class, 'create']);
 
-//Route::post('/soci/store', [UserController::class, 'store']);
+Route::post('/soci/store', [UserController::class, 'store']);
 
 /*
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {

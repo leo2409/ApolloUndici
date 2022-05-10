@@ -15,7 +15,7 @@
             <a href="{{ route('admin.film.index') }}" class="py-1.5 px-2 hover:bg-gray-300"><img src="{{ asset('cms/images/movie.png') }}" alt="'film icon" class="h-10"></a>
             <a href="{{ route('admin.rassegne.index') }}" class="py-1.5 px-2 hover:bg-gray-300"><img src="{{ asset('cms/images/cinema-screen.png') }}" alt="'rassegne icon" class="h-10"></a>
             <!--<a href="" class="py-1.5 px-2 hover:bg-gray-300"><img src="{{ asset('cms/images/movie-ticket.png') }}" alt="'film icon" class="h-10"></a>-->
-            <!--<a href="{{ route('admin.soci.index') }}" class="py-1.5 px-2 hover:bg-gray-300"><img src="{{ asset('cms/images/request.png') }}" alt="'film icon" class="h-10"></a>-->
+            <a href="{{ route('admin.soci.index') }}" class="py-1.5 px-2 hover:bg-gray-300"><img src="{{ asset('cms/images/request.png') }}" alt="'film icon" class="h-10"></a>
             <a href="{{ route('admin.profile.show') }}" class="py-1.5 px-2 hover:bg-gray-300"><img src="{{ asset('cms/images/astronaut.png') }}" alt="profile icon" class="h-10"></a>
             @if(Auth::guard('admin')->check() && Auth::guard('admin')->user()->big_boss)
                 <a href="{{ route('admin.administrator.index') }}" class="py-1.5 px-2 hover:bg-gray-300"><img src="{{ asset('cms/images/admins.png') }}" alt="administrator icon" class="h-10"></a>

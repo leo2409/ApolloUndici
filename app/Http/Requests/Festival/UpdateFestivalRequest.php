@@ -25,7 +25,7 @@ class UpdateFestivalRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'cover' => 'nullable|image|mimes:jpg,jpeg,png,webp',
+            'cover' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:6200',
             'description' => 'required|string',
             'organizers' => 'array',
             'organizers.*' => 'array:tag,body',

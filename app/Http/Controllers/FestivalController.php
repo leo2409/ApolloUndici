@@ -45,7 +45,8 @@ class FestivalController extends Controller
      */
     public function store(FestivalRequest $request)
     {
-        $validated_festival = $request->validated();
+        $validated_festival = $request->safe()->except(['cover']);
+        $request->safe()->only(['cover']);
         $festival = Festival::create($validated_festival);
 
         if (Festival::query()->where('name', '=', $validated_festival['name'])->count() > 1) {
@@ -54,13 +55,11 @@ class FestivalController extends Controller
             $festival->slug = Str::slug($festival->name, '-');
         }
 
-        $path = 'covers/' . $festival->slug;
+        $festival->makeDirectoryFestival($festival->slug);
 
-        $festival->cover = $path;
+        $path = "app/public/festivals/{$festival->slug}/cover";
         $festival->save();
-
-
-        Image::make($request->file('cover'))->filter(new FrameResizesEncodingFilter( storage_path('app/public/festivals/' . $path)));
+        Image::make($request->file('cover'))->filter(new FrameResizesEncodingFilter( storage_path($path)));
 
         return response()->redirectToRoute('admin.rassegne.index');
     }
@@ -80,26 +79,27 @@ class FestivalController extends Controller
 
     public function update(UpdateFestivalRequest $request, Festival $rassegne)
     {
-        $validated = $request->validated();
+        $validated = $request->safe()->except(['cover']);
+        $cover = $request->safe()->only(['cover']);
         $rassegne->name = $validated['name'];
         $rassegne->description = $validated['description'];
 
         if (Festival::query()->where('name', '==', $validated['name'])->count() > 1) {
-            $rassegne->slug = STR::slug($rassegne->name, '-') . '-' . $rassegne->id;
+            $slug = STR::slug($rassegne->name, '-') . '-' . $rassegne->id;
         } else {
-            $rassegne->slug = STR::slug($rassegne->name, '-');
+            $slug = STR::slug($rassegne->name, '-');
         }
 
-        if (isset($validated['cover'])) {
-            $path = 'covers/' . $rassegne->slug;
+        $rassegne->renameDirectoryFestival($slug);
+        $rassegne->slug = $slug;
+
+        if (isset($cover)) {
+            $path = "app/public/festivals/{$rassegne->slug}/cover";
             $rassegne->deleteCover();
-            Storage::makeDirectory("public/films/festivals/{$path}");
-            Image::make($request->file('cover'))->filter(new FrameResizesEncodingFilter( storage_path('app/public/festivals/' . $path)));
-            $rassegne->cover = $path;
+            Image::make($request->file('cover'))->filter(new FrameResizesEncodingFilter( storage_path($path)));
         }
 
         $rassegne->save();
-
         return response()->redirectToRoute('admin.rassegne.index');
     }
 

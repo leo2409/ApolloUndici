@@ -33,7 +33,7 @@
                     <div class="mt-2">
                         <label for="poster" class="ml-3 mb-0 5 font-semibold">Locandina</label>
                         <input type="file" onchange="imagePreview(this, 'poster_preview')" name="poster" id="poster" accept="image/jpeg,image/png,image/webp" tabindex="0"/>
-                        <p class="text-sm text-gray-700">File png o jpeg in proporzioni 7:10 dimensioni file < 8MB</p>
+                        <p class="text-sm text-gray-700">File png o jpeg in proporzioni 7:10 dimensioni file < 6MB</p>
                         @error('poster')
                         <p class="text-sm text-red-500 mt-1">
                             {{ $message }}
@@ -53,7 +53,7 @@
                     Frame
                 </label>
                 <input type="file" onchange="imagePreview(this, 'frame_preview')" name="frame" id="frame" accept="image/jpeg,image/png,image/webp" tabindex="0"/>
-                <p class="text-sm text-gray-700">File png o jpeg in proporzioni 16:9, min 1000px width e dimensioni file < 8MB</p>
+                <p class="text-sm text-gray-700">File png o jpeg in proporzioni 16:9, min 1000px width e dimensioni file < 6MB</p>
                 @error('frame')
                 <p class="text-sm text-red-500 mt-1">
                     {{ $message }}
