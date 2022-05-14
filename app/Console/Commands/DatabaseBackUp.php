@@ -46,7 +46,7 @@ class DatabaseBackUp extends Command
 
         $filename = "backup-" . Carbon::now()->format('d-m-Y') . ".gz";
 
-        $command = "mysqldump --user=" . config('database.connections.mysql.username') ." --password=" . config('database.connections.mysql.password') . " --host=" . config('database.connections.mysql.host') . " " . config('database.connections.mysql.database') . "  | gzip > " . storage_path() . "/app/backup/{$dir}/" . $filename;
+        $command = "mysqldump --user=" . config('database.connections.mysql.username') ." --password=" . config('database.connections.mysql.password') . " --host=" . config('database.connections.mysql.host') . " " . config('database.connections.mysql.database') . " --no-tablespaces  | gzip > " . storage_path() . "/app/backup/{$dir}/" . $filename;
 
         $returnVar = NULL;
         $output  = NULL;
