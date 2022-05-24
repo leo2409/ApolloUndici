@@ -36,6 +36,6 @@
 
     <x-soci-card />
 
-    <x-newsletter />
+    <!-- <x-newsletter /> -->
 </x-layouts.app>
 
