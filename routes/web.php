@@ -97,10 +97,25 @@ Route::get('/sitemap', function () {
     SitemapGenerator::create('https://apolloundici.it')->writeToFile($path);
 });
 
-// TODO: RIATTIVARE QUESTE ROUTE
-Route::get('/soci/modulo', [UserController::class, 'create']);
+Route::get('/newsletter/subscribe', function () {
+    request()->validate([
+        'email' => 'required|email',
+    ]);
+    Mail::mailer('postmaster')->raw(request('email'), function ($message) {
+        $email = str_replace('@','=',request('email'));
+        $address = "prova-subscribe-{$email}@apolloundici.it";
+        $message
+            ->from('postmaster@apolloundici.it')
+            ->to($address)
+            ->subject('');
+    });
+    return back()->with('success','iscritto correttamente');
+})->name('newsletter.subscribe');
 
-Route::post('/soci/store', [UserController::class, 'store']);
+// TODO: RIATTIVARE QUESTE ROUTE
+//Route::get('/soci/modulo', [UserController::class, 'create']);
+
+//Route::post('/soci/store', [UserController::class, 'store']);
 
 /*
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {

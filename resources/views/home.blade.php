@@ -25,9 +25,17 @@
         </div>
         <div class="absolute w-full h-full bg-texture top-0 opacity-10 hidden"></div>
     </main>
+    @if(session('success'))
+        <div class="fixed bottom-3 right-2 bg-green-500 text-black px-3 py-2 rounded-xl flex flex-row justify-center items-center gap-x-2">
+            <p>{{ session('success') }}</p>
+            <button type="button" onclick="this.parentNode.remove()">
+                <img src="{{ asset('images/cancel.png') }}" alt="cancel icon" class="h-6">
+            </button>
+        </div>
+    @endif
 
     <x-soci-card />
 
-    <!-- <x-newsletter /> -->
+    <x-newsletter />
 </x-layouts.app>
 
