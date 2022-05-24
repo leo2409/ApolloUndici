@@ -103,7 +103,7 @@ Route::get('/newsletter/subscribe', function () {
     ]);
     Mail::mailer('postmaster')->raw(request('email'), function ($message) {
         $email = str_replace('@','=',request('email'));
-        $address = "prova-subscribe-{$email}@apolloundici.it";
+        $address = "news-subscribe-{$email}@apolloundici.it";
         $message
             ->from('postmaster@apolloundici.it')
             ->to($address)
