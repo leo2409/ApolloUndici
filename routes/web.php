@@ -109,6 +109,7 @@ Route::get('/newsletter/subscribe', function () {
             ->to($address)
             ->subject('');
     });
+    Log::channel('newsletter')->info('nuovo iscritto alla newsletter news', ['email' => request('email')]);
     return back()->with('success','iscritto correttamente');
 })->name('newsletter.subscribe');
 
