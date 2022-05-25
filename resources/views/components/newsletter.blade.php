@@ -1,6 +1,6 @@
 <div class="max-w-screen-md mx-auto bg-3down border border-black rounded-3xl shadow-lg-center-black mt-4 text-center py-3">
     <h3 class="text-4xl text-a-blue text-shadow-sm-blue mb-2">Newsletter</h3>
-    <p class="text-sm text-gray-400">Rimani aggiornato su i nostri ultimi eventi</p>
+    <p class="text-sm text-gray-400">Rimani aggiornato sulla nostra programmazione</p>
     <form action="{{ route('newsletter.subscribe') }}" method="GET" class="mt-5">
         <div class="mx-auto mb-4">
             <div class="flex flex-col sm:flex-row gap-x-3 gap-y-5 justify-center mx-2">
