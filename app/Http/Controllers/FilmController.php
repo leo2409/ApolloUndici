@@ -121,6 +121,8 @@ class FilmController extends Controller
         $film->title = $validated['title'];
         $film->synopsis = $validated['synopsis'];
         $film->tag = $validated['tag'];
+        $film->director = $validated['director'];
+        $film->trailer = $validated['trailer'];
         $film->info = $validated['info'] ?? [];
 
         if (Film::query()->where('title', '=',$validated['title'])->count() > 1) {
