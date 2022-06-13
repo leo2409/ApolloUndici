@@ -35,7 +35,7 @@
                                 </div>
                             @endforeach
                             @if($event->description)
-                                <div class="mt-2">
+                                <div class="mt-2 text-a-orange">
                                     {{ $event->description }}
                                 </div>
                             @endif
