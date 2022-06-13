@@ -34,6 +34,11 @@
                                     <span class="text-a-orange">{{ $value }}</span>
                                 </div>
                             @endforeach
+                            @if($event->description)
+                                <div class="mt-2">
+                                    {{ $event->description }}
+                                </div>
+                            @endif
                         </div>
                         <hr>
                     @endif
