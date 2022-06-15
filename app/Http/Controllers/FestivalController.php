@@ -92,8 +92,7 @@ class FestivalController extends Controller
 
         $rassegne->renameDirectoryFestival($slug);
         $rassegne->slug = $slug;
-
-        if (isset($cover)) {
+        if (!empty($cover)) {
             $path = "app/public/festivals/{$rassegne->slug}/cover";
             $rassegne->deleteCover();
             Image::make($request->file('cover'))->filter(new FrameResizesEncodingFilter( storage_path($path)));
