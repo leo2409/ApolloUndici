@@ -12,7 +12,7 @@
                     <h1 class="text-a-orange font-semibold text-2xl">{{ strtoupper($rassegna->name) }}</h1>
                 </div>
                 <div class="space-y-3 my-2">
-                    {{ $rassegna->description }}
+                    {!! $rassegna->description !!}
                 </div>
             </div>
             <div class="px-3">
